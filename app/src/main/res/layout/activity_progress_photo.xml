@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:padding="8dp"
+                android:src="@drawable/arrow_left"
+                android:background="@drawable/bg_nav_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Progress Photo"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:padding="8dp"
+                android:src="@drawable/menu_dots"
+                android:background="@drawable/bg_nav_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingHorizontal="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="80dp">
+
+                <!-- Reminder Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="16dp" android:background="#FFF0F0" android:gravity="center_vertical">
+                        <ImageView android:layout_width="45dp" android:layout_height="45dp" android:src="@drawable/date_notifi" />
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="16dp">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reminder!" android:textColor="#FF8B8B" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Next Photos Fall On July 08" android:textColor="@color/black" android:textSize="14sp" android:fontFamily="@font/poppins_medium" android:layout_marginTop="2dp"/>
+                        </LinearLayout>
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/closed_btn" app:tint="#ADA4A5"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Track Progress Promo -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    android:layout_marginBottom="16dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp" android:background="#E9EFFF">
+                        <LinearLayout android:layout_width="150dp" android:layout_height="wrap_content" android:orientation="vertical" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Track Your Progress Each Month With Photo" android:textColor="@color/black" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
+                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Learn More" android:textColor="@color/white" android:textSize="12sp" android:background="@drawable/bg_pill_button" android:backgroundTint="#9DCEFF" android:paddingHorizontal="20dp" android:paddingVertical="8dp" android:layout_marginTop="16dp"/>
+                        </LinearLayout>
+                        <ImageView android:layout_width="140dp" android:layout_height="100dp" android:src="@drawable/progress_each_photo" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Compare my Photo -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    android:layout_marginBottom="32dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="16dp" android:background="#F7F8F8" android:gravity="center_vertical">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Compare my Photo" android:textColor="@color/black" android:textSize="14sp" android:fontFamily="@font/poppins_bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Compare" android:textColor="@color/white" android:textSize="12sp" android:background="@drawable/bg_pill_button" android:backgroundTint="#9DCEFF" android:paddingHorizontal="24dp" android:paddingVertical="8dp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Gallery -->
+                <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Gallery" android:textColor="@color/black" android:textSize="16sp" android:fontFamily="@font/poppins_bold" android:layout_alignParentStart="true"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="See more" android:textColor="#ADA4A5" android:textSize="12sp" android:fontFamily="@font/poppins_regular" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvGallery"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"/>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/camera_tab"
+        app:tint="@color/white"
+        app:backgroundTint="#C58BF2"
+        app:maxImageSize="30dp"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom"
+        android:background="#FFFFFF"
+        app:itemIconSize="24dp"
+        app:itemRippleColor="@null"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/bottom_nav_menu"
+        app:elevation="20dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

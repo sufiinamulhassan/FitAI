@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/white"
+    android:layout_marginBottom="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <!-- Day Number Circle -->
+        <TextView
+            android:id="@+id/tvDayNumber"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="1"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:background="@drawable/bg_pill_button"
+            android:backgroundTint="#9DCEFF" />
+
+        <!-- Day Info -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="12dp">
+
+            <TextView
+                android:id="@+id/tvDayTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Day 1 - Warm Up"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_medium" />
+
+            <TextView
+                android:id="@+id/tvExerciseCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 exercises"
+                android:textSize="12sp"
+                android:textColor="#ADA4A5"
+                android:fontFamily="@font/poppins_regular" />
+        </LinearLayout>
+
+        <!-- Edit Button -->
+        <ImageView
+            android:id="@+id/btnEditDay"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/p_setting"
+            app:tint="#9DCEFF"
+            android:layout_marginEnd="8dp"
+            android:padding="4dp" />
+
+        <!-- Delete Button -->
+        <ImageView
+            android:id="@+id/btnDeleteDay"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/closed_btn"
+            app:tint="#FF6B6B"
+            android:padding="4dp" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fitai.gym"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="24"
+        android:targetSdkVersion="34" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <permission
+        android:name="com.fitai.gym.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.fitai.gym.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:debuggable="true"
+        android:extractNativeLibs="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:testOnly="true"
+        android:theme="@style/Theme.FitAI" >
+
+        <!-- Splash Screen -->
+        <activity
+            android:name="com.fitai.gym.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.FitAI.Splash" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Onboarding Screen -->
+        <activity
+            android:name="com.fitai.gym.OnboardingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Login Screen -->
+        <activity
+            android:name="com.fitai.gym.LoginActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Signup Screen -->
+        <activity
+            android:name="com.fitai.gym.SignupActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Profile Setup Screen -->
+        <activity
+            android:name="com.fitai.gym.ProfileSetupActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Goal Selection Screen -->
+        <activity
+            android:name="com.fitai.gym.GoalSelectionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Welcome Success Screen -->
+        <activity
+            android:name="com.fitai.gym.WelcomeSuccessActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.fitai.gym.PersonalDataActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Activity Tracker Screen -->
+        <activity
+            android:name="com.fitai.gym.ActivityTrackerActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Home Screen (Main Activity with Bottom Navigation) -->
+        <activity
+            android:name="com.fitai.gym.MainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Workout Tracker Screen -->
+        <activity
+            android:name="com.fitai.gym.WorkoutTrackerActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Workout Detail Screen -->
+        <activity
+            android:name="com.fitai.gym.WorkoutDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Exercise Detail Screen -->
+        <activity
+            android:name="com.fitai.gym.ExerciseDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Workout Schedule Screen -->
+        <activity
+            android:name="com.fitai.gym.WorkoutScheduleActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.fitai.gym.AddScheduleActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Nutrition Screen -->
+        <activity
+            android:name="com.fitai.gym.NutritionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Meal Detail Screen -->
+        <activity
+            android:name="com.fitai.gym.MealDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Profile Screen -->
+        <activity
+            android:name="com.fitai.gym.ProfileActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Meal Schedule Screen -->
+        <activity
+            android:name="com.fitai.gym.MealScheduleActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Notification Screen -->
+        <activity
+            android:name="com.fitai.gym.NotificationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Membership Screen -->
+        <activity
+            android:name="com.fitai.gym.MembershipActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Payment Confirmation Screen -->
+        <activity
+            android:name="com.fitai.gym.PaymentConfirmationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Progress Screen -->
+        <activity
+            android:name="com.fitai.gym.ProgressActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.fitai.gym.ProgressPhotoActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Sleep Tracker Screen -->
+        <activity
+            android:name="com.fitai.gym.SleepTrackerActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Sleep Schedule Screen -->
+        <activity
+            android:name="com.fitai.gym.SleepScheduleActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Add Alarm Screen -->
+        <activity
+            android:name="com.fitai.gym.AddAlarmActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Admin Dashboard Screens -->
+        <activity
+            android:name="com.fitai.gym.AdminDashboardActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.fitai.gym.AdminAddMemberActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.fitai.gym.AdminAddWorkoutActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Payment Selection Screen -->
+        <activity
+            android:name="com.fitai.gym.PaymentActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.fitai.gym.SettingsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.fitai.gym.MealPlannerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+
+        <!-- Workout Plan Detail Screen -->
+        <activity
+            android:name="com.fitai.gym.WorkoutPlanDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Day Exercise List Screen -->
+        <activity
+            android:name="com.fitai.gym.DayExerciseListActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Exercise Execution Timer Screen -->
+        <activity
+            android:name="com.fitai.gym.ExerciseExecutionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Workout Complete Screen -->
+        <activity
+            android:name="com.fitai.gym.WorkoutCompleteActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="com.fitai.gym.androidx-startup"
+            android:exported="false" >
+            <meta-data
+                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+                android:value="androidx.startup" />
+        </provider>
+
+        <activity
+            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!--
+            Service handling Google Sign-In user revocation. For apps that do not integrate with
+            Google Sign-In, this service will never be started.
+        -->
+        <service
+            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+            android:exported="true"
+            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+            android:visibleToInstantApps="true" />
+
+        <activity
+            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="firebase.auth"
+                    android:path="/"
+                    android:scheme="genericidp" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="firebase.auth"
+                    android:path="/"
+                    android:scheme="recaptcha" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.google.firebase.components.ComponentDiscoveryService"
+            android:directBootAware="true"
+            android:exported="false" >
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.storage.FirebaseStorageKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+            <meta-data
+                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+                android:value="com.google.firebase.components.ComponentRegistrar" />
+        </service>
+
+        <activity
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="com.fitai.gym.firebaseinitprovider"
+            android:directBootAware="true"
+            android:exported="false"
+            android:initOrder="100" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <receiver
+            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+            android:directBootAware="false"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.DUMP" >
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

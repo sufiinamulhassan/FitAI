@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- Close Button -->
+    <ImageView
+        android:id="@+id/btnClose"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/closed_btn"
+        android:padding="8dp"
+        android:layout_margin="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Exercise Progress Text -->
+    <TextView
+        android:id="@+id/tvExProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exercise 1 of 5"
+        android:textSize="14sp"
+        android:textColor="#ADA4A5"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_margin="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Exercise Image -->
+    <ImageView
+        android:id="@+id/ivExerciseImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/workout_1"
+        android:scaleType="fitCenter"
+        app:layout_constraintTop_toBottomOf="@id/tvExProgress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp" />
+
+    <!-- Exercise Name -->
+    <TextView
+        android:id="@+id/tvExerciseName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jumping Jacks"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_bold"
+        app:layout_constraintTop_toBottomOf="@id/ivExerciseImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp" />
+
+    <!-- Reps & Sets Info -->
+    <TextView
+        android:id="@+id/tvExerciseInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x12 · Set 1 of 3"
+        android:textSize="14sp"
+        android:textColor="#ADA4A5"
+        android:fontFamily="@font/poppins_regular"
+        app:layout_constraintTop_toBottomOf="@id/tvExerciseName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp" />
+
+    <!-- Timer Circle -->
+    <RelativeLayout
+        android:id="@+id/rlTimer"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toBottomOf="@id/tvExerciseInfo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp">
+
+        <ProgressBar
+            android:id="@+id/pbTimer"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:progress="100"
+            android:max="100"
+            android:progressDrawable="@drawable/bmi_progress_ring"
+            android:rotation="-90" />
+
+        <TextView
+            android:id="@+id/tvTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:30"
+            android:textSize="40sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+    <!-- Time Adjust Buttons -->
+    <LinearLayout
+        android:id="@+id/llTimeAdjust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/rlTimer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp">
+
+        <TextView
+            android:id="@+id/btnMinus10"
+            android:layout_width="50dp"
+            android:layout_height="32dp"
+            android:text="-10s"
+            android:textSize="11sp"
+            android:textColor="#ADA4A5"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:background="@drawable/bg_pill_button"
+            android:backgroundTint="#F7F8F8"
+            android:layout_marginEnd="12dp" />
+
+        <TextView
+            android:id="@+id/btnPlus10"
+            android:layout_width="50dp"
+            android:layout_height="32dp"
+            android:text="+10s"
+            android:textSize="11sp"
+            android:textColor="#ADA4A5"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:background="@drawable/bg_pill_button"
+            android:backgroundTint="#F7F8F8" />
+    </LinearLayout>
+
+    <!-- Control Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/btnSkip"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="Skip"
+            android:textSize="14sp"
+            android:textColor="#ADA4A5"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:background="@drawable/bg_pill_button"
+            android:backgroundTint="#F7F8F8"
+            android:layout_marginEnd="12dp" />
+
+        <TextView
+            android:id="@+id/btnPauseResume"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:text="Pause"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:background="@drawable/btn_gradient_bg"
+            android:layout_marginEnd="12dp" />
+
+        <TextView
+            android:id="@+id/btnDone"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="Done"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:background="@drawable/bg_pill_button"
+            android:backgroundTint="#5DD672" />
+    </LinearLayout>
+
+    <!-- REST OVERLAY (hidden by default) -->
+    <LinearLayout
+        android:id="@+id/llRestOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#F0F7F8F8"
+        android:visibility="gone"
+        android:clickable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rest Time"
+            android:textSize="24sp"
+            android:textColor="#C58BF2"
+            android:fontFamily="@font/poppins_bold" />
+
+        <TextView
+            android:id="@+id/tvRestTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:15"
+            android:textSize="56sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get ready for the next exercise!"
+            android:textSize="14sp"
+            android:textColor="#ADA4A5"
+            android:fontFamily="@font/poppins_regular"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/btnSkipRest"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:text="Skip Rest"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:background="@drawable/btn_gradient_bg"
+            android:layout_marginTop="30dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

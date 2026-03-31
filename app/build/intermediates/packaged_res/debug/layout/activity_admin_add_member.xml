@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F8F8">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30dp">
+
+            <!-- Back Header -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp">
+                <ImageView
+                    android:id="@+id/btnBack"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/arrow_left"
+                    android:padding="6dp"
+                    android:background="@drawable/bg_nav_back" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Add New Admin"
+                    android:textColor="#1D1617"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Create Administrative Role"
+                android:textColor="#1D1617"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter the details of the new administrator. They will have full access to the admin dashboard."
+                android:textColor="#7B6F72"
+                android:textSize="12sp"
+                android:layout_marginBottom="30dp"/>
+
+            <!-- Form -->
+            <EditText
+                android:id="@+id/etAdminName"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/bg_card_outlined"
+                android:hint="Full Name"
+                android:paddingStart="20dp"
+                android:textColor="#1D1617"
+                android:textColorHint="#ADA4A5"
+                android:layout_marginBottom="15dp"/>
+
+            <EditText
+                android:id="@+id/etAdminEmail"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/bg_card_outlined"
+                android:hint="Email Address"
+                android:inputType="textEmailAddress"
+                android:paddingStart="20dp"
+                android:textColor="#1D1617"
+                android:textColorHint="#ADA4A5"
+                android:layout_marginBottom="15dp"/>
+
+            <EditText
+                android:id="@+id/etAdminPassword"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/bg_card_outlined"
+                android:hint="Temporary Password"
+                android:inputType="textPassword"
+                android:paddingStart="20dp"
+                android:textColor="#1D1617"
+                android:textColorHint="#ADA4A5"
+                android:layout_marginBottom="30dp"/>
+
+            <Button
+                android:id="@+id/btnCreateAdmin"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="Create Admin Account"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:background="@drawable/btn_secondary_gradient"
+                app:backgroundTint="@null"
+                android:elevation="4dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

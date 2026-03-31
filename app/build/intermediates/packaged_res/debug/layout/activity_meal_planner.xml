@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/arrow_left"
+            android:background="@drawable/bg_nav_back"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Meal Planner"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ImageView
+            android:id="@+id/btnMore"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/menu_dots"
+            android:background="@drawable/bg_nav_back"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/clHeader"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="40dp">
+
+            <!-- Meal Nutritions Section -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp">
+
+                <TextView
+                    android:id="@+id/tvMealNutritionsTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Meal Nutritions"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Weekly"
+                    android:drawableEnd="@drawable/arrow_down"
+                    android:drawablePadding="8dp"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:background="@drawable/bg_pill_button"
+                    android:backgroundTint="@color/primary_light_blue"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- Graph Container -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clGraphContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvMealNutritionsTitle">
+
+                    <!-- Grid Lines & Right Labels -->
+                    <!-- 100% -->
+                    <View android:id="@+id/line100" android:layout_width="0dp" android:layout_height="1dp" android:background="#F1F1F1" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@id/tv100"/>
+                    <TextView android:id="@+id/tv100" android:layout_width="40dp" android:layout_height="wrap_content" android:text="100%" android:textSize="10sp" android:textColor="#ADA4A5" android:gravity="end" app:layout_constraintTop_toTopOf="@id/line100" app:layout_constraintBottom_toBottomOf="@id/line100" app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <!-- 80% -->
+                    <View android:id="@+id/line80" android:layout_width="0dp" android:layout_height="1dp" android:background="#F1F1F1" android:layout_marginTop="30dp" app:layout_constraintTop_toBottomOf="@id/line100" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@id/tv80"/>
+                    <TextView android:id="@+id/tv80" android:layout_width="40dp" android:layout_height="wrap_content" android:text="80%" android:textSize="10sp" android:textColor="#ADA4A5" android:gravity="end" app:layout_constraintTop_toTopOf="@id/line80" app:layout_constraintBottom_toBottomOf="@id/line80" app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <!-- 60% (Highlighted) -->
+                    <View android:id="@+id/line60" android:layout_width="0dp" android:layout_height="1dp" android:background="#F1F1F1" android:layout_marginTop="30dp" app:layout_constraintTop_toBottomOf="@id/line80" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@id/tv60"/>
+                    <TextView android:id="@+id/tv60" android:layout_width="40dp" android:layout_height="wrap_content" android:text="60%" android:textSize="10sp" android:textColor="#C58BF2" android:fontFamily="@font/poppins_bold" android:gravity="end" app:layout_constraintTop_toTopOf="@id/line60" app:layout_constraintBottom_toBottomOf="@id/line60" app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <!-- 40% -->
+                    <View android:id="@+id/line40" android:layout_width="0dp" android:layout_height="1dp" android:background="#F1F1F1" android:layout_marginTop="30dp" app:layout_constraintTop_toBottomOf="@id/line60" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@id/tv40"/>
+                    <TextView android:id="@+id/tv40" android:layout_width="40dp" android:layout_height="wrap_content" android:text="40%" android:textSize="10sp" android:textColor="#ADA4A5" android:gravity="end" app:layout_constraintTop_toTopOf="@id/line40" app:layout_constraintBottom_toBottomOf="@id/line40" app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <!-- 20% -->
+                    <View android:id="@+id/line20" android:layout_width="0dp" android:layout_height="1dp" android:background="#F1F1F1" android:layout_marginTop="30dp" app:layout_constraintTop_toBottomOf="@id/line40" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@id/tv20"/>
+                    <TextView android:id="@+id/tv20" android:layout_width="40dp" android:layout_height="wrap_content" android:text="20%" android:textSize="10sp" android:textColor="#ADA4A5" android:gravity="end" app:layout_constraintTop_toTopOf="@id/line20" app:layout_constraintBottom_toBottomOf="@id/line20" app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <!-- 0% -->
+                    <View android:id="@+id/line0" android:layout_width="0dp" android:layout_height="1dp" android:background="#F1F1F1" android:layout_marginTop="30dp" app:layout_constraintTop_toBottomOf="@id/line20" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@id/tv0"/>
+                    <TextView android:id="@+id/tv0" android:layout_width="40dp" android:layout_height="wrap_content" android:text="0%" android:textSize="10sp" android:textColor="#ADA4A5" android:gravity="end" app:layout_constraintTop_toTopOf="@id/line0" app:layout_constraintBottom_toBottomOf="@id/line0" app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <!-- The Actual Curve Image -->
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:src="@drawable/meal_graph_curve"
+                        android:scaleType="fitCenter"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/line0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/line100" />
+
+                    <!-- Floating Data Points Overlay (Design from Image) -->
+                    <!-- Calories Point -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="2dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="30dp">
+                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:padding="6dp">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Calories 82% ↑" android:textSize="9sp" android:textColor="#5DD672" android:fontFamily="@font/poppins_regular"/>
+                            <View android:layout_width="30dp" android:layout_height="2dp" android:background="#92A3FD" android:layout_marginTop="2dp"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Fibre Point -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="2dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginEnd="80dp"
+                        android:layout_marginTop="10dp">
+                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:padding="6dp">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fibre 88% ↑" android:textSize="9sp" android:textColor="#5DD672" android:fontFamily="@font/poppins_regular"/>
+                            <View android:layout_width="30dp" android:layout_height="2dp" android:background="#C58BF2" android:layout_marginTop="2dp"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Sugar Point -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="2dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="@id/line0"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="60dp">
+                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:padding="6dp">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sugar 38% ↓" android:textSize="9sp" android:textColor="#FF6B6B" android:fontFamily="@font/poppins_regular"/>
+                            <View android:layout_width="30dp" android:layout_height="2dp" android:background="#92A3FD" android:layout_marginTop="2dp"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Bottom Day Labels -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintTop_toBottomOf="@id/line0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/line0">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Sun" android:textSize="11sp" android:textColor="#ADA4A5" android:gravity="center"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Mon" android:textSize="11sp" android:textColor="#ADA4A5" android:gravity="center"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Tue" android:textSize="11sp" android:textColor="#ADA4A5" android:gravity="center"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Wed" android:textSize="11sp" android:textColor="#ADA4A5" android:gravity="center"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Thu" android:textSize="11sp" android:textColor="#C58BF2" android:fontFamily="@font/poppins_bold" android:gravity="center"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Fri" android:textSize="11sp" android:textColor="#ADA4A5" android:gravity="center"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Sat" android:textSize="11sp" android:textColor="#ADA4A5" android:gravity="center"/>
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Daily Meal Schedule Banner -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/bg_soft_blue"
+                android:layout_marginBottom="25dp">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Daily Meal Schedule"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins_medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <TextView
+                        android:id="@+id/btnCheckSchedule"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Check"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:background="@drawable/bg_pill_button"
+                        android:backgroundTint="@color/primary_light_blue"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Today Meals Section -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/tvTodayMealsTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Today Meals"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Breakfast"
+                    android:drawableEnd="@drawable/arrow_down"
+                    android:drawablePadding="8dp"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:background="@drawable/bg_pill_button"
+                    android:backgroundTint="@color/primary_light_blue"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- Meal Items -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvTodayMealsTitle">
+
+                    <!-- Salmon Nigiri -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="1dp"
+                        android:layout_marginBottom="12dp">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="12dp" android:gravity="center_vertical">
+                            <ImageView android:layout_width="45dp" android:layout_height="45dp" android:src="@drawable/nigiri" android:scaleType="centerInside"/>
+                            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Salmon Nigiri" android:textSize="14sp" android:textColor="@color/black" android:fontFamily="@font/poppins_medium"/>
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Today | 7am" android:textSize="12sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular"/>
+                            </LinearLayout>
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/bell" app:tint="@color/primary_purple"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Lowfat Milk -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="1dp">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="12dp" android:gravity="center_vertical">
+                            <ImageView android:layout_width="45dp" android:layout_height="45dp" android:src="@drawable/glass_of_milk" android:scaleType="centerInside"/>
+                            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lowfat Milk" android:textSize="14sp" android:textColor="@color/black" android:fontFamily="@font/poppins_medium"/>
+                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Today | 8am" android:textSize="12sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular"/>
+                            </LinearLayout>
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/no_bell" app:tint="#ADA4A5"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Find Something to Eat Section (Slider) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Find Something to Eat"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_marginBottom="15dp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="10dp"
+                    android:clipToPadding="false">
+
+                    <!-- Breakfast Category -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="180dp"
+                        android:layout_height="220dp"
+                        android:layout_marginEnd="15dp"
+                        app:cardCornerRadius="22dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="@color/bg_soft_blue">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp" android:gravity="center_horizontal">
+                            <ImageView android:layout_width="100dp" android:layout_height="80dp" android:src="@drawable/apple_pie" android:scaleType="centerInside"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Breakfast" android:textSize="14sp" android:textColor="@color/black" android:fontFamily="@font/poppins_bold" android:layout_marginTop="10dp"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="120+ Foods" android:textSize="12sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular"/>
+                            <TextView android:id="@+id/btnSelectBreakfast" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Select" android:clickable="true" android:focusable="true" android:textColor="@color/white" android:textSize="12sp" android:fontFamily="@font/poppins_bold" android:background="@drawable/bg_pill_button" android:backgroundTint="@color/primary_light_blue" android:paddingStart="25dp" android:paddingEnd="25dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:layout_marginTop="15dp"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Lunch Category -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="180dp"
+                        android:layout_height="220dp"
+                        android:layout_marginEnd="15dp"
+                        app:cardCornerRadius="22dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="@color/bg_soft_purple">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp" android:gravity="center_horizontal">
+                            <ImageView android:layout_width="100dp" android:layout_height="80dp" android:src="@drawable/chicken" android:scaleType="centerInside"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lunch" android:textSize="14sp" android:textColor="@color/black" android:fontFamily="@font/poppins_bold" android:layout_marginTop="10dp"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="130+ Foods" android:textSize="12sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular"/>
+                            <TextView android:id="@+id/btnSelectLunch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Select" android:clickable="true" android:focusable="true" android:textColor="@color/white" android:textSize="12sp" android:fontFamily="@font/poppins_bold" android:background="@drawable/bg_pill_button" android:backgroundTint="@color/primary_purple" android:paddingStart="25dp" android:paddingEnd="25dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:layout_marginTop="15dp"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Snacks Category -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="180dp"
+                        android:layout_height="220dp"
+                        android:layout_marginEnd="15dp"
+                        app:cardCornerRadius="22dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="#E6FAEF">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp" android:gravity="center_horizontal">
+                            <ImageView android:layout_width="100dp" android:layout_height="80dp" android:src="@drawable/honey_pan" android:scaleType="centerInside"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Snacks" android:textSize="14sp" android:textColor="@color/black" android:fontFamily="@font/poppins_bold" android:layout_marginTop="10dp"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="140+ Foods" android:textSize="12sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular"/>
+                            <TextView android:id="@+id/btnSelectSnacks" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Select" android:clickable="true" android:focusable="true" android:textColor="@color/white" android:textSize="12sp" android:fontFamily="@font/poppins_bold" android:background="@drawable/bg_pill_button" android:backgroundTint="#3DE397" android:paddingStart="25dp" android:paddingEnd="25dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:layout_marginTop="15dp"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Dinner Category -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        app:cardCornerRadius="22dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="#FFF0E6">
+                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp" android:gravity="center_horizontal">
+                            <ImageView android:layout_width="100dp" android:layout_height="80dp" android:src="@drawable/salad" android:scaleType="centerInside"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Dinner" android:textSize="14sp" android:textColor="@color/black" android:fontFamily="@font/poppins_bold" android:layout_marginTop="10dp"/>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="120+ Foods" android:textSize="12sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular"/>
+                            <TextView android:id="@+id/btnSelectDinner" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Select" android:clickable="true" android:focusable="true" android:textColor="@color/white" android:textSize="12sp" android:fontFamily="@font/poppins_bold" android:background="@drawable/bg_pill_button" android:backgroundTint="#FF9F5F" android:paddingStart="25dp" android:paddingEnd="25dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:layout_marginTop="15dp"/>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:itemIconSize="24dp"
+        app:itemRippleColor="@null"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/white"
+        app:elevation="20dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

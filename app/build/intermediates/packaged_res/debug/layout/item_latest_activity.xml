@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="12dp">
+
+        <!-- Circle Notification Icon -->
+        <FrameLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_circle_light_blue"
+            android:padding="0dp">
+
+            <ImageView
+                android:id="@+id/ivActivityIcon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/pp_1"
+                android:scaleType="centerCrop" />
+        </FrameLayout>
+
+        <!-- Activity Content -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvActivityTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Drinking 300ml Water"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_medium" />
+
+            <TextView
+                android:id="@+id/tvActivityTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About 3 minutes ago"
+                android:textSize="12sp"
+                android:textColor="#ADA4A5"
+                android:fontFamily="@font/poppins_regular" />
+        </LinearLayout>
+
+        <!-- Three dots menu -->
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/menu_dots"
+            android:padding="4dp"
+            android:tint="#ADA4A5"
+            app:tint="#ADA4A5" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_white">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+
+        <!-- Video Section -->
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="200dp" android:background="@color/card_background">
+
+            <ImageView android:id="@+id/ivBack" android:layout_width="36dp" android:layout_height="36dp" android:src="@drawable/arrow_left" android:scaleType="fitCenter" android:background="@drawable/bg_btn_white" android:padding="8dp" android:layout_margin="16dp" android:clickable="true" android:focusable="true" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+
+            <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/video_temp" android:scaleType="centerCrop"/>
+
+            <ImageView android:id="@+id/ivPlayBtn" android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/play" android:scaleType="fitCenter" android:clickable="true" android:focusable="true" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+
+            <TextView android:id="@+id/tvExerciseTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Jumping Jack" android:textSize="22sp" android:textColor="@color/text_dark" android:fontFamily="@font/poppins_bold" android:layout_marginBottom="4dp"/>
+            <TextView android:id="@+id/tvExerciseInfo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Easy | 390 Calories Burn" android:textSize="13sp" android:textColor="@color/text_medium" android:fontFamily="@font/poppins_regular" android:layout_marginBottom="20dp"/>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Descriptions" android:textSize="16sp" android:textColor="@color/text_dark" android:fontFamily="@font/poppins_bold" android:layout_marginBottom="8dp"/>
+            <TextView android:id="@+id/tvDescription" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="A jumping jack, also known as a star jump and called a side-straddle hop in the US military, is a physical jumping exercise performed by jumping to a position with the legs spread wide and the hands going overhead..." android:textSize="13sp" android:textColor="@color/text_medium" android:fontFamily="@font/poppins_regular" android:lineSpacingMultiplier="1.5" android:layout_marginBottom="20dp"/>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="16dp">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="How To Do It" android:textSize="16sp" android:textColor="@color/text_dark" android:fontFamily="@font/poppins_bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4 Steps" android:textSize="12sp" android:textColor="@color/primary_blue" android:fontFamily="@font/poppins_regular"/>
+            </LinearLayout>
+
+            <!-- Steps -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginBottom="20dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="16dp">
+                    <TextView android:layout_width="30dp" android:layout_height="wrap_content" android:text="01" android:textSize="14sp" android:textColor="@color/primary_blue" android:fontFamily="@font/poppins_bold"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Spread Your Arms" android:textSize="14sp" android:textColor="@color/text_dark" android:fontFamily="@font/poppins_medium" android:layout_marginBottom="4dp"/>
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="To make the gestures feel more relaxed, stretch your arms as you start this movement." android:textSize="12sp" android:textColor="@color/text_medium" android:fontFamily="@font/poppins_regular" android:lineSpacingMultiplier="1.4"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="16dp">
+                    <TextView android:layout_width="30dp" android:layout_height="wrap_content" android:text="02" android:textSize="14sp" android:textColor="@color/primary_blue" android:fontFamily="@font/poppins_bold"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Rest at The Toe" android:textSize="14sp" android:textColor="@color/text_dark" android:fontFamily="@font/poppins_medium" android:layout_marginBottom="4dp"/>
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="The basis of this movement is jumping. Now, what needs to be considered is that you have to use the tips of your feet." android:textSize="12sp" android:textColor="@color/text_medium" android:fontFamily="@font/poppins_regular" android:lineSpacingMultiplier="1.4"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="16dp">
+                    <TextView android:layout_width="30dp" android:layout_height="wrap_content" android:text="03" android:textSize="14sp" android:textColor="@color/primary_blue" android:fontFamily="@font/poppins_bold"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Adjust Foot Movement" android:textSize="14sp" android:textColor="@color/text_dark" android:fontFamily="@font/poppins_medium" android:layout_marginBottom="4dp"/>
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Jumping Jack is not just an ordinary jump. But, you also have to pay close attention to leg movements." android:textSize="12sp" android:textColor="@color/text_medium" android:fontFamily="@font/poppins_regular" android:lineSpacingMultiplier="1.4"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <TextView android:layout_width="30dp" android:layout_height="wrap_content" android:text="04" android:textSize="14sp" android:textColor="@color/primary_blue" android:fontFamily="@font/poppins_bold"/>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Clapping Both Hands" android:textSize="14sp" android:textColor="@color/text_dark" android:fontFamily="@font/poppins_medium" android:layout_marginBottom="4dp"/>
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="This cannot be taken lightly. The clapping of your hands helps you to keep your rhythm while doing the Jumping Jack." android:textSize="12sp" android:textColor="@color/text_medium" android:fontFamily="@font/poppins_regular" android:lineSpacingMultiplier="1.4"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button android:id="@+id/btnStart" android:layout_width="match_parent" android:layout_height="60dp" android:text="Start" android:textColor="@color/white" android:textSize="16sp" android:fontFamily="@font/poppins_medium" android:background="@drawable/btn_gradient_bg" android:layout_marginBottom="20dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+

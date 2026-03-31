@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="70dp">
+
+    <!-- Timeline Hour -->
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:text="09:00 AM"
+        android:textSize="12sp"
+        android:textColor="#ADA4A5"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_centerVertical="true"
+        android:paddingStart="16dp"/>
+
+    <!-- Horizontal line -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#F7F8F8"
+        android:layout_toEndOf="@id/tvTime"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"/>
+
+    <!-- Dynamic Workout Card (Will be visible if there's a workout) -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardWorkout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_toEndOf="@id/tvTime"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="40dp"
+        android:layout_centerVertical="true"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
+        android:visibility="gone">
+        <TextView
+            android:id="@+id/tvWorkoutName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Upperbody Workout, 9am"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="#C58BF2"/>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

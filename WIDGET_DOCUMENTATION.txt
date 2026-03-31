@@ -1,0 +1,233 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║            FitAI GYM APP – WIDGET USAGE DOCUMENTATION                ║
+║          Assignment 1 – Android Java + XML Frontend Project           ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+Total Widgets Used: 55+ distinct Android UI components/widgets
+
+────────────────────────────────────────────────────────────────────────
+ NO.  WIDGET                        SCREEN(S)              PROPERTIES USED
+────────────────────────────────────────────────────────────────────────
+ 1.   TextView                      All screens            text, textSize, textColor,
+                                                           fontFamily, gravity
+
+ 2.   EditText                      Login, Signup,         hint, textColorHint, inputType,
+                                    ProfileSetup,          background, singleLine,
+                                    Payment                maxLines
+
+ 3.   Button                        All screens            background, textColor,
+                                                           textSize, fontFamily,
+                                                           layout_height
+
+ 4.   ImageView                     All screens            src, scaleType,
+                                                           layout_width, layout_height,
+                                                           clickable
+
+ 5.   ConstraintLayout              Splash, Main,          layout_width, layout_height,
+                                    WorkoutDetail          constraintTop, constraintBottom,
+                                                           constraintStart
+
+ 6.   LinearLayout                  All screens            orientation, gravity,
+                                                           layout_weight, padding,
+                                                           background
+
+ 7.   ScrollView                    Login, Signup,         fillViewport, layout_width,
+                                    Profile, Settings      layout_height, overScrollMode
+
+ 8.   RecyclerView                  Home, Workout,         layout_width, layout_height,
+                                    Nutrition, Notif       nestedScrollingEnabled,
+                                                           padding
+
+ 9.   CardView                      Home, Workout,         cardCornerRadius, cardElevation,
+                                    Membership, Goal       cardBackgroundColor,
+                                                           layout_margin, clickable
+
+10.   BottomNavigationView          MainActivity           menu, itemIconTint,
+                                                           itemTextColor, elevation,
+                                                           background
+
+11.   ViewPager2                    Onboarding             layout_width, layout_height,
+                                                           adapter, orientation
+
+12.   ProgressBar (horizontal)      Home, Workout          progressDrawable, progress,
+                                    Progress screen        max, layout_height,
+                                                           style (progressBarStyleHorizontal)
+
+13.   ProgressBar (vertical)        Progress screen        style (progressBarStyleVertical),
+                                                           progress, rotation,
+                                                           layout_height
+
+14.   ProgressBar (indeterminate)   Splash screen          indeterminateTint,
+                                                           layout_width, layout_height
+
+15.   Switch                        Profile, Settings,     checked, layout_width,
+                                    WorkoutTracker         layout_height
+
+16.   CheckBox                      Signup                 buttonTint, layout_width,
+                                                           layout_height, checked
+
+17.   RadioButton                   Payment                buttonTint, checked,
+                                                           layout_marginEnd
+
+18.   RadioGroup                    Payment                orientation, layout_width,
+                                                           layout_height
+
+19.   Spinner                       ProfileSetup,          background, adapter,
+                                    Settings               layout_width, textSize
+
+20.   HorizontalScrollView          WorkoutDetail,         scrollbars, layout_width,
+                                    Progress               layout_height, paddingStart
+
+21.   FloatingActionButton          WorkoutSchedule        src, backgroundTint,
+       (FAB)                                               layout_gravity, layout_margin
+
+22.   NestedScrollView              WorkoutDetail          layout_width, layout_height,
+                                                           background, fillViewport
+
+23.   CircleImageView               ProfileActivity        layout_width, layout_height,
+       (de.hdodenhof)                                      civ_border_width,
+                                                           civ_border_color, src
+
+24.   MaterialButton                LoginActivity          background, textColor,
+                                                           cornerRadius, elevation
+
+25.   BottomNavigationView.Menu     Main navigation        id, icon, title for 4 items
+
+26.   DatePickerDialog              ProfileSetup           set programmatically,
+       (programmatic widget)                               year/month/day, listener
+
+27.   TimePickerDialog              SleepTracker           is24HourView, listener,
+       (programmatic widget)                               hour, minute
+
+28.   AlertDialog                   Login, Signup,         title, message, positiveButton,
+       (programmatic widget)         Settings, Payment     negativeButton, cancelable
+
+29.   ArrayAdapter                  ProfileSetup,          context, layout, string array,
+       (programmatic widget)         Settings              setDropDownViewResource
+
+30.   View (divider)                Login, Signup,         layout_width, layout_height,
+                                    Home, Profile          background, layout_weight
+
+31.   RelativeLayout (base)         Used as container      Used within other layouts,
+                                    in item views          gravity, padding
+
+32.   FrameLayout (implicit)        Fragment containers    Used implicitly by ViewPager2
+
+33.   ImageView (nav icon)          All nav screens        src for back arrow,
+                                                           padding, background drawable,
+                                                           clickable, focusable
+
+34.   Toast (programmatic)          Multiple screens       makeText, LENGTH_SHORT,
+                                                           LENGTH_LONG, show()
+
+35.   SharedPreferences             Splash, Login,         getSharedPreferences,
+       (programmatic widget)         Settings, Goal        edit, putBoolean, apply
+
+36.   Intent (programmatic)         All screens            putExtra, getStringExtra,
+                                                           getIntExtra, FLAG_ACTIVITY
+
+37.   Handler (programmatic)        SplashActivity         postDelayed, duration timer
+
+38.   DrawerLayout structure        Used via bottom nav    Replaces drawer with bottom nav
+       pattern
+
+39.   ConstraintLayout chains       Splash screen          constraintVertical_chainStyle,
+                                                           packed, spread
+
+40.   Gradient drawable             Buttons, Cards,        startColor, endColor, angle,
+       (bg_splash, btn_gradient)    Membership card        type="linear"
+
+41.   Shape drawable (oval)         Dot indicators,        shape="oval", solid color,
+                                    circle backgrounds     size (width, height)
+
+42.   Shape drawable (rectangle)    Input fields, cards,   corners radius, solid,
+                                    progress bars          stroke width/color
+
+43.   Layer-list drawable           Progress bar           background layer, progress
+                                                           layer with clip
+
+44.   Selector drawable             Input focus states     state_focused, drawables
+                                                           for focused/normal
+
+45.   LinearLayout (weight chains)  Login social buttons,  layout_weight, orientation,
+                                    Home stats             gravity, layout_marginEnd
+
+46.   Snackbar-style feedback       Handled via Toast      Used programmatically for
+       (AlertDialog pattern)                               user feedback
+
+47.   MenuItem                      BottomNavigationView   id, icon, title in menu XML
+
+48.   RecyclerView.Adapter          Home, Workout,         onCreateViewHolder,
+       (custom adapters)            Nutrition, Notif       onBindViewHolder,
+                                                           getItemCount
+
+49.   RecyclerView.ViewHolder       All RecyclerViews      ViewHolder pattern,
+       (ViewHolder pattern)                                item view references
+
+50.   LinearLayoutManager           All RecyclerViews      VERTICAL orientation,
+                                                           reverse layout false
+
+51.   LayoutInflater                All adapters,          inflate with parent/root,
+                                    Schedule view          from(context)
+
+52.   Font (custom)                 All text views         poppins_regular,
+       @font/poppins_*                                     poppins_medium,
+                                                           poppins_bold
+
+53.   DatePickerDialog              ProfileSetup           DatePickerDialog constructor,
+                                                           calendar year/month/day
+
+54.   AdapterView.OnItemSelected-   Settings Spinner       onItemSelected, position,
+       Listener                                            onNothingSelected
+
+55.   View.OnClickListener          All interactive        lambda pattern, anonymous
+                                    elements               inner class pattern
+
+────────────────────────────────────────────────────────────────────────
+SCREENS SUMMARY (8 screens + sub-screens):
+────────────────────────────────────────────────────────────────────────
+1.  SplashActivity          – Animated logo, tagline, progress
+2.  OnboardingActivity      – 4-page ViewPager2 with dot indicators
+3.  LoginActivity           – Email/password form, social login, validation
+4.  SignupActivity          – Full registration form with 5 fields + terms
+5.  ProfileSetupActivity    – DOB picker, gender spinner, weight/height
+6.  GoalSelectionActivity   – 3 selectable goal cards
+7.  MainActivity            – Home with BMI card, targets, progress, workouts
+8.  WorkoutTrackerActivity  – Workout type cards, upcoming schedule
+9.  WorkoutDetailActivity   – Workout info, equipment, exercise list
+10. ExerciseDetailActivity  – Video section, step-by-step guide
+11. WorkoutScheduleActivity – Weekly calendar strip, schedule list
+12. NutritionActivity       – Calorie dashboard, meal tabs, food list
+13. ProfileActivity         – Profile card, settings menu items
+14. NotificationActivity    – Notification list with icons
+15. MembershipActivity      – 3 plan cards with pricing
+16. PaymentConfirmActivity  – Order summary, card form, payment
+17. ProgressActivity        – Weekly bar chart, stats, photo gallery
+18. SleepTrackerActivity    – Sleep graph, stats, alarm setter
+19. SettingsActivity        – Switches, spinner, logout
+
+────────────────────────────────────────────────────────────────────────
+VALIDATION IMPLEMENTED:
+────────────────────────────────────────────────────────────────────────
+✔ Empty field validation (all forms)
+✔ Email format validation (Patterns.EMAIL_ADDRESS)
+✔ Password minimum length (6 characters)
+✔ Password confirmation match
+✔ Weight/Height numeric range validation
+✔ Card number length (16 digits)
+✔ Expiry date format validation
+✔ CVV length (3 digits)
+✔ Gender/Goal selection validation
+✔ Terms & Conditions checkbox validation
+✔ AlertDialog, Toast, EditText.setError() for feedback
+
+────────────────────────────────────────────────────────────────────────
+NAVIGATION FLOW:
+────────────────────────────────────────────────────────────────────────
+Splash → Onboarding → Login/Signup → ProfileSetup → GoalSelection
+  → MainActivity (Home) → WorkoutTracker → WorkoutDetail
+  → ExerciseDetail → WorkoutSchedule → Nutrition → Profile
+  → Notification → Membership → PaymentConfirmation
+  → Progress → SleepTracker → Settings
+
+SharedPreferences used for: login state, onboarding status, goal selection

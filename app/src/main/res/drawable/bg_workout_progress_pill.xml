@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#F7F8F8"/>
+            <corners android:radius="10dp"/>
+        </shape>
+    </item>
+    <item android:right="80dp"> <!-- Simulating 60% progress -->
+        <shape android:shape="rectangle">
+            <solid android:color="#92A3FD"/>
+            <corners android:radius="10dp"/>
+        </shape>
+    </item>
+</layer-list>

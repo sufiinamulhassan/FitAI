@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="15dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_card_outlined">
+
+        <ImageView
+            android:id="@+id/ivWorkoutIcon"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/workout_1"
+            android:background="@drawable/bg_chip_blue"
+            android:padding="10dp"
+            android:scaleType="centerInside"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="15dp">
+
+            <TextView
+                android:id="@+id/tvWorkoutTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fullbody Workout"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tvWorkoutStats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Day 5 | 180 Calories Burn"
+                android:textColor="#ADA4A5"
+                android:textSize="12sp"/>
+
+            <ProgressBar
+                android:id="@+id/pbWorkoutProgress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="150dp"
+                android:layout_height="8dp"
+                android:layout_marginTop="10dp"
+                android:progressDrawable="@drawable/bg_workout_progress_pill"
+                android:progress="0"
+                android:max="100"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/arrow_right"
+            android:background="@drawable/bg_circle_hollow_nav"
+            android:padding="6dp"
+            app:tint="@color/primary_purple"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_white">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="24dp">
+            <ImageView android:id="@+id/ivBack" android:layout_width="36dp" android:layout_height="36dp" android:src="@drawable/arrow_left" android:scaleType="fitCenter" android:background="@drawable/bg_nav_back" android:padding="8dp" android:clickable="true" android:focusable="true" android:layout_marginEnd="16dp"/>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Settings" android:textSize="18sp" android:textColor="@color/text_dark" android:fontFamily="@font/poppins_bold" android:gravity="center"/>
+            <View android:layout_width="36dp" android:layout_height="36dp"/>
+        </LinearLayout>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Notifications" android:textSize="12sp" android:textColor="@color/text_medium" android:fontFamily="@font/poppins_medium" android:layout_marginBottom="12dp" android:textAllCaps="true"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="55dp" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="8dp">
+            <LinearLayout android:layout_width="38dp" android:layout_height="38dp" android:gravity="center" android:background="@drawable/bg_card_light_blue" android:layout_marginEnd="14dp">
+                <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/vibrate" android:scaleType="fitCenter"/>
+            </LinearLayout>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Vibration" android:textSize="14sp" android:textColor="@color/text_dark" android:fontFamily="@font/poppins_medium"/>
+            <Switch android:id="@+id/switchVibration" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="55dp" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="20dp">
+            <LinearLayout android:layout_width="38dp" android:layout_height="38dp" android:gravity="center" android:background="@drawable/bg_card_orange" android:layout_marginEnd="14dp">
+                <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/notification_active" android:scaleType="fitCenter"/>
+            </LinearLayout>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Push Notifications" android:textSize="14sp" android:textColor="@color/text_dark" android:fontFamily="@font/poppins_medium"/>
+            <Switch android:id="@+id/switchPushNotif" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true"/>
+        </LinearLayout>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Preferences" android:textSize="12sp" android:textColor="@color/text_medium" android:fontFamily="@font/poppins_medium" android:layout_marginBottom="12dp" android:textAllCaps="true"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="55dp" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="8dp">
+            <LinearLayout android:layout_width="38dp" android:layout_height="38dp" android:gravity="center" android:background="@drawable/bg_card_light_blue" android:layout_marginEnd="14dp">
+                <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/p_setting" android:scaleType="fitCenter"/>
+            </LinearLayout>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Language" android:textSize="14sp" android:textColor="@color/text_dark" android:fontFamily="@font/poppins_medium"/>
+            <Spinner android:id="@+id/spinnerLanguage" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@null"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="55dp" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="8dp">
+            <LinearLayout android:layout_width="38dp" android:layout_height="38dp" android:gravity="center" android:background="@drawable/bg_card_purple" android:layout_marginEnd="14dp">
+                <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/weight" android:scaleType="fitCenter"/>
+            </LinearLayout>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Units (kg/lbs)" android:textSize="14sp" android:textColor="@color/text_dark" android:fontFamily="@font/poppins_medium"/>
+            <Switch android:id="@+id/switchUnits" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="55dp" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="30dp">
+            <LinearLayout android:layout_width="38dp" android:layout_height="38dp" android:gravity="center" android:background="@drawable/bg_card_green" android:layout_marginEnd="14dp">
+                <ImageView android:layout_width="22dp" android:layout_height="22dp" android:src="@drawable/no_bell" android:scaleType="fitCenter"/>
+            </LinearLayout>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Dark Mode" android:textSize="14sp" android:textColor="@color/text_dark" android:fontFamily="@font/poppins_medium"/>
+            <Switch android:id="@+id/switchDarkMode" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <Button android:id="@+id/btnLogout" android:layout_width="match_parent" android:layout_height="60dp" android:text="Logout" android:textColor="@color/white" android:textSize="16sp" android:fontFamily="@font/poppins_medium" android:background="@drawable/btn_secondary_gradient" android:layout_marginBottom="30dp"/>
+
+    </LinearLayout>
+</ScrollView>
+

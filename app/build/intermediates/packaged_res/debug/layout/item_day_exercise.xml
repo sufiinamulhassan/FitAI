@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="14dp"
+    android:gravity="center_vertical"
+    android:background="@color/white"
+    android:layout_marginBottom="2dp">
+
+    <!-- Exercise Number -->
+    <TextView
+        android:id="@+id/tvExNumber"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:text="01"
+        android:textSize="11sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:background="@drawable/bg_pill_button"
+        android:backgroundTint="#C58BF2" />
+
+    <!-- Exercise Image -->
+    <ImageView
+        android:id="@+id/ivExImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/workout_1"
+        android:scaleType="centerCrop"
+        android:background="@drawable/bg_chip_blue"
+        android:padding="8dp"
+        android:layout_marginStart="12dp" />
+
+    <!-- Exercise Info -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="12dp">
+
+        <TextView
+            android:id="@+id/tvExName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jumping Jacks"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_medium" />
+
+        <TextView
+            android:id="@+id/tvExDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="x12 · 3 sets · 30s"
+            android:textSize="12sp"
+            android:textColor="#ADA4A5"
+            android:fontFamily="@font/poppins_regular" />
+    </LinearLayout>
+
+    <!-- Arrow -->
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/p_next"
+        app:tint="#ADA4A5" />
+
+</LinearLayout>

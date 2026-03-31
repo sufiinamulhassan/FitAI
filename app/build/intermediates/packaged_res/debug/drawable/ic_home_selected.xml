@@ -1,0 +1,16 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="26dp"
+    android:height="30dp"
+    android:viewportWidth="24"
+    android:viewportHeight="28">
+    <!-- Home Icon Path (Simplified Vector to ensure crispness) -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M12,2.09L4.26,8.201V20.26H19.74V8.201L12,2.09ZM12,18.04H8.69V10.22L12,7.56L15.31,10.22V18.04H12Z" />
+    
+    <!-- Purple Dot at the bottom center -->
+    <!-- It will be colored by the tint anyway if we want, or we can hardcode purple -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M12,24.5a1.5,1.5 0 1 1,0 3a1.5,1.5 0 1 1,0 -3" />
+</vector>

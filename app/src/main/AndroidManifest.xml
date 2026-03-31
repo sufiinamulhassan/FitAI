@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FitAI">
+
+        <!-- Splash Screen -->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.FitAI.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Onboarding Screen -->
+        <activity
+            android:name=".OnboardingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Login Screen -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Signup Screen -->
+        <activity
+            android:name=".SignupActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Profile Setup Screen -->
+        <activity
+            android:name=".ProfileSetupActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Goal Selection Screen -->
+        <activity
+            android:name=".GoalSelectionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Welcome Success Screen -->
+        <activity
+            android:name=".WelcomeSuccessActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".PersonalDataActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Activity Tracker Screen -->
+        <activity
+            android:name=".ActivityTrackerActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Home Screen (Main Activity with Bottom Navigation) -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Workout Tracker Screen -->
+        <activity
+            android:name=".WorkoutTrackerActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Workout Detail Screen -->
+        <activity
+            android:name=".WorkoutDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Exercise Detail Screen -->
+        <activity
+            android:name=".ExerciseDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Workout Schedule Screen -->
+        <activity
+            android:name=".WorkoutScheduleActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".AddScheduleActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Nutrition Screen -->
+        <activity
+            android:name=".NutritionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Meal Detail Screen -->
+        <activity
+            android:name=".MealDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Profile Screen -->
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Meal Schedule Screen -->
+        <activity
+            android:name=".MealScheduleActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Notification Screen -->
+        <activity
+            android:name=".NotificationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Membership Screen -->
+        <activity
+            android:name=".MembershipActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Payment Confirmation Screen -->
+        <activity
+            android:name=".PaymentConfirmationActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Progress Screen -->
+        <activity
+            android:name=".ProgressActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ProgressPhotoActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Sleep Tracker Screen -->
+        <activity
+            android:name=".SleepTrackerActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Sleep Schedule Screen -->
+        <activity
+            android:name=".SleepScheduleActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Add Alarm Screen -->
+        <activity
+            android:name=".AddAlarmActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Admin Dashboard Screens -->
+        <activity
+            android:name=".AdminDashboardActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".AdminAddMemberActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".AdminAddWorkoutActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Payment Selection Screen -->
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".MealPlannerActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+
+        <!-- Workout Plan Detail Screen -->
+        <activity
+            android:name=".WorkoutPlanDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Day Exercise List Screen -->
+        <activity
+            android:name=".DayExerciseListActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Exercise Execution Timer Screen -->
+        <activity
+            android:name=".ExerciseExecutionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Workout Complete Screen -->
+        <activity
+            android:name=".WorkoutCompleteActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+    </application>
+
+</manifest>

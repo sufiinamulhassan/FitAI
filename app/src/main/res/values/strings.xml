@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyApp</string>
+    <string name="txt_11_exercises___32mins___320_ca">11 Exercises | 32mins | 320 Calories Burn</string>
+    <string name="fullbody_workout">Fullbody Workout</string>
+    <string name="schedule_workout">Schedule Workout</string>
+    <string name="txt_5_27__09_00_am">5/27, 09:00 AM</string>
+    <string name="difficulity">Difficulity</string>
+    <string name="beginner">Beginner</string>
+    <string name="you_ll_need">You’ll Need</string>
+    <string name="txt_5_items">5 Items</string>
+    <string name="barbell">Barbell</string>
+    <string name="skipping_rope">Skipping Rope</string>
+    <string name="bottle_1_liters">Bottle 1 Liters</string>
+    <string name="exercises">Exercises</string>
+    <string name="txt_3_sets">3 Sets</string>
+    <string name="set_2">Set 2</string>
+    <string name="incline_push_ups">Incline Push-Ups</string>
+    <string name="txt_12x">12x</string>
+    <string name="push_ups">Push-Ups</string>
+    <string name="txt_15x">15x</string>
+    <string name="skipping">Skipping</string>
+    <string name="cobra_stretch">Cobra Stretch</string>
+    <string name="txt_20x">20x</string>
+    <string name="set_1">Set 1</string>
+    <string name="warm_up">Warm Up</string>
+    <string name="txt_05_00">05:00</string>
+    <string name="jumping_jack">Jumping Jack</string>
+    <string name="squats">Squats</string>
+    <string name="arm_raises">Arm Raises</string>
+    <string name="txt_00_53">00:53</string>
+    <string name="rest_and_drink">Rest and Drink</string>
+    <string name="txt_02_00">02:00</string>
+    <string name="button">Start Workout</string>
+</resources>

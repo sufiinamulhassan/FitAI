@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light">
+
+    <!-- Header -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/arrow_left"
+            android:background="@drawable/bg_nav_back"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <ImageView
+            android:id="@+id/btnMore"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/menu_dots"
+            android:background="@drawable/bg_nav_back"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/clHeader"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="40dp">
+
+            <!-- User Info Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="25dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/ivProfilePic"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/pp_1" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="16dp">
+
+                    <TextView
+                        android:id="@+id/tvProfileName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Inam Ul Hassan"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins_bold" />
+
+                    <TextView
+                        android:id="@+id/tvProfileGoal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Full Body Transformation"
+                        android:textSize="12sp"
+                        android:textColor="#7B6F72"
+                        android:fontFamily="@font/poppins_regular" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btnEditProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:text="Edit"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:background="@drawable/btn_gradient_bg"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+
+            <!-- Stats Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="25dp">
+
+                <!-- Height -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="10dp"
+                    app:cardCornerRadius="28dp"
+                    app:cardElevation="1dp"
+                    app:cardMaxElevation="1dp"
+                    app:cardBackgroundColor="@color/white">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center">
+                        <TextView android:id="@+id/tvProfileHeight" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="180cm" android:textSize="14sp" android:textColor="#9DCEFF" android:fontFamily="@font/poppins_medium"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Height" android:textSize="12sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular" android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Weight -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp" android:layout_marginStart="5dp"
+                    app:cardCornerRadius="28dp"
+                    app:cardElevation="1dp"
+                    app:cardMaxElevation="1dp"
+                    app:cardBackgroundColor="@color/white">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center">
+                        <TextView android:id="@+id/tvProfileWeight" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="65kg" android:textSize="14sp" android:textColor="#9DCEFF" android:fontFamily="@font/poppins_medium"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Weight" android:textSize="12sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular" android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Age -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    app:cardCornerRadius="28dp"
+                    app:cardElevation="1dp"
+                    app:cardMaxElevation="1dp"
+                    app:cardBackgroundColor="@color/white">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center">
+                        <TextView android:id="@+id/tvProfileAge" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="22yo" android:textSize="14sp" android:textColor="#9DCEFF" android:fontFamily="@font/poppins_medium"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Age" android:textSize="12sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular" android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- Account Section -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="1dp"
+                app:cardMaxElevation="1dp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Account"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_marginBottom="15dp" />
+
+                    <!-- Personal Data -->
+                    <LinearLayout android:id="@+id/llPersonalInfo" android:layout_width="match_parent" android:layout_height="48dp" android:orientation="horizontal" android:gravity="center_vertical">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/p_personal" app:tint="#92A3FD"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:text="Personal Data" android:textSize="12sp" android:textColor="#7B6F72" android:fontFamily="@font/poppins_regular"/>
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/p_next" app:tint="#ADA4A5"/>
+                    </LinearLayout>
+
+                    <!-- Achievement -->
+                    <LinearLayout android:id="@+id/llAchievement" android:layout_width="match_parent" android:layout_height="48dp" android:orientation="horizontal" android:gravity="center_vertical">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/p_achi" app:tint="#92A3FD"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:text="Achievement" android:textSize="12sp" android:textColor="#7B6F72" android:fontFamily="@font/poppins_regular"/>
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/p_next" app:tint="#ADA4A5"/>
+                    </LinearLayout>
+
+                    <!-- Activity History -->
+                    <LinearLayout android:id="@+id/llActivityHistory" android:layout_width="match_parent" android:layout_height="48dp" android:orientation="horizontal" android:gravity="center_vertical">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/p_activity" app:tint="#92A3FD"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:text="Activity History" android:textSize="12sp" android:textColor="#7B6F72" android:fontFamily="@font/poppins_regular"/>
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/p_next" app:tint="#ADA4A5"/>
+                    </LinearLayout>
+
+                    <!-- Workout Progress -->
+                    <LinearLayout android:id="@+id/llWorkoutProgress" android:layout_width="match_parent" android:layout_height="48dp" android:orientation="horizontal" android:gravity="center_vertical">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/p_workout" app:tint="#92A3FD"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:text="Workout Progress" android:textSize="12sp" android:textColor="#7B6F72" android:fontFamily="@font/poppins_regular"/>
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/p_next" app:tint="#ADA4A5"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Notification Section -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="1dp"
+                app:cardMaxElevation="1dp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Notification"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_marginBottom="15dp" />
+
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/p_notification" app:tint="#92A3FD"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:text="Pop-up Notification" android:textSize="12sp" android:textColor="#7B6F72" android:fontFamily="@font/poppins_regular"/>
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/switchPopNotification"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            app:thumbTint="#C58BF2"
+                            app:trackTint="#DDD9FF"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Other Section -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="1dp"
+                app:cardMaxElevation="1dp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Other"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppins_bold"
+                        android:layout_marginBottom="15dp" />
+
+                    <!-- Contact Us -->
+                    <LinearLayout android:id="@+id/llContactUs" android:layout_width="match_parent" android:layout_height="48dp" android:orientation="horizontal" android:gravity="center_vertical">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/p_contact" app:tint="#92A3FD"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:text="Contact Us" android:textSize="12sp" android:textColor="#7B6F72" android:fontFamily="@font/poppins_regular"/>
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/p_next" app:tint="#ADA4A5"/>
+                    </LinearLayout>
+
+                    <!-- Privacy Policy -->
+                    <LinearLayout android:id="@+id/llPrivacyPolicy" android:layout_width="match_parent" android:layout_height="48dp" android:orientation="horizontal" android:gravity="center_vertical">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/p_privacy" app:tint="#92A3FD"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:text="Privacy Policy" android:textSize="12sp" android:textColor="#7B6F72" android:fontFamily="@font/poppins_regular"/>
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/p_next" app:tint="#ADA4A5"/>
+                    </LinearLayout>
+
+                    <!-- Settings -->
+                    <LinearLayout android:id="@+id/llSettings" android:layout_width="match_parent" android:layout_height="48dp" android:orientation="horizontal" android:gravity="center_vertical">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/p_setting" app:tint="#92A3FD"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:text="Settings" android:textSize="12sp" android:textColor="#7B6F72" android:fontFamily="@font/poppins_regular"/>
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/p_next" app:tint="#ADA4A5"/>
+                    </LinearLayout>
+
+                    <!-- Premium Membership -->
+                    <LinearLayout android:id="@+id/llPremium" android:layout_width="match_parent" android:layout_height="48dp" android:orientation="horizontal" android:gravity="center_vertical">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/pp_1" app:tint="#C58BF2"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:text="Premium Membership" android:textSize="12sp" android:textColor="#7B6F72" android:fontFamily="@font/poppins_bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="NEW" android:textColor="@color/white" android:textSize="8sp" android:background="@drawable/bg_pill_button" android:backgroundTint="#C58BF2" android:paddingStart="6dp" android:paddingEnd="6dp" android:layout_marginEnd="8dp"/>
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/p_next" app:tint="#ADA4A5"/>
+                    </LinearLayout>
+
+                    <!-- Admin Panel (Visible to Admins) -->
+                    <LinearLayout android:id="@+id/llAdminPanel" android:layout_width="match_parent" android:layout_height="48dp" android:orientation="horizontal" android:gravity="center_vertical" android:visibility="visible">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/p_setting" app:tint="#FF9900"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:text="Admin Dashboard" android:textSize="12sp" android:textColor="#1D1617" android:fontFamily="@font/poppins_bold"/>
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/p_next" app:tint="#ADA4A5"/>
+                    </LinearLayout>
+
+                    <!-- Delete Account Button -->
+                    <LinearLayout android:id="@+id/btnDeleteAccount" android:layout_width="match_parent" android:layout_height="48dp" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="5dp">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/p_achi" app:tint="#FF0000"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:text="Delete Account" android:textSize="12sp" android:textColor="#FF0000" android:fontFamily="@font/poppins_bold"/>
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/p_next" app:tint="#FF0000"/>
+                    </LinearLayout>
+
+                    <!-- Logout Button -->
+                    <LinearLayout android:id="@+id/btnLogout" android:layout_width="match_parent" android:layout_height="48dp" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="5dp">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/p_achi" app:tint="#FF4B4B"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:text="Sign Out" android:textSize="12sp" android:textColor="#FF4B4B" android:fontFamily="@font/poppins_bold"/>
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/p_next" app:tint="#FF4B4B"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:itemIconSize="24dp"
+        app:itemRippleColor="@null"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/white"
+        app:elevation="20dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

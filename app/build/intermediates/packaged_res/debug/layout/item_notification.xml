@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp">
+
+        <!-- Circle Notification Icon -->
+        <FrameLayout
+            android:id="@+id/flIconBg"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/bg_circle_light_blue"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/ivNotifIcon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/workout_1"
+                android:scaleType="fitCenter" />
+        </FrameLayout>
+
+        <!-- Notification Content -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvNotifTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hey, it's time for lunch"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_medium"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/tvNotifTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About 1 minutes ago"
+                android:textSize="12sp"
+                android:textColor="#ADA4A5"
+                android:fontFamily="@font/poppins_regular" />
+        </LinearLayout>
+
+        <!-- Three dots menu -->
+        <ImageView
+            android:id="@+id/ivMoreMenu"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/menu_dots"
+            android:padding="4dp"
+            android:tint="#ADA4A5"
+            app:tint="#ADA4A5"
+            xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+    </LinearLayout>
+
+    <!-- Thin Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#F7F8F8"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp" />
+
+</LinearLayout>

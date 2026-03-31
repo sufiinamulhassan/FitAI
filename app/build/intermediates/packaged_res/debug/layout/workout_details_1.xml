@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFFFF">
+
+    <!-- Frame: Workout Details 1 (375x1640) -->
+
+    <!-- GROUP: Blue-Bg -->
+    <View
+        android:layout_width="375dp"
+        android:layout_height="418dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- GROUP: Vector -->
+    <View
+        android:layout_width="316dp"
+        android:layout_height="415dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="62dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- GROUP: White-Bg -->
+    <View
+        android:layout_width="375dp"
+        android:layout_height="1294dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="346dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- GROUP: Title-Section -->
+    <View
+        android:layout_width="315dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="386dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- GROUP: Schedule-Card -->
+    <View
+        android:layout_width="315dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="453dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- GROUP: Difficulity-Card -->
+    <View
+        android:layout_width="315dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="518dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- GROUP: Header -->
+    <View
+        android:layout_width="315dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- GROUP: Item-Need-Section -->
+    <View
+        android:layout_width="420dp"
+        android:layout_height="197dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="598dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- GROUP: Swap-Details -->
+    <View
+        android:layout_width="50dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="356dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- GROUP: Exercises-Section -->
+    <View
+        android:layout_width="315dp"
+        android:layout_height="850dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="825dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- INSTANCE: Button -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="315dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="1540dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/bg_rounded"
+        android:paddingLeft="129dp"
+        android:paddingTop="18dp"
+        android:paddingRight="129dp"
+        android:paddingBottom="18dp">
+
+        <!-- TEXT: Button -->
+        <TextView
+            android:text="Start Workout"
+            android:textSize="16sp"
+            android:textColor="#FFFFFFFF"
+            android:gravity="start"
+            android:textStyle="bold"
+            android:fontFamily="Poppins"
+        android:layout_width="116dp"
+        android:layout_height="24dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
