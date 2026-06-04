@@ -79,7 +79,7 @@ This repository excludes `google-services.json` for security reasons.
 2. Register Android app package: `com.fitai.gym`
 3. Download `google-services.json`
 4. Place it at:
-   - `/tmp/workspace/sufiinamulhassan/FitAI/app/google-services.json`
+   - `app/google-services.json`
 
 ### 4) Enable Firebase services
 - **Authentication** → Email/Password
