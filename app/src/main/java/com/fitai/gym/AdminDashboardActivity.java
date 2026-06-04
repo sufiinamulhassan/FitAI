@@ -53,11 +53,11 @@ public class AdminDashboardActivity extends AppCompatActivity
         loadUsers();
 
         findViewById(R.id.cardManageWorkouts).setOnClickListener(v -> {
-            startActivity(new Intent(this, AdminAddWorkoutActivity.class));
+            startActivity(new Intent(this, AdminManageWorkoutsActivity.class));
         });
 
         findViewById(R.id.cardManageMeals).setOnClickListener(v -> {
-            Toast.makeText(this, "Manage Meals Feature Coming Soon!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, AdminManageMealsActivity.class));
         });
 
         findViewById(R.id.cardAddAdmin).setOnClickListener(v -> {
@@ -70,10 +70,6 @@ public class AdminDashboardActivity extends AppCompatActivity
             Intent intent = new Intent(this, LoginActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
-        });
-
-        findViewById(R.id.cardSystemSettings).setOnClickListener(v -> {
-            Toast.makeText(this, "System Settings Feature Coming Soon!", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -113,6 +109,11 @@ public class AdminDashboardActivity extends AppCompatActivity
             for (DocumentSnapshot doc : snapshot.getDocuments()) {
                 UserModel user = doc.toObject(UserModel.class);
                 if (user != null) {
+                    // Exclude admins from the list of registered users
+                    if ("admin".equalsIgnoreCase(user.getRole()) || 
+                        "admin.fitai@gmail.com".equalsIgnoreCase(user.getEmail())) {
+                        continue;
+                    }
                     if (user.getUid() == null || user.getUid().isEmpty()) {
                         // Set uid from document ID if not stored in model
                         user.setUid(doc.getId());

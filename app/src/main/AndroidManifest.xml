@@ -91,6 +91,12 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
+        <!-- Workout Session (Timer) Screen -->
+        <activity
+            android:name=".WorkoutSessionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
         <!-- Exercise Detail Screen -->
         <activity
             android:name=".ExerciseDetailActivity"
@@ -195,6 +201,21 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".AdminManageWorkoutsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".AdminViewUserProgressActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".AdminManageMealsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
         <!-- Payment Selection Screen -->
         <activity
             android:name=".PaymentActivity"
@@ -203,6 +224,11 @@
 
         <activity
             android:name=".SettingsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".AchievementActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
 
@@ -233,6 +259,18 @@
             android:name=".WorkoutCompleteActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
+
+        <!-- uCrop Activity -->
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+        <!-- Meal Reminder Broadcast Receiver -->
+        <receiver
+            android:name=".MealReminderReceiver"
+            android:enabled="true"
+            android:exported="false" />
 
     </application>
 

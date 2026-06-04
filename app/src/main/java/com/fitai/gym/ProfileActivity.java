@@ -35,13 +35,18 @@ public class ProfileActivity extends AppCompatActivity {
         findViewById(R.id.llPersonalInfo).setOnClickListener(v -> 
             startActivity(new Intent(this, PersonalDataActivity.class)));
 
-        findViewById(R.id.llAchievement).setOnClickListener(v -> startActivity(new Intent(this, ProgressActivity.class)));
+        findViewById(R.id.llEditGoal).setOnClickListener(v -> {
+            Intent intent = new Intent(this, GoalSelectionActivity.class);
+            intent.putExtra("is_edit", true);
+            startActivity(intent);
+        });
+
+        findViewById(R.id.llAchievement).setOnClickListener(v -> startActivity(new Intent(this, AchievementActivity.class)));
         findViewById(R.id.llActivityHistory).setOnClickListener(v -> startActivity(new Intent(this, ActivityTrackerActivity.class)));
         findViewById(R.id.llWorkoutProgress).setOnClickListener(v -> startActivity(new Intent(this, ProgressActivity.class)));
         
         findViewById(R.id.llContactUs).setOnClickListener(v -> showContactDialog());
         findViewById(R.id.llPrivacyPolicy).setOnClickListener(v -> showPrivacyDialog());
-        findViewById(R.id.llSettings).setOnClickListener(v -> startActivity(new Intent(this, SettingsActivity.class)));
         
         findViewById(R.id.btnLogout).setOnClickListener(v -> {
             FirebaseHelper.getInstance().getAuth().signOut();
@@ -57,7 +62,11 @@ public class ProfileActivity extends AppCompatActivity {
         findViewById(R.id.llAdminPanel).setOnClickListener(v -> startActivity(new Intent(this, AdminDashboardActivity.class)));
 
         // Edit button takes you to setup/edit mode
-        findViewById(R.id.btnEditProfile).setOnClickListener(v -> startActivity(new Intent(this, ProfileSetupActivity.class)));
+        findViewById(R.id.btnEditProfile).setOnClickListener(v -> {
+            Intent intent = new Intent(this, ProfileSetupActivity.class);
+            intent.putExtra("is_edit", true);
+            startActivity(intent);
+        });
 
         setupBottomNavigation();
     }
@@ -165,6 +174,28 @@ public class ProfileActivity extends AppCompatActivity {
                 View adminPanel = findViewById(R.id.llAdminPanel);
                 if (adminPanel != null) {
                     adminPanel.setVisibility("admin".equalsIgnoreCase(role) ? View.VISIBLE : View.GONE);
+                }
+
+                // Show/hide Premium banner
+                Boolean isPremium = snapshot.getBoolean("isPremium");
+                String premiumPlan = snapshot.getString("premiumPlan");
+                View cvPremiumBanner = findViewById(R.id.cvPremiumBanner);
+                TextView tvPremiumPlan = findViewById(R.id.tvPremiumPlan);
+                if (cvPremiumBanner != null) {
+                    if (isPremium != null && isPremium) {
+                        cvPremiumBanner.setVisibility(View.VISIBLE);
+                        if (tvPremiumPlan != null && premiumPlan != null) {
+                            String planLabel = premiumPlan.equals("yearly") ? "12-Month Plan" : "1-Month Plan";
+                            tvPremiumPlan.setText(planLabel + " • Active");
+                        }
+                        // Change Premium button text to "Manage Subscription"
+                        LinearLayout llPremium = findViewById(R.id.llPremium);
+                        if (llPremium != null) {
+                            ((TextView) llPremium.getChildAt(1)).setText("Manage Subscription");
+                        }
+                    } else {
+                        cvPremiumBanner.setVisibility(View.GONE);
+                    }
                 }
             });
     }

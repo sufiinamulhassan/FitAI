@@ -30,6 +30,11 @@ public class GoalSelectionActivity extends AppCompatActivity {
         viewPagerGoals = findViewById(R.id.viewPagerGoals);
         btnConfirm = findViewById(R.id.btnConfirm);
 
+        boolean isEdit = getIntent().getBooleanExtra("is_edit", false);
+        if (isEdit) {
+            btnConfirm.setText("Update Goal");
+        }
+
         GoalAdapter adapter = new GoalAdapter(goalImages, goalTitles, goalDescs);
         viewPagerGoals.setAdapter(adapter);
 
@@ -62,12 +67,21 @@ public class GoalSelectionActivity extends AppCompatActivity {
                 fbHelper.getUsersCollection().document(uid)
                     .set(updates, com.google.firebase.firestore.SetOptions.merge())
                     .addOnCompleteListener(task -> {
-                        startActivity(new Intent(this, WelcomeSuccessActivity.class));
-                        finish();
+                        if (isEdit) {
+                            android.widget.Toast.makeText(GoalSelectionActivity.this, "Goal Updated!", android.widget.Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {
+                            startActivity(new Intent(this, WelcomeSuccessActivity.class));
+                            finish();
+                        }
                     });
             } else {
-                startActivity(new Intent(this, WelcomeSuccessActivity.class));
-                finish();
+                if (isEdit) {
+                    finish();
+                } else {
+                    startActivity(new Intent(this, WelcomeSuccessActivity.class));
+                    finish();
+                }
             }
         });
     }

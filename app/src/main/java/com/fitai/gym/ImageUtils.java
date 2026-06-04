@@ -8,13 +8,27 @@ import java.io.ByteArrayOutputStream;
 public class ImageUtils {
 
     public static String bitmapToBase64(Bitmap bitmap) {
+        return bitmapToBase64(bitmap, 200);
+    }
+
+    public static String bitmapToBase64(Bitmap bitmap, int size) {
         if (bitmap == null) return null;
         
-        // Resize to absolute minimum for Firestore (200x200 is plenty for profile pic)
-        Bitmap resized = Bitmap.createScaledBitmap(bitmap, 200, 200, true);
+        // Scale proportionally keeping aspect ratio, limiting max dimension to 'size'
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+        float ratio = (float) width / (float) height;
+        int newWidth = size;
+        int newHeight = size;
+        if (width > height) {
+            newHeight = (int) (size / ratio);
+        } else {
+            newWidth = (int) (size * ratio);
+        }
         
+        Bitmap resized = Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, true);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        resized.compress(Bitmap.CompressFormat.JPEG, 70, baos); // 70% quality
+        resized.compress(Bitmap.CompressFormat.JPEG, 75, baos); // 75% quality is clean & optimized
         byte[] b = baos.toByteArray();
         return Base64.encodeToString(b, Base64.NO_WRAP);
     }

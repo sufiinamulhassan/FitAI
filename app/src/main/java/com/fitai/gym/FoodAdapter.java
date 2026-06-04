@@ -1,6 +1,7 @@
 package com.fitai.gym;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,19 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         FoodModel f = foods.get(position);
         holder.tvName.setText(f.getName());
         holder.tvCalories.setText(f.getCalories());
-        holder.ivImage.setImageResource(f.getImageRes());
+        ImageLoaderHelper.loadImage(context, holder.ivImage, f.getImageName(), R.drawable.pancake_1);
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, MealDetailActivity.class);
+            intent.putExtra("meal_type", f.getMealType());
+            intent.putExtra("meal_id", f.getId());
+            intent.putExtra("meal_name", f.getName());
+            intent.putExtra("meal_calories", f.getCalories());
+            intent.putExtra("meal_instructions", f.getInstructions());
+            intent.putExtra("meal_ingredients", f.getIngredients());
+            intent.putExtra("meal_image_name", f.getImageName());
+            context.startActivity(intent);
+        });
     }
 
     @Override

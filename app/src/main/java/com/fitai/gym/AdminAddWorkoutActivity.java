@@ -7,13 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.chip.Chip;
+import com.google.firebase.firestore.DocumentSnapshot;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,9 +27,55 @@ public class AdminAddWorkoutActivity extends AppCompatActivity {
     private EditText etPlanTitle, etPlanDesc, etTotalDays, etCalories;
     private Chip chipBeginner, chipIntermediate, chipAdvanced;
     private RecyclerView rvDays;
+    private String selectedBase64Image = null;
+    private ImageView ivWorkoutCover;
+
+    private final androidx.activity.result.ActivityResultLauncher<Intent> pickImageLauncher =
+        registerForActivityResult(new androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                android.net.Uri imageUri = result.getData().getData();
+                if (imageUri != null) {
+                    processPickedImage(imageUri);
+                }
+            }
+        });
+
+    private void processPickedImage(android.net.Uri uri) {
+        try {
+            java.io.InputStream is = getContentResolver().openInputStream(uri);
+            android.graphics.Bitmap bitmap = android.graphics.BitmapFactory.decodeStream(is);
+            if (bitmap != null) {
+                int maxDim = 350;
+                int srcWidth = bitmap.getWidth();
+                int srcHeight = bitmap.getHeight();
+                int dstWidth = srcWidth;
+                int dstHeight = srcHeight;
+                if (srcWidth > maxDim || srcHeight > maxDim) {
+                    if (srcWidth > srcHeight) {
+                        dstWidth = maxDim;
+                        dstHeight = (srcHeight * maxDim) / srcWidth;
+                    } else {
+                        dstHeight = maxDim;
+                        dstWidth = (srcWidth * maxDim) / srcHeight;
+                    }
+                }
+                android.graphics.Bitmap resized = android.graphics.Bitmap.createScaledBitmap(bitmap, dstWidth, dstHeight, true);
+                java.io.ByteArrayOutputStream baos = new java.io.ByteArrayOutputStream();
+                resized.compress(android.graphics.Bitmap.CompressFormat.JPEG, 75, baos);
+                byte[] bytes = baos.toByteArray();
+                selectedBase64Image = "base64:" + android.util.Base64.encodeToString(bytes, android.util.Base64.NO_WRAP);
+                if (ivWorkoutCover != null) {
+                    ivWorkoutCover.setImageBitmap(resized);
+                }
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, "Failed to process image: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
     private List<DayPlan> dayPlans = new ArrayList<>();
     private DayAdapter dayAdapter;
     private FirebaseHelper fbHelper;
+    private String editingPlanId = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +98,84 @@ public class AdminAddWorkoutActivity extends AppCompatActivity {
         rvDays.setNestedScrollingEnabled(false);
         rvDays.setAdapter(dayAdapter);
 
+        ivWorkoutCover = findViewById(R.id.ivWorkoutCover);
+        findViewById(R.id.btnUploadWorkoutCover).setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            intent.setType("image/*");
+            pickImageLauncher.launch(intent);
+        });
+
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
         findViewById(R.id.btnAddDay).setOnClickListener(v -> showAddDayDialog());
         findViewById(R.id.btnPublish).setOnClickListener(v -> publishPlan());
+
+        // Check if editing
+        editingPlanId = getIntent().getStringExtra("plan_id");
+        if (editingPlanId != null) {
+            TextView btnPublish = findViewById(R.id.btnPublish);
+            btnPublish.setText("Update Plan");
+            loadPlanForEditing(editingPlanId);
+        }
+    }
+
+    private void loadPlanForEditing(String planId) {
+        fbHelper.getWorkoutPlansCollection().document(planId).get()
+            .addOnSuccessListener(snapshot -> {
+                if (snapshot != null && snapshot.exists()) {
+                    etPlanTitle.setText(snapshot.getString("title"));
+                    etPlanDesc.setText(snapshot.getString("description"));
+                    Long days = snapshot.getLong("totalDays");
+                    Long cals = snapshot.getLong("calories");
+                    if (days != null) etTotalDays.setText(String.valueOf(days));
+                    if (cals != null) etCalories.setText(String.valueOf(cals));
+
+                    // Load custom cover image if available
+                    String coverImg = snapshot.getString("imageRes");
+                    if (coverImg != null) {
+                        selectedBase64Image = coverImg;
+                        ImageLoaderHelper.loadImage(this, ivWorkoutCover, selectedBase64Image, R.drawable.workout_1);
+                    }
+
+                    List<String> difficulty = (List<String>) snapshot.get("difficulty");
+                    if (difficulty != null) {
+                        chipBeginner.setChecked(difficulty.contains("beginner"));
+                        chipIntermediate.setChecked(difficulty.contains("intermediate"));
+                        chipAdvanced.setChecked(difficulty.contains("advanced"));
+                    }
+
+                    // Fetch days
+                    fbHelper.getDaysCollection(planId).orderBy("dayNumber", com.google.firebase.firestore.Query.Direction.ASCENDING).get()
+                        .addOnSuccessListener(daySnapshots -> {
+                            dayPlans.clear();
+                            for (DocumentSnapshot doc : daySnapshots.getDocuments()) {
+                                DayPlan day = new DayPlan();
+                                Long num = doc.getLong("dayNumber");
+                                day.setDayNumber(num != null ? num.intValue() : 1);
+                                day.setDayTitle(doc.getString("dayTitle"));
+                                Boolean rest = doc.getBoolean("restDay");
+                                day.setRestDay(rest != null ? rest : false);
+
+                                List<Map<String, Object>> exList = (List<Map<String, Object>>) doc.get("exercises");
+                                List<Exercise> exercises = new ArrayList<>();
+                                if (exList != null) {
+                                    for (Map<String, Object> exMap : exList) {
+                                        String name = (String) exMap.get("name");
+                                        String reps = (String) exMap.get("reps");
+                                        int sets = ((Long) exMap.get("sets")).intValue();
+                                        int duration = ((Long) exMap.get("duration")).intValue();
+                                        int restTime = ((Long) exMap.get("restTime")).intValue();
+                                        String imageRes = (String) exMap.get("imageRes");
+                                        String instructions = (String) exMap.get("instructions");
+                                        exercises.add(new Exercise(name, reps, sets, duration, restTime, imageRes, instructions));
+                                    }
+                                }
+                                day.setExercises(exercises);
+                                dayPlans.add(day);
+                            }
+                            dayAdapter.notifyDataSetChanged();
+                        });
+                }
+            });
     }
 
     private void showAddDayDialog() {
@@ -138,21 +262,32 @@ public class AdminAddWorkoutActivity extends AppCompatActivity {
         Map<String, Object> planData = new HashMap<>();
         planData.put("title", title);
         planData.put("description", desc);
-        planData.put("imageRes", "workout_1");
+        planData.put("imageRes", selectedBase64Image != null ? selectedBase64Image : "workout_1");
         planData.put("difficulty", difficulty);
         planData.put("totalDays", totalDays);
         planData.put("calories", calories);
-        planData.put("createdAt", System.currentTimeMillis());
 
-        fbHelper.getWorkoutPlansCollection().add(planData)
-            .addOnSuccessListener(docRef -> {
-                String planId = docRef.getId();
-                // Save each day as a sub-document
-                saveDays(planId, 0);
-            })
-            .addOnFailureListener(e -> {
-                Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            });
+        if (editingPlanId == null) {
+            planData.put("createdAt", System.currentTimeMillis());
+            fbHelper.getWorkoutPlansCollection().add(planData)
+                .addOnSuccessListener(docRef -> {
+                    String planId = docRef.getId();
+                    // Save each day as a sub-document
+                    saveDays(planId, 0);
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+        } else {
+            fbHelper.getWorkoutPlansCollection().document(editingPlanId).update(planData)
+                .addOnSuccessListener(v -> {
+                    // Update each day sub-document
+                    saveDays(editingPlanId, 0);
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Error updating plan: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+        }
     }
 
     private void saveDays(String planId, int index) {

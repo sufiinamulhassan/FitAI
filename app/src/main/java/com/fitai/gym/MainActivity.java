@@ -26,6 +26,14 @@ public class MainActivity extends AppCompatActivity {
     private android.widget.LinearLayout llWaterLogs;
     // Sleep View
     private TextView tvSleepTotal;
+    // Calories Views
+    private TextView tvCaloriesTotal, tvCaloriesLeft;
+    private android.widget.ProgressBar pbCaloriesProgress;
+    // Graph Tooltip Views
+    private TextView tvGraphDate, tvGraphPercent, tvGraphWorkout;
+    private android.view.View rlTooltip;
+    private TextView tvWorkoutProgressDropdown;
+    private android.widget.LinearLayout llGraphBars, llGraphLabels;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +52,16 @@ public class MainActivity extends AppCompatActivity {
         viewWaterSpace = findViewById(R.id.viewWaterSpace);
         llWaterLogs = findViewById(R.id.llWaterLogs);
         tvSleepTotal = findViewById(R.id.tvSleepTotal);
+        tvCaloriesTotal = findViewById(R.id.tvCaloriesTotal);
+        tvCaloriesLeft = findViewById(R.id.tvCaloriesLeft);
+        pbCaloriesProgress = findViewById(R.id.pbCaloriesProgress);
+        tvGraphDate = findViewById(R.id.tvGraphDate);
+        tvGraphPercent = findViewById(R.id.tvGraphPercent);
+        tvGraphWorkout = findViewById(R.id.tvGraphWorkout);
+        rlTooltip = findViewById(R.id.rlTooltip);
+        tvWorkoutProgressDropdown = findViewById(R.id.tvWorkoutProgressDropdown);
+        llGraphBars = findViewById(R.id.llGraphBars);
+        llGraphLabels = findViewById(R.id.llGraphLabels);
 
         // Real-time Greeting and Image from Firebase
         FirebaseHelper fbHelper = FirebaseHelper.getInstance();
@@ -76,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
             setupWaterTracker(uid);
             setupSleepTracker(uid);
             setupLatestWorkouts(uid);
+            setupCaloriesTracker(uid);
+            setupWorkoutProgressGraph(uid);
         }
 
         setupNavigation();
@@ -423,49 +443,330 @@ public class MainActivity extends AppCompatActivity {
         android.widget.LinearLayout llLatestWorkouts = findViewById(R.id.llLatestWorkouts);
         if (llLatestWorkouts == null) return;
 
-        FirebaseHelper.getInstance().getUserProgressCollection(uid).limit(3).get()
-            .addOnSuccessListener(snapshot -> {
-                llLatestWorkouts.removeAllViews();
-                if (snapshot.isEmpty()) {
-                    TextView tv = new TextView(this);
-                    tv.setText("No active workouts yet. Head to Tracker to start!");
-                    tv.setTextSize(14);
-                    tv.setTextColor(android.graphics.Color.parseColor("#ADA4A5"));
-                    tv.setPadding(0, 20, 0, 20);
-                    llLatestWorkouts.addView(tv);
-                    return;
+        // Load both plan-based progress AND standalone workout history
+        FirebaseHelper fb = FirebaseHelper.getInstance();
+        llLatestWorkouts.removeAllViews();
+        final int[] addedCount = {0};
+
+        // 1. Load standalone workout history (most recent 3)
+        fb.getUsersCollection().document(uid).collection("workout_history")
+            .orderBy("completedAt", com.google.firebase.firestore.Query.Direction.DESCENDING)
+            .limit(3).get()
+            .addOnSuccessListener(histSnap -> {
+                for (com.google.firebase.firestore.DocumentSnapshot doc : histSnap.getDocuments()) {
+                    String title = doc.getString("workoutTitle");
+                    Long cal = doc.getLong("caloriesBurned");
+                    Long timeSec = doc.getLong("totalTimeSeconds");
+                    if (title == null) continue;
+
+                    android.view.View view = android.view.LayoutInflater.from(this)
+                            .inflate(R.layout.item_latest_workout, llLatestWorkouts, false);
+                    TextView tvTitle = view.findViewById(R.id.tvWorkoutTitle);
+                    TextView tvStats = view.findViewById(R.id.tvWorkoutStats);
+                    android.widget.ProgressBar pb = view.findViewById(R.id.pbWorkoutProgress);
+
+                    tvTitle.setText(title);
+                    int mins = timeSec != null ? (int)(timeSec / 60) : 0;
+                    tvStats.setText(mins + " min | " + (cal != null ? cal : 0) + " Calories Burn");
+                    pb.setProgress(100);
+
+                    view.setOnClickListener(v -> startActivity(new Intent(this, WorkoutTrackerActivity.class)));
+                    llLatestWorkouts.addView(view);
+                    addedCount[0]++;
+
+                    // Update graph tooltip with most recent workout
+                    if (addedCount[0] == 1) {
+                        com.google.firebase.Timestamp ts = doc.getTimestamp("completedAt");
+                        if (ts != null && tvGraphDate != null) {
+                            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("EEE, dd MMM", java.util.Locale.getDefault());
+                            tvGraphDate.setText(sdf.format(ts.toDate()));
+                        }
+                        if (tvGraphWorkout != null) tvGraphWorkout.setText(title);
+                        if (tvGraphPercent != null) tvGraphPercent.setText("100% \u2191");
+                    }
                 }
 
+                // 2. Also load plan-based progress
+                fb.getUserProgressCollection(uid).limit(2).get()
+                    .addOnSuccessListener(planSnap -> {
+                        for (com.google.firebase.firestore.DocumentSnapshot doc : planSnap.getDocuments()) {
+                            UserProgress progress = doc.toObject(UserProgress.class);
+                            if (progress == null) continue;
+
+                            android.view.View view = android.view.LayoutInflater.from(this)
+                                    .inflate(R.layout.item_latest_workout, llLatestWorkouts, false);
+                            TextView tvTitle = view.findViewById(R.id.tvWorkoutTitle);
+                            TextView tvStats = view.findViewById(R.id.tvWorkoutStats);
+                            android.widget.ProgressBar pb = view.findViewById(R.id.pbWorkoutProgress);
+
+                            tvTitle.setText(progress.getPlanTitle());
+                            int daysDone = (progress.getCompletedDays() != null) ? progress.getCompletedDays().size() : 0;
+                            int cals = progress.getTotalCaloriesBurned();
+                            tvStats.setText(daysDone + " Days Done | " + cals + " Calories Burn");
+                            int pct = Math.min((daysDone * 100) / 28, 100);
+                            if (pct < 5 && daysDone > 0) pct = 5;
+                            pb.setProgress(pct);
+
+                            view.setOnClickListener(v -> {
+                                Intent intent = new Intent(this, WorkoutPlanDetailActivity.class);
+                                intent.putExtra("PLAN_ID", progress.getPlanId());
+                                startActivity(intent);
+                            });
+                            llLatestWorkouts.addView(view);
+                            addedCount[0]++;
+                        }
+
+                        if (addedCount[0] == 0) {
+                            TextView tv = new TextView(this);
+                            tv.setText("No workouts yet. Head to Tracker to start!");
+                            tv.setTextSize(14);
+                            tv.setTextColor(android.graphics.Color.parseColor("#ADA4A5"));
+                            tv.setPadding(0, 20, 0, 20);
+                            llLatestWorkouts.addView(tv);
+                        }
+                    });
+            });
+    }
+
+    private void setupCaloriesTracker(String uid) {
+        int dailyGoal = 500; // Default daily calorie burn goal
+
+        FirebaseHelper.getInstance().getUsersCollection().document(uid)
+            .collection("workout_history")
+            .orderBy("completedAt", com.google.firebase.firestore.Query.Direction.DESCENDING)
+            .addSnapshotListener((snapshot, e) -> {
+                if (e != null || snapshot == null) return;
+
+                // Sum today's calories
+                String today = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(new java.util.Date());
+                int todayCalories = 0;
+
                 for (com.google.firebase.firestore.DocumentSnapshot doc : snapshot.getDocuments()) {
-                    UserProgress progress = doc.toObject(UserProgress.class);
-                    if (progress != null) {
-                        android.view.View view = android.view.LayoutInflater.from(this)
-                                .inflate(R.layout.item_latest_workout, llLatestWorkouts, false);
+                    com.google.firebase.Timestamp ts = doc.getTimestamp("completedAt");
+                    if (ts != null) {
+                        String docDate = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(ts.toDate());
+                        if (today.equals(docDate)) {
+                            Long cal = doc.getLong("caloriesBurned");
+                            if (cal != null) todayCalories += cal.intValue();
+                        }
+                    }
+                }
 
-                        TextView tvTitle = view.findViewById(R.id.tvWorkoutTitle);
-                        TextView tvStats = view.findViewById(R.id.tvWorkoutStats);
-                        android.widget.ProgressBar pb = view.findViewById(R.id.pbWorkoutProgress);
+                if (tvCaloriesTotal != null) tvCaloriesTotal.setText(todayCalories + " kCal");
+                int left = Math.max(dailyGoal - todayCalories, 0);
+                if (tvCaloriesLeft != null) tvCaloriesLeft.setText(left + "kCal\nleft");
+                int progress = Math.min((todayCalories * 100) / dailyGoal, 100);
+                if (pbCaloriesProgress != null) pbCaloriesProgress.setProgress(progress);
+            });
+    }
 
-                        tvTitle.setText(progress.getPlanTitle());
-                        int daysDone = (progress.getCompletedDays() != null) ? progress.getCompletedDays().size() : 0;
-                        int cals = progress.getTotalCaloriesBurned();
-                        tvStats.setText(daysDone + " Days Completed | " + cals + " Calories Burn");
+    private void setupWorkoutProgressGraph(String uid) {
+        if (tvWorkoutProgressDropdown == null) return;
 
-                        // We don't easily know max days, so assuming around 30 days scale or just show steps. 
-                        // For a simple visual, map 1 day to 4% (25 days total = 100%)
-                        int progressPct = Math.min((daysDone * 100) / 28, 100);
-                        if (progressPct < 5 && daysDone > 0) progressPct = 5; 
-                        pb.setProgress(progressPct);
+        // Default to Weekly
+        loadWorkoutProgressGraph(uid, "Weekly");
 
-                        view.setOnClickListener(v -> {
-                            Intent intent = new Intent(this, WorkoutPlanDetailActivity.class);
-                            intent.putExtra("PLAN_ID", progress.getPlanId());
-                            startActivity(intent);
-                        });
+        tvWorkoutProgressDropdown.setOnClickListener(v -> {
+            androidx.appcompat.widget.PopupMenu popup = new androidx.appcompat.widget.PopupMenu(this, tvWorkoutProgressDropdown);
+            popup.getMenu().add("Daily");
+            popup.getMenu().add("Weekly");
+            popup.getMenu().add("Monthly");
 
-                        llLatestWorkouts.addView(view);
+            popup.setOnMenuItemClickListener(item -> {
+                String choice = item.getTitle().toString();
+                tvWorkoutProgressDropdown.setText(choice);
+                loadWorkoutProgressGraph(uid, choice);
+                return true;
+            });
+            popup.show();
+        });
+    }
+
+    private void loadWorkoutProgressGraph(String uid, String timeframe) {
+        if (llGraphBars == null || llGraphLabels == null) return;
+
+        llGraphBars.removeAllViews();
+        llGraphLabels.removeAllViews();
+        if (rlTooltip != null) rlTooltip.setVisibility(android.view.View.INVISIBLE);
+
+        FirebaseHelper.getInstance().getUsersCollection().document(uid)
+            .collection("workout_history")
+            .orderBy("completedAt", com.google.firebase.firestore.Query.Direction.ASCENDING)
+            .get()
+            .addOnSuccessListener(snapshot -> {
+                java.util.List<com.google.firebase.firestore.DocumentSnapshot> docs = snapshot.getDocuments();
+
+                if ("Daily".equals(timeframe)) {
+                    int[] cals = new int[4];
+                    String[] blockNames = {"Night", "Morning", "Afternoon", "Evening"};
+                    String[] blockWorkouts = {"None", "None", "None", "None"};
+
+                    String todayStr = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(new java.util.Date());
+
+                    for (com.google.firebase.firestore.DocumentSnapshot doc : docs) {
+                        com.google.firebase.Timestamp ts = doc.getTimestamp("completedAt");
+                        if (ts == null) continue;
+
+                        java.util.Date d = ts.toDate();
+                        String docDate = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(d);
+
+                        if (todayStr.equals(docDate)) {
+                            java.util.Calendar cal = java.util.Calendar.getInstance();
+                            cal.setTime(d);
+                            int hour = cal.get(java.util.Calendar.HOUR_OF_DAY);
+                            int blockIdx = hour / 6;
+                            if (blockIdx >= 0 && blockIdx < 4) {
+                                Long calVal = doc.getLong("caloriesBurned");
+                                int c = calVal != null ? calVal.intValue() : 0;
+                                cals[blockIdx] += c;
+                                String title = doc.getString("workoutTitle");
+                                if (title != null) {
+                                    blockWorkouts[blockIdx] = title;
+                                }
+                            }
+                        }
+                    }
+
+                    int max = 300;
+                    for (int c : cals) if (c > max) max = c;
+
+                    String[] times = {"12am-6am", "6am-12pm", "12pm-6pm", "6pm-12am"};
+                    for (int i = 0; i < 4; i++) {
+                        int pct = max > 0 ? (cals[i] * 100) / max : 0;
+                        String w = blockWorkouts[i];
+                        drawGraphBar(blockNames[i], pct, times[i], w, cals[i] + " Cal");
+                    }
+
+                } else if ("Weekly".equals(timeframe)) {
+                    int[] cals = new int[7];
+                    String[] days = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+                    String[] dayWorkouts = {"None", "None", "None", "None", "None", "None", "None"};
+
+                    java.util.Calendar currentCal = java.util.Calendar.getInstance();
+                    int currentWeek = currentCal.get(java.util.Calendar.WEEK_OF_YEAR);
+                    int currentYear = currentCal.get(java.util.Calendar.YEAR);
+
+                    for (com.google.firebase.firestore.DocumentSnapshot doc : docs) {
+                        com.google.firebase.Timestamp ts = doc.getTimestamp("completedAt");
+                        if (ts == null) continue;
+
+                        java.util.Date d = ts.toDate();
+                        java.util.Calendar cal = java.util.Calendar.getInstance();
+                        cal.setTime(d);
+
+                        if (cal.get(java.util.Calendar.WEEK_OF_YEAR) == currentWeek && cal.get(java.util.Calendar.YEAR) == currentYear) {
+                            int dayOfWeek = cal.get(java.util.Calendar.DAY_OF_WEEK);
+                            int idx = dayOfWeek - 1;
+                            if (idx >= 0 && idx < 7) {
+                                Long calVal = doc.getLong("caloriesBurned");
+                                int c = calVal != null ? calVal.intValue() : 0;
+                                cals[idx] += c;
+                                String title = doc.getString("workoutTitle");
+                                if (title != null) {
+                                    dayWorkouts[idx] = title;
+                                }
+                            }
+                        }
+                    }
+
+                    int max = 400;
+                    for (int c : cals) if (c > max) max = c;
+
+                    for (int i = 0; i < 7; i++) {
+                        int pct = max > 0 ? (cals[i] * 100) / max : 0;
+                        String w = dayWorkouts[i];
+                        drawGraphBar(days[i], pct, days[i], w, cals[i] + " Cal");
+                    }
+
+                } else if ("Monthly".equals(timeframe)) {
+                    int[] cals = new int[4];
+                    String[] labels = {"Wk 1", "Wk 2", "Wk 3", "Wk 4"};
+                    String[] wkWorkouts = {"None", "None", "None", "None"};
+
+                    java.util.Calendar currentCal = java.util.Calendar.getInstance();
+                    int currentMonth = currentCal.get(java.util.Calendar.MONTH);
+                    int currentYear = currentCal.get(java.util.Calendar.YEAR);
+
+                    for (com.google.firebase.firestore.DocumentSnapshot doc : docs) {
+                        com.google.firebase.Timestamp ts = doc.getTimestamp("completedAt");
+                        if (ts == null) continue;
+
+                        java.util.Date d = ts.toDate();
+                        java.util.Calendar cal = java.util.Calendar.getInstance();
+                        cal.setTime(d);
+
+                        if (cal.get(java.util.Calendar.MONTH) == currentMonth && cal.get(java.util.Calendar.YEAR) == currentYear) {
+                            int dayOfMonth = cal.get(java.util.Calendar.DAY_OF_MONTH);
+                            int weekIdx = (dayOfMonth - 1) / 7;
+                            if (weekIdx > 3) weekIdx = 3;
+
+                            Long calVal = doc.getLong("caloriesBurned");
+                            int c = calVal != null ? calVal.intValue() : 0;
+                            cals[weekIdx] += c;
+                            String title = doc.getString("workoutTitle");
+                            if (title != null) {
+                                wkWorkouts[weekIdx] = title;
+                            }
+                        }
+                    }
+
+                    int max = 1500;
+                    for (int c : cals) if (c > max) max = c;
+
+                    for (int i = 0; i < 4; i++) {
+                        int pct = max > 0 ? (cals[i] * 100) / max : 0;
+                        String w = wkWorkouts[i];
+                        drawGraphBar(labels[i], pct, labels[i], w, cals[i] + " Cal");
                     }
                 }
             });
+    }
+
+    private void drawGraphBar(String labelText, int percentage, String tooltipDate, String tooltipWorkout, String tooltipPercent) {
+        android.widget.LinearLayout container = new android.widget.LinearLayout(this);
+        android.widget.LinearLayout.LayoutParams params = new android.widget.LinearLayout.LayoutParams(
+                0, android.view.ViewGroup.LayoutParams.MATCH_PARENT, 1.0f);
+        container.setLayoutParams(params);
+        container.setOrientation(android.widget.LinearLayout.VERTICAL);
+        container.setGravity(android.view.Gravity.BOTTOM | android.view.Gravity.CENTER_HORIZONTAL);
+
+        android.widget.ProgressBar bar = new android.widget.ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal);
+        int barWidth = (int) (18 * getResources().getDisplayMetrics().density);
+        int barHeight = (int) (160 * getResources().getDisplayMetrics().density);
+        android.widget.LinearLayout.LayoutParams barParams = new android.widget.LinearLayout.LayoutParams(barWidth, barHeight);
+        barParams.bottomMargin = (int) (4 * getResources().getDisplayMetrics().density);
+        bar.setLayoutParams(barParams);
+        bar.setProgressDrawable(getResources().getDrawable(R.drawable.progress_drawable));
+        bar.setRotation(180);
+        bar.setProgress(percentage);
+
+        container.setOnClickListener(v -> {
+            if (rlTooltip != null) {
+                rlTooltip.setVisibility(android.view.View.VISIBLE);
+
+                float barX = container.getX() + container.getWidth() / 2f - rlTooltip.getWidth() / 2f;
+                float parentWidth = llGraphBars.getWidth();
+                if (barX < 0) barX = 0;
+                if (barX + rlTooltip.getWidth() > parentWidth) barX = parentWidth - rlTooltip.getWidth();
+                rlTooltip.setX(barX);
+
+                if (tvGraphDate != null) tvGraphDate.setText(tooltipDate);
+                if (tvGraphWorkout != null) tvGraphWorkout.setText(tooltipWorkout);
+                if (tvGraphPercent != null) tvGraphPercent.setText(tooltipPercent);
+            }
+        });
+
+        container.addView(bar);
+        llGraphBars.addView(container);
+
+        TextView tvLabel = new TextView(this);
+        android.widget.LinearLayout.LayoutParams labelParams = new android.widget.LinearLayout.LayoutParams(
+                0, android.view.ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f);
+        tvLabel.setLayoutParams(labelParams);
+        tvLabel.setText(labelText);
+        tvLabel.setTextSize(10);
+        tvLabel.setTextColor(android.graphics.Color.parseColor("#ADA4A5"));
+        tvLabel.setGravity(android.view.Gravity.CENTER);
+        llGraphLabels.addView(tvLabel);
     }
 }

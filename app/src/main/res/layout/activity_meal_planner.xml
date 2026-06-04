@@ -83,6 +83,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/tvGraphFilter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Weekly"
@@ -97,6 +98,8 @@
                     android:paddingEnd="12dp"
                     android:paddingTop="6dp"
                     android:paddingBottom="6dp"
+                    android:clickable="true"
+                    android:focusable="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -134,11 +137,10 @@
                     <TextView android:id="@+id/tv0" android:layout_width="40dp" android:layout_height="wrap_content" android:text="0%" android:textSize="10sp" android:textColor="#ADA4A5" android:gravity="end" app:layout_constraintTop_toTopOf="@id/line0" app:layout_constraintBottom_toBottomOf="@id/line0" app:layout_constraintEnd_toEndOf="parent"/>
 
                     <!-- The Actual Curve Image -->
-                    <ImageView
+                    <com.fitai.gym.MealNutritionGraphView
+                        android:id="@+id/nutritionGraphView"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:src="@drawable/meal_graph_curve"
-                        android:scaleType="fitCenter"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="@id/line0"
                         app:layout_constraintStart_toStartOf="parent"
@@ -156,7 +158,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="30dp">
                         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:padding="6dp">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Calories 82% ↑" android:textSize="9sp" android:textColor="#5DD672" android:fontFamily="@font/poppins_regular"/>
+                            <TextView android:id="@+id/tvGraphCalValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Calories 82% ↑" android:textSize="9sp" android:textColor="#5DD672" android:fontFamily="@font/poppins_regular"/>
                             <View android:layout_width="30dp" android:layout_height="2dp" android:background="#92A3FD" android:layout_marginTop="2dp"/>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -172,7 +174,7 @@
                         android:layout_marginEnd="80dp"
                         android:layout_marginTop="10dp">
                         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:padding="6dp">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fibre 88% ↑" android:textSize="9sp" android:textColor="#5DD672" android:fontFamily="@font/poppins_regular"/>
+                            <TextView android:id="@+id/tvGraphFibreValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fibre 88% ↑" android:textSize="9sp" android:textColor="#5DD672" android:fontFamily="@font/poppins_regular"/>
                             <View android:layout_width="30dp" android:layout_height="2dp" android:background="#C58BF2" android:layout_marginTop="2dp"/>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -188,13 +190,14 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginBottom="60dp">
                         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:padding="6dp">
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sugar 38% ↓" android:textSize="9sp" android:textColor="#FF6B6B" android:fontFamily="@font/poppins_regular"/>
+                            <TextView android:id="@+id/tvGraphSugarValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sugar 38% ↓" android:textSize="9sp" android:textColor="#FF6B6B" android:fontFamily="@font/poppins_regular"/>
                             <View android:layout_width="30dp" android:layout_height="2dp" android:background="#92A3FD" android:layout_marginTop="2dp"/>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
                     <!-- Bottom Day Labels -->
                     <LinearLayout
+                        android:id="@+id/llDayLabelsContainer"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -275,6 +278,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/tvTodayMealsFilter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Breakfast"
@@ -289,50 +293,19 @@
                     android:paddingEnd="12dp"
                     android:paddingTop="6dp"
                     android:paddingBottom="6dp"
+                    android:clickable="true"
+                    android:focusable="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <!-- Meal Items -->
                 <LinearLayout
+                    android:id="@+id/llTodayMealsContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_marginTop="20dp"
-                    app:layout_constraintTop_toBottomOf="@id/tvTodayMealsTitle">
-
-                    <!-- Salmon Nigiri -->
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="1dp"
-                        android:layout_marginBottom="12dp">
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="12dp" android:gravity="center_vertical">
-                            <ImageView android:layout_width="45dp" android:layout_height="45dp" android:src="@drawable/nigiri" android:scaleType="centerInside"/>
-                            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Salmon Nigiri" android:textSize="14sp" android:textColor="@color/black" android:fontFamily="@font/poppins_medium"/>
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Today | 7am" android:textSize="12sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular"/>
-                            </LinearLayout>
-                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/bell" app:tint="@color/primary_purple"/>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <!-- Lowfat Milk -->
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:cardCornerRadius="16dp"
-                        app:cardElevation="1dp">
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="12dp" android:gravity="center_vertical">
-                            <ImageView android:layout_width="45dp" android:layout_height="45dp" android:src="@drawable/glass_of_milk" android:scaleType="centerInside"/>
-                            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lowfat Milk" android:textSize="14sp" android:textColor="@color/black" android:fontFamily="@font/poppins_medium"/>
-                                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Today | 8am" android:textSize="12sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular"/>
-                            </LinearLayout>
-                            <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/no_bell" app:tint="#ADA4A5"/>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-                </LinearLayout>
+                    app:layout_constraintTop_toBottomOf="@id/tvTodayMealsTitle" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- Find Something to Eat Section (Slider) -->
@@ -369,7 +342,7 @@
                         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp" android:gravity="center_horizontal">
                             <ImageView android:layout_width="100dp" android:layout_height="80dp" android:src="@drawable/apple_pie" android:scaleType="centerInside"/>
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Breakfast" android:textSize="14sp" android:textColor="@color/black" android:fontFamily="@font/poppins_bold" android:layout_marginTop="10dp"/>
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="120+ Foods" android:textSize="12sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular"/>
+                            <TextView android:id="@+id/tvBreakfastFoodCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10 Foods" android:textSize="12sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular"/>
                             <TextView android:id="@+id/btnSelectBreakfast" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Select" android:clickable="true" android:focusable="true" android:textColor="@color/white" android:textSize="12sp" android:fontFamily="@font/poppins_bold" android:background="@drawable/bg_pill_button" android:backgroundTint="@color/primary_light_blue" android:paddingStart="25dp" android:paddingEnd="25dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:layout_marginTop="15dp"/>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -385,7 +358,7 @@
                         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp" android:gravity="center_horizontal">
                             <ImageView android:layout_width="100dp" android:layout_height="80dp" android:src="@drawable/chicken" android:scaleType="centerInside"/>
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lunch" android:textSize="14sp" android:textColor="@color/black" android:fontFamily="@font/poppins_bold" android:layout_marginTop="10dp"/>
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="130+ Foods" android:textSize="12sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular"/>
+                            <TextView android:id="@+id/tvLunchFoodCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10 Foods" android:textSize="12sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular"/>
                             <TextView android:id="@+id/btnSelectLunch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Select" android:clickable="true" android:focusable="true" android:textColor="@color/white" android:textSize="12sp" android:fontFamily="@font/poppins_bold" android:background="@drawable/bg_pill_button" android:backgroundTint="@color/primary_purple" android:paddingStart="25dp" android:paddingEnd="25dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:layout_marginTop="15dp"/>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -401,7 +374,7 @@
                         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp" android:gravity="center_horizontal">
                             <ImageView android:layout_width="100dp" android:layout_height="80dp" android:src="@drawable/honey_pan" android:scaleType="centerInside"/>
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Snacks" android:textSize="14sp" android:textColor="@color/black" android:fontFamily="@font/poppins_bold" android:layout_marginTop="10dp"/>
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="140+ Foods" android:textSize="12sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular"/>
+                            <TextView android:id="@+id/tvSnacksFoodCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10 Foods" android:textSize="12sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular"/>
                             <TextView android:id="@+id/btnSelectSnacks" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Select" android:clickable="true" android:focusable="true" android:textColor="@color/white" android:textSize="12sp" android:fontFamily="@font/poppins_bold" android:background="@drawable/bg_pill_button" android:backgroundTint="#3DE397" android:paddingStart="25dp" android:paddingEnd="25dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:layout_marginTop="15dp"/>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -417,7 +390,7 @@
                         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp" android:gravity="center_horizontal">
                             <ImageView android:layout_width="100dp" android:layout_height="80dp" android:src="@drawable/salad" android:scaleType="centerInside"/>
                             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Dinner" android:textSize="14sp" android:textColor="@color/black" android:fontFamily="@font/poppins_bold" android:layout_marginTop="10dp"/>
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="120+ Foods" android:textSize="12sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular"/>
+                            <TextView android:id="@+id/tvDinnerFoodCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="10 Foods" android:textSize="12sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular"/>
                             <TextView android:id="@+id/btnSelectDinner" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Select" android:clickable="true" android:focusable="true" android:textColor="@color/white" android:textSize="12sp" android:fontFamily="@font/poppins_bold" android:background="@drawable/bg_pill_button" android:backgroundTint="#FF9F5F" android:paddingStart="25dp" android:paddingEnd="25dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:layout_marginTop="15dp"/>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>

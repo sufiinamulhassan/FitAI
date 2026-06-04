@@ -1,13 +1,20 @@
 package com.fitai.gym;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,8 +29,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.bumptech.glide.Glide;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,15 +42,39 @@ import java.util.Locale;
 public class ProgressPhotoActivity extends AppCompatActivity {
 
     private RecyclerView rvGallery;
-    private List<ProgressPhoto> photoList = new ArrayList<>();
+    private List<ProgressPhotoItem> photoList = new ArrayList<>();
     private GalleryAdapter adapter;
 
+    // Camera Result Launcher
     private final ActivityResultLauncher<Intent> cameraLauncher = registerForActivityResult(
         new ActivityResultContracts.StartActivityForResult(),
         result -> {
             if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                Bitmap bitmap = (Bitmap) result.getData().getExtras().get("data");
-                uploadPhoto(bitmap);
+                try {
+                    Bitmap bitmap = (Bitmap) result.getData().getExtras().get("data");
+                    if (bitmap != null) {
+                        uploadPhoto(bitmap);
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(this, "Failed to capture image", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    // Gallery / Photo Picker Launcher
+    private final ActivityResultLauncher<String> galleryLauncher = registerForActivityResult(
+        new ActivityResultContracts.GetContent(),
+        uri -> {
+            if (uri != null) {
+                try {
+                    InputStream inputStream = getContentResolver().openInputStream(uri);
+                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                    if (bitmap != null) {
+                        uploadPhoto(bitmap);
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(this, "Failed to load image from gallery", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -61,12 +94,24 @@ public class ProgressPhotoActivity extends AppCompatActivity {
         setupNavigation();
 
         findViewById(R.id.ivBack).setOnClickListener(v -> finish());
-        findViewById(R.id.fabCamera).setOnClickListener(v -> {
-            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            cameraLauncher.launch(intent);
-        });
+        findViewById(R.id.fabCamera).setOnClickListener(v -> showImageSourceSelector());
 
         fetchPhotos();
+    }
+
+    private void showImageSourceSelector() {
+        String[] options = {"Take Photo", "Choose from Gallery"};
+        new AlertDialog.Builder(this)
+                .setTitle("Add Progress Photo")
+                .setItems(options, (dialog, which) -> {
+                    if (which == 0) {
+                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        cameraLauncher.launch(intent);
+                    } else {
+                        galleryLauncher.launch("image/*");
+                    }
+                })
+                .show();
     }
 
     private void setupNavigation() {
@@ -114,28 +159,20 @@ public class ProgressPhotoActivity extends AppCompatActivity {
 
         long timestamp = System.currentTimeMillis();
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-        
-        StorageReference ref = FirebaseHelper.getInstance().getStorageReference()
-            .child("progress_photos")
-            .child(uid)
-            .child(timestamp + ".jpg");
 
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] data = baos.toByteArray();
+        Toast.makeText(this, "Optimizing and saving photo...", Toast.LENGTH_SHORT).show();
 
-        Toast.makeText(this, "Uploading photo...", Toast.LENGTH_SHORT).show();
+        // Standard Firestore backup with premium hybrid storage to avoid Storage issues
+        String base64Image = ImageUtils.bitmapToBase64(bitmap, 480); // 480px is perfectly optimized and sharp
 
-        ref.putBytes(data).addOnSuccessListener(taskSnapshot -> {
-            ref.getDownloadUrl().addOnSuccessListener(uri -> {
-                ProgressPhoto pp = new ProgressPhoto(uri.toString(), date, timestamp);
-                FirebaseHelper.getInstance().getUsersCollection()
-                    .document(uid)
-                    .collection("progress_photos")
-                    .add(pp)
-                    .addOnSuccessListener(doc -> Toast.makeText(this, "Photo saved!", Toast.LENGTH_SHORT).show());
-            });
-        }).addOnFailureListener(e -> Toast.makeText(this, "Upload failed", Toast.LENGTH_SHORT).show());
+        ProgressPhotoItem item = new ProgressPhotoItem(base64Image, date, timestamp);
+
+        FirebaseHelper.getInstance().getUsersCollection()
+            .document(uid)
+            .collection("progress_photos")
+            .add(item)
+            .addOnSuccessListener(doc -> Toast.makeText(ProgressPhotoActivity.this, "Photo uploaded successfully!", Toast.LENGTH_SHORT).show())
+            .addOnFailureListener(e -> Toast.makeText(ProgressPhotoActivity.this, "Save failed: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
     private void fetchPhotos() {
@@ -149,17 +186,97 @@ public class ProgressPhotoActivity extends AppCompatActivity {
             .addSnapshotListener((snapshot, e) -> {
                 if (e != null || snapshot == null) return;
                 photoList.clear();
-                for (com.google.firebase.firestore.DocumentSnapshot doc : snapshot.getDocuments()) {
-                    ProgressPhoto pp = doc.toObject(ProgressPhoto.class);
-                    if (pp != null) photoList.add(pp);
+                for (DocumentSnapshot doc : snapshot.getDocuments()) {
+                    ProgressPhotoItem item = doc.toObject(ProgressPhotoItem.class);
+                    if (item != null) {
+                        item.setDocumentId(doc.getId());
+                        photoList.add(item);
+                    }
                 }
                 adapter.notifyDataSetChanged();
             });
     }
 
+    private void openFullScreenImage(ProgressPhotoItem item) {
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_full_screen_photo);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+        ImageView ivFullPhoto = dialog.findViewById(R.id.ivFullPhoto);
+        TextView tvPhotoDate = dialog.findViewById(R.id.tvPhotoDate);
+        ImageView btnClose = dialog.findViewById(R.id.btnClose);
+        Button btnDelete = dialog.findViewById(R.id.btnDelete);
+
+        tvPhotoDate.setText("Logged Date: " + item.getDate());
+
+        // Load image dynamically (supports URL + Base64 fallback)
+        String url = item.getPhotoUrl();
+        if (url != null && (url.startsWith("data:image") || !url.startsWith("http"))) {
+            Bitmap bmp = ImageUtils.base64ToBitmap(url);
+            if (bmp != null) {
+                ivFullPhoto.setImageBitmap(bmp);
+            }
+        } else {
+            Glide.with(this).load(url).into(ivFullPhoto);
+        }
+
+        btnClose.setOnClickListener(v -> dialog.dismiss());
+
+        btnDelete.setOnClickListener(v -> {
+            new AlertDialog.Builder(this)
+                .setTitle("Delete Photo")
+                .setMessage("Are you sure you want to delete this progress photo?")
+                .setPositiveButton("Delete", (d, w) -> {
+                    String uid = FirebaseHelper.getInstance().getCurrentUserUid();
+                    if (uid != null && item.getDocumentId() != null) {
+                        FirebaseHelper.getInstance().getUsersCollection()
+                            .document(uid)
+                            .collection("progress_photos")
+                            .document(item.getDocumentId())
+                            .delete()
+                            .addOnSuccessListener(aVoid -> {
+                                Toast.makeText(this, "Photo deleted successfully", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+                            });
+                    }
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
+        });
+
+        dialog.show();
+    }
+
+    // Dynamic item model mapping
+    public static class ProgressPhotoItem {
+        private String photoUrl;
+        private String date;
+        private long timestamp;
+        private String documentId;
+
+        public ProgressPhotoItem() {}
+
+        public ProgressPhotoItem(String photoUrl, String date, long timestamp) {
+            this.photoUrl = photoUrl;
+            this.date = date;
+            this.timestamp = timestamp;
+        }
+
+        public String getPhotoUrl() { return photoUrl; }
+        public void setPhotoUrl(String photoUrl) { this.photoUrl = photoUrl; }
+        public String getDate() { return date; }
+        public void setDate(String date) { this.date = date; }
+        public long getTimestamp() { return timestamp; }
+        public void setTimestamp(long timestamp) { this.timestamp = timestamp; }
+        public String getDocumentId() { return documentId; }
+        public void setDocumentId(String documentId) { this.documentId = documentId; }
+    }
+
     class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHolder> {
-        private List<ProgressPhoto> photos;
-        GalleryAdapter(List<ProgressPhoto> photos) { this.photos = photos; }
+        private List<ProgressPhotoItem> photos;
+        GalleryAdapter(List<ProgressPhotoItem> photos) { this.photos = photos; }
 
         @NonNull
         @Override
@@ -170,7 +287,22 @@ public class ProgressPhotoActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            Glide.with(ProgressPhotoActivity.this).load(photos.get(position).getPhotoUrl()).into(holder.ivPhoto);
+            ProgressPhotoItem item = photos.get(position);
+            String url = item.getPhotoUrl();
+
+            // Load dynamically from Base64 or URL
+            if (url != null && (url.startsWith("data:image") || !url.startsWith("http"))) {
+                Bitmap bmp = ImageUtils.base64ToBitmap(url);
+                if (bmp != null) {
+                    holder.ivPhoto.setImageBitmap(bmp);
+                } else {
+                    holder.ivPhoto.setImageResource(R.drawable.pp_1);
+                }
+            } else {
+                Glide.with(ProgressPhotoActivity.this).load(url).into(holder.ivPhoto);
+            }
+
+            holder.itemView.setOnClickListener(v -> openFullScreenImage(item));
         }
 
         @Override public int getItemCount() { return photos.size(); }

@@ -219,6 +219,43 @@
                     app:chipCornerRadius="20dp" />
             </LinearLayout>
 
+            <!-- Workout Custom Image Option -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Workout Plan Cover Image"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="20dp">
+
+                <ImageView
+                    android:id="@+id/ivWorkoutCover"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/workout_1"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/bg_nav_back"
+                    android:layout_marginEnd="15dp"/>
+
+                <Button
+                    android:id="@+id/btnUploadWorkoutCover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Upload Cover Image"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/poppins_medium"
+                    android:backgroundTint="#9DCEFF"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
             <!-- Separator -->
             <View
                 android:layout_width="match_parent"

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="15dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="3dp"
+    app:cardBackgroundColor="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="15dp">
+
+        <!-- Food Icon -->
+        <ImageView
+            android:id="@+id/ivAdminMealIcon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/pancake_1"
+            android:background="@drawable/bg_chip_blue"
+            android:padding="8dp"/>
+
+        <!-- Details -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="15dp">
+
+            <TextView
+                android:id="@+id/tvAdminMealName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Honey Pancake"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_bold"/>
+
+            <TextView
+                android:id="@+id/tvAdminMealCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Breakfast"
+                android:textSize="12sp"
+                android:textColor="#C58BF2"
+                android:fontFamily="@font/poppins_medium"
+                android:layout_marginTop="2dp"/>
+
+            <TextView
+                android:id="@+id/tvAdminMealCalories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="180 kCal"
+                android:textSize="11sp"
+                android:textColor="#ADA4A5"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+
+        <!-- Actions -->
+        <ImageView
+            android:id="@+id/btnAdminEditMeal"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@android:drawable/ic_menu_edit"
+            android:background="@drawable/bg_nav_back"
+            android:padding="8dp"
+            android:layout_marginEnd="10dp"/>
+
+        <ImageView
+            android:id="@+id/btnAdminDeleteMeal"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@android:drawable/ic_menu_delete"
+            android:background="@drawable/bg_nav_back"
+            android:padding="8dp"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

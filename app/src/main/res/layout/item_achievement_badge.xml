@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvBadge"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/ivBadgeIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/barbell"
+            android:scaleType="fitCenter"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:id="@+id/tvBadgeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Badge Name"
+            android:textSize="14sp"
+            android:textColor="#1D1617"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/tvBadgeDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Complete 1 workout"
+            android:textSize="10sp"
+            android:textColor="#ADA4A5"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

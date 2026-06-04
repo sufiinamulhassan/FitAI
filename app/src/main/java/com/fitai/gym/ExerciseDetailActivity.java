@@ -1,5 +1,6 @@
 package com.fitai.gym;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,9 +30,25 @@ public class ExerciseDetailActivity extends AppCompatActivity {
         ivPlay.setOnClickListener(v -> Toast.makeText(this, "Playing exercise video...", Toast.LENGTH_SHORT).show());
 
         findViewById(R.id.btnStart).setOnClickListener(v -> {
-            Toast.makeText(this, "Exercise started!", Toast.LENGTH_SHORT).show();
+            // Launch a single-exercise workout session
+            Intent intent = new Intent(this, WorkoutSessionActivity.class);
+            intent.putExtra("WORKOUT_TITLE", name != null ? name : "Exercise");
+            intent.putExtra("EXERCISE_COUNT", 1);
+            intent.putExtra("EX_NAMES", new String[]{name != null ? name : "Exercise"});
+            intent.putExtra("EX_REPS", new String[]{reps != null ? reps : "x10"});
+            intent.putExtra("EX_SETS", new int[]{3});
+            intent.putExtra("EX_DURATIONS", new int[]{30});
+            intent.putExtra("EX_REST_TIMES", new int[]{15});
+
+            // Resolve the image resource name from the resource id
+            String imgName = "workout_1";
+            try {
+                imgName = getResources().getResourceEntryName(imageRes);
+            } catch (Exception e) { /* fallback */ }
+            intent.putExtra("EX_IMAGES", new String[]{imgName});
+
+            startActivity(intent);
             finish();
         });
     }
 }
-

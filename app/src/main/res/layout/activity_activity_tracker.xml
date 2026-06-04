@@ -132,6 +132,7 @@
                                     android:orientation="vertical"
                                     android:layout_marginStart="10dp">
                                     <TextView
+                                        android:id="@+id/tvWaterTarget"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="8L"
@@ -173,6 +174,7 @@
                                     android:orientation="vertical"
                                     android:layout_marginStart="10dp">
                                     <TextView
+                                        android:id="@+id/tvStepsTarget"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="2400"
@@ -236,58 +238,76 @@
                 app:cardCornerRadius="20dp"
                 app:cardElevation="2dp"
                 app:cardBackgroundColor="@color/white">
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    android:orientation="horizontal"
-                    android:gravity="bottom"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="20dp">
-                    
-                    <!-- Sun -->
-                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
-                        <View android:layout_width="16dp" android:layout_height="140dp" android:background="@drawable/bg_pill_button" android:backgroundTint="#F7F8F8"/>
-                        <View android:layout_width="16dp" android:layout_height="35dp" android:background="@drawable/bg_pill_button" android:backgroundTint="#92A3FD" android:layout_marginTop="-35dp"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sun" android:textSize="10sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular" android:layout_marginTop="12dp"/>
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+                    <!-- Tooltip -->
+                    <RelativeLayout
+                        android:id="@+id/rlActivityTooltip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_white_tooltip"
+                        android:padding="12dp"
+                        android:elevation="4dp"
+                        android:visibility="invisible">
+                        <TextView
+                            android:id="@+id/tvActivityGraphDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mon"
+                            android:textSize="9sp"
+                            android:textColor="#ADA4A5"/>
+                        <TextView
+                            android:id="@+id/tvActivityGraphPercent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="20%"
+                            android:textSize="9sp"
+                            android:textColor="#92A3FD"
+                            android:layout_toEndOf="@id/tvActivityGraphDate"
+                            android:layout_marginStart="20dp"/>
+                        <TextView
+                            android:id="@+id/tvActivityGraphWorkout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Water Log"
+                            android:textColor="@color/black"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:layout_below="@id/tvActivityGraphDate"
+                            android:layout_marginTop="3dp"/>
+                        <View
+                            android:layout_width="80dp"
+                            android:layout_height="2.5dp"
+                            android:background="@drawable/bg_pill_button"
+                            android:backgroundTint="#9DCEFF"
+                            android:layout_below="@id/tvActivityGraphWorkout"
+                            android:layout_marginTop="8dp"/>
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="30dp">
+
+                        <LinearLayout
+                            android:id="@+id/llActivityBars"
+                            android:layout_width="match_parent"
+                            android:layout_height="160dp"
+                            android:orientation="horizontal"
+                            android:gravity="bottom"/>
+
+                        <LinearLayout
+                            android:id="@+id/llActivityLabels"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="10dp"/>
                     </LinearLayout>
-                    <!-- Mon -->
-                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
-                         <View android:layout_width="16dp" android:layout_height="140dp" android:background="@drawable/bg_pill_button" android:backgroundTint="#F7F8F8"/>
-                         <View android:layout_width="16dp" android:layout_height="100dp" android:background="@drawable/bg_pill_button" android:backgroundTint="#C58BF2" android:layout_marginTop="-100dp"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mon" android:textSize="10sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular" android:layout_marginTop="12dp"/>
-                    </LinearLayout>
-                    <!-- Tue -->
-                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
-                        <View android:layout_width="16dp" android:layout_height="140dp" android:background="@drawable/bg_pill_button" android:backgroundTint="#F7F8F8"/>
-                        <View android:layout_width="16dp" android:layout_height="65dp" android:background="@drawable/bg_pill_button" android:backgroundTint="#92A3FD" android:layout_marginTop="-65dp"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tue" android:textSize="10sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular" android:layout_marginTop="12dp"/>
-                    </LinearLayout>
-                    <!-- Wed -->
-                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
-                        <View android:layout_width="16dp" android:layout_height="140dp" android:background="@drawable/bg_pill_button" android:backgroundTint="#F7F8F8"/>
-                        <View android:layout_width="16dp" android:layout_height="85dp" android:background="@drawable/bg_pill_button" android:backgroundTint="#C58BF2" android:layout_marginTop="-85dp"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Wed" android:textSize="10sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular" android:layout_marginTop="12dp"/>
-                    </LinearLayout>
-                    <!-- Thu -->
-                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
-                        <View android:layout_width="16dp" android:layout_height="140dp" android:background="@drawable/bg_pill_button" android:backgroundTint="#F7F8F8"/>
-                        <View android:layout_width="16dp" android:layout_height="125dp" android:background="@drawable/bg_pill_button" android:backgroundTint="#92A3FD" android:layout_marginTop="-125dp"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Thu" android:textSize="10sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular" android:layout_marginTop="12dp"/>
-                    </LinearLayout>
-                    <!-- Fri -->
-                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
-                        <View android:layout_width="16dp" android:layout_height="140dp" android:background="@drawable/bg_pill_button" android:backgroundTint="#F7F8F8"/>
-                        <View android:layout_width="16dp" android:layout_height="40dp" android:background="@drawable/bg_pill_button" android:backgroundTint="#C58BF2" android:layout_marginTop="-40dp"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fri" android:textSize="10sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular" android:layout_marginTop="12dp"/>
-                    </LinearLayout>
-                    <!-- Sat -->
-                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:orientation="vertical" android:gravity="center">
-                        <View android:layout_width="16dp" android:layout_height="140dp" android:background="@drawable/bg_pill_button" android:backgroundTint="#F7F8F8"/>
-                        <View android:layout_width="16dp" android:layout_height="90dp" android:background="@drawable/bg_pill_button" android:backgroundTint="#92A3FD" android:layout_marginTop="-90dp"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sat" android:textSize="10sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular" android:layout_marginTop="12dp"/>
-                    </LinearLayout>
-                </LinearLayout>
+                </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
             <!-- Latest Activity Title section -->
@@ -315,104 +335,14 @@
                     app:layout_constraintTop_toTopOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!-- Static List Items for high fidelity -->
-            <androidx.cardview.widget.CardView
+            <!-- Dynamic List Container -->
+            <LinearLayout
+                android:id="@+id/llLatestActivities"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="15dp">
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/drinking"
-                        android:background="@drawable/bg_profile_circle"
-                        android:backgroundTint="#F7F8F8"
-                        android:padding="10dp"
-                        android:scaleType="centerInside"/>
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:layout_marginStart="15dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Drinking 300ml Water"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/poppins_bold"
-                            android:textSize="13sp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="About 3 minutes ago"
-                            android:textColor="#ADA4A5"
-                            android:textSize="11sp"/>
-                    </LinearLayout>
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/menu_dots"
-                        app:tint="#ADA4A5"
-                        android:padding="4dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="15dp">
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/eating"
-                        android:background="@drawable/bg_profile_circle"
-                        android:backgroundTint="#F7F8F8"
-                        android:padding="10dp"
-                        android:scaleType="centerInside"/>
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:layout_marginStart="15dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Eat Snack (Fitbar)"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/poppins_bold"
-                            android:textSize="13sp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="About 10 minutes ago"
-                            android:textColor="#ADA4A5"
-                            android:textSize="11sp"/>
-                    </LinearLayout>
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/menu_dots"
-                        app:tint="#ADA4A5"
-                        android:padding="4dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                android:orientation="vertical">
+                <!-- Dynamically populated from code -->
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

@@ -259,6 +259,12 @@ public class ExerciseExecutionActivity extends AppCompatActivity {
     }
 
     private void workoutComplete() {
+        // Save to local SQLite database for local history/offline resiliency
+        LocalDatabaseHelper localDb = new LocalDatabaseHelper(this);
+        String nowStr = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss", java.util.Locale.getDefault()).format(new java.util.Date());
+        int estCal = exercises.size() > 0 ? exercises.size() * 15 : 0;
+        localDb.insertWorkoutHistory((planTitle != null ? planTitle : "Workout") + " - Day " + dayNumber, exercises.size(), (int) totalTimeSpent, estCal, nowStr);
+
         // Save progress to Firebase
         String uid = fbHelper.getCurrentUserUid();
         if (uid != null && planId != null) {
@@ -276,10 +282,33 @@ public class ExerciseExecutionActivity extends AppCompatActivity {
                             // Estimate calories from plan
                             cal = exercises.size() * 15; // rough estimate
                         }
+                        int finalCal = cal;
                         progress.markDayComplete(dayNumber, cal, (int) totalTimeSpent);
                         fbHelper.getUserProgressCollection(uid).document(planId)
                             .set(progress)
-                            .addOnSuccessListener(v -> launchCompleteScreen())
+                            .addOnSuccessListener(v -> {
+                                // Save to workout_history for home dashboard sync
+                                java.util.Map<String, Object> historyEntry = new java.util.HashMap<>();
+                                historyEntry.put("workoutTitle", (planTitle != null ? planTitle : "Workout") + " - Day " + dayNumber);
+                                historyEntry.put("exerciseCount", exercises.size());
+                                historyEntry.put("totalTimeSeconds", (int) totalTimeSpent);
+                                historyEntry.put("caloriesBurned", finalCal);
+                                historyEntry.put("completedAt", com.google.firebase.Timestamp.now());
+
+                                fbHelper.getUsersCollection().document(uid)
+                                    .collection("workout_history")
+                                    .add(historyEntry)
+                                    .addOnCompleteListener(t -> {
+                                         // Log dynamic notification
+                                         java.util.Map<String, Object> notif = new java.util.HashMap<>();
+                                         notif.put("title", "Congratulations! You completed " + (planTitle != null ? planTitle : "Workout") + " - Day " + dayNumber);
+                                         notif.put("timestamp", System.currentTimeMillis());
+                                         notif.put("type", "workout");
+                                         fbHelper.getUsersCollection().document(uid).collection("notifications").add(notif);
+                                         
+                                         launchCompleteScreen();
+                                     });
+                            })
                             .addOnFailureListener(e -> launchCompleteScreen());
                     } else {
                         launchCompleteScreen();

@@ -89,7 +89,7 @@ public class WorkoutPlanDetailActivity extends AppCompatActivity {
                         tvPlanTitle.setText(plan.getTitle());
                         tvPlanDesc.setText(totalDays + " Days Challenge");
                         tvPlanCalories.setText("🔥 " + plan.getCalories() + " Cal/session");
-                        ivPlanImage.setImageResource(plan.getImageResourceId(this));
+                        ImageLoaderHelper.loadImage(this, ivPlanImage, plan.getImageRes(), R.drawable.workout_1);
                         findViewById(R.id.tvHeaderTitle).setVisibility(View.VISIBLE);
                         ((TextView) findViewById(R.id.tvHeaderTitle)).setText(plan.getTitle());
                         setupDaysGrid();

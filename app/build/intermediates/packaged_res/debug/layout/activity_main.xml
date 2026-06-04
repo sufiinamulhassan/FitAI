@@ -154,10 +154,10 @@
                 <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="165dp" app:cardCornerRadius="20dp" app:cardElevation="0dp" android:layout_marginStart="16dp" android:layout_marginTop="15dp" app:layout_constraintTop_toBottomOf="@id/cardSleep" app:layout_constraintStart_toEndOf="@id/cardWater" app:layout_constraintEnd_toEndOf="parent">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:padding="15dp" android:background="@drawable/bg_card_outlined">
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Calories" android:textColor="@color/black" android:fontFamily="@font/poppins_bold" android:textSize="14sp"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="760 kCal" android:textColor="#92A3FD" android:fontFamily="@font/poppins_bold" android:textSize="16sp" android:layout_marginTop="5dp"/>
+                        <TextView android:id="@+id/tvCaloriesTotal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0 kCal" android:textColor="#92A3FD" android:fontFamily="@font/poppins_bold" android:textSize="16sp" android:layout_marginTop="5dp"/>
                         <RelativeLayout android:layout_width="65dp" android:layout_height="65dp" android:layout_gravity="center" android:layout_marginTop="10dp">
-                            <ProgressBar style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="match_parent" android:progress="40" android:progressDrawable="@drawable/bmi_progress_ring"/>
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="230kCal\nleft" android:textSize="8sp" android:layout_centerInParent="true" android:gravity="center" android:textColor="#ADA4A5"/>
+                            <ProgressBar android:id="@+id/pbCaloriesProgress" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="match_parent" android:progress="0" android:max="100" android:progressDrawable="@drawable/bmi_progress_ring"/>
+                            <TextView android:id="@+id/tvCaloriesLeft" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0kCal\nleft" android:textSize="8sp" android:layout_centerInParent="true" android:gravity="center" android:textColor="#ADA4A5"/>
                         </RelativeLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -166,7 +166,7 @@
             <!-- Workout Progress Section -->
             <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="24dp" android:paddingEnd="24dp" android:layout_marginBottom="15dp">
                 <TextView android:id="@+id/tvWorkoutTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Workout Progress" android:textColor="@color/black" android:fontFamily="@font/poppins_bold" android:textSize="16sp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Weekly" android:textColor="@color/white" android:textSize="10sp" android:drawableEnd="@drawable/arrow_down" android:drawablePadding="5dp" android:background="@drawable/bg_pill_button" android:backgroundTint="#9DCEFF" android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingTop="5dp" android:paddingBottom="5dp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" app:tint="@color/white"/>
+                <TextView android:id="@+id/tvWorkoutProgressDropdown" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Weekly" android:textColor="@color/white" android:textSize="10sp" android:drawableEnd="@drawable/arrow_down" android:drawablePadding="5dp" android:background="@drawable/bg_pill_button" android:backgroundTint="#9DCEFF" android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingTop="5dp" android:paddingBottom="5dp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" app:tint="@color/white" android:clickable="true" android:focusable="true"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- Graph Area (Outlined) -->
@@ -181,28 +181,20 @@
                     <View android:id="@+id/g0" android:layout_width="0dp" android:layout_height="1dp" android:background="#ADA4A5" app:layout_constraintTop_toBottomOf="@id/g40" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@id/l0" android:layout_marginTop="80dp"/>
                     <TextView android:id="@+id/l0" android:layout_width="40dp" android:layout_height="wrap_content" android:text="0%" android:textSize="10sp" android:textColor="#ADA4A5" android:gravity="end" app:layout_constraintTop_toTopOf="@id/g0" app:layout_constraintBottom_toBottomOf="@id/g0" app:layout_constraintEnd_toEndOf="parent"/>
 
-                    <!-- Vertical Highlight -->
-                    <View android:layout_width="35dp" android:layout_height="0dp" android:background="#EAF0FF" app:layout_constraintBottom_toTopOf="@id/daysLine" app:layout_constraintTop_toTopOf="@id/g100" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="65dp"/>
-                    <ImageView android:layout_width="0dp" android:layout_height="0dp" android:src="@drawable/meal_graph_curve" android:scaleType="fitXY" app:layout_constraintTop_toTopOf="@id/g100" app:layout_constraintBottom_toBottomOf="@id/g0" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="@id/g0"/>
-
                     <!-- Tooltip -->
-                    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="80dp" android:background="@drawable/bg_white_tooltip" android:padding="12dp" android:elevation="4dp">
-                        <TextView android:id="@+id/tt1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fri, 28 May" android:textSize="9sp" android:textColor="#ADA4A5"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="90% ↑" android:textSize="9sp" android:textColor="#4CAF50" android:layout_toEndOf="@id/tt1" android:layout_marginStart="20dp"/>
-                        <TextView android:id="@+id/tt2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Upperbody Workout" android:textColor="@color/black" android:textSize="11sp" android:fontFamily="@font/poppins_bold" android:layout_below="@id/tt1" android:layout_marginTop="3dp"/>
-                        <View android:layout_width="80dp" android:layout_height="2.5dp" android:background="@drawable/bg_pill_button" android:backgroundTint="#9DCEFF" android:layout_below="@id/tt2" android:layout_marginTop="8dp"/>
+                    <RelativeLayout android:id="@+id/rlTooltip" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="80dp" android:background="@drawable/bg_white_tooltip" android:padding="12dp" android:elevation="4dp" android:visibility="invisible">
+                        <TextView android:id="@+id/tvGraphDate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Today" android:textSize="9sp" android:textColor="#ADA4A5"/>
+                        <TextView android:id="@+id/tvGraphPercent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:textSize="9sp" android:textColor="#4CAF50" android:layout_toEndOf="@id/tvGraphDate" android:layout_marginStart="20dp"/>
+                        <TextView android:id="@+id/tvGraphWorkout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No workout yet" android:textColor="@color/black" android:textSize="11sp" android:fontFamily="@font/poppins_bold" android:layout_below="@id/tvGraphDate" android:layout_marginTop="3dp"/>
+                        <View android:layout_width="80dp" android:layout_height="2.5dp" android:background="@drawable/bg_pill_button" android:backgroundTint="#9DCEFF" android:layout_below="@id/tvGraphWorkout" android:layout_marginTop="8dp"/>
                     </RelativeLayout>
 
-                    <!-- Days -->
-                    <LinearLayout android:id="@+id/daysLine" android:layout_width="0dp" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="15dp" app:layout_constraintTop_toBottomOf="@id/g0" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="@id/g0">
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Sun" android:textSize="12sp" android:textColor="#ADA4A5" android:gravity="center"/>
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Mon" android:textSize="12sp" android:textColor="#ADA4A5" android:gravity="center"/>
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Tue" android:textSize="12sp" android:textColor="#ADA4A5" android:gravity="center"/>
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Wed" android:textSize="12sp" android:textColor="#ADA4A5" android:gravity="center"/>
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Thu" android:textSize="12sp" android:textColor="#ADA4A5" android:gravity="center"/>
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Fri" android:textSize="12sp" android:textColor="#92A3FD" android:fontFamily="@font/poppins_bold" android:gravity="center"/>
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Sat" android:textSize="12sp" android:textColor="#ADA4A5" android:gravity="center"/>
-                    </LinearLayout>
+                    <!-- Dynamic Bars Container -->
+                    <LinearLayout android:id="@+id/llGraphBars" android:layout_width="0dp" android:layout_height="240dp" android:orientation="horizontal" android:gravity="bottom" app:layout_constraintTop_toTopOf="@id/g100" app:layout_constraintBottom_toBottomOf="@id/g0" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@id/l100" android:layout_marginEnd="10dp"/>
+
+                    <!-- Days / Categories Line -->
+                    <LinearLayout android:id="@+id/llGraphLabels" android:layout_width="0dp" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="15dp" app:layout_constraintTop_toBottomOf="@id/g0" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@id/l0" android:layout_marginEnd="10dp"/>
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 

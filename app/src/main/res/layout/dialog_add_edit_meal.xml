@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Name -->
+        <EditText
+            android:id="@+id/etMealName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Meal Name"
+            android:textColorHint="#ADA4A5"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"
+            android:background="@drawable/bg_chip_light"
+            android:padding="15dp"
+            android:layout_marginBottom="12dp"
+            android:singleLine="true"/>
+
+        <!-- Category Label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Meal Category"
+            android:textSize="12sp"
+            android:textColor="#ADA4A5"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginBottom="5dp"/>
+
+        <!-- Category Spinner -->
+        <Spinner
+            android:id="@+id/spMealCategory"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_chip_light"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Calories -->
+        <EditText
+            android:id="@+id/etMealCalories"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Calories (e.g. Easy | 20mins | 180kCal)"
+            android:textColorHint="#ADA4A5"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"
+            android:background="@drawable/bg_chip_light"
+            android:padding="15dp"
+            android:layout_marginBottom="12dp"
+            android:singleLine="true"/>
+
+        <!-- Image Label -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Meal Graphic Representation"
+            android:textSize="12sp"
+            android:textColor="#ADA4A5"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginBottom="5dp"/>
+
+        <!-- Image Spinner -->
+        <Spinner
+            android:id="@+id/spMealImage"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_chip_light"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Custom Image Selector -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+
+            <ImageView
+                android:id="@+id/ivMealDialogPreview"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/pancake_1"
+                android:scaleType="centerCrop"
+                android:background="@drawable/bg_chip_light"
+                android:layout_marginEnd="10dp"/>
+
+            <Button
+                android:id="@+id/btnMealDialogUpload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upload Custom Image"
+                android:textAllCaps="false"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_medium"
+                android:backgroundTint="#9DCEFF"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <!-- Ingredients -->
+        <EditText
+            android:id="@+id/etMealIngredients"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="Ingredients (comma separated, e.g. Honey, Oats, Milk)"
+            android:textColorHint="#ADA4A5"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"
+            android:background="@drawable/bg_chip_light"
+            android:padding="15dp"
+            android:gravity="top|start"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Instructions -->
+        <EditText
+            android:id="@+id/etMealInstructions"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:hint="Preparation Instructions"
+            android:textColorHint="#ADA4A5"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppins_regular"
+            android:background="@drawable/bg_chip_light"
+            android:padding="15dp"
+            android:gravity="top|start"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Recipe Steps Builder Header -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Or Build Steps Individually"
+            android:textSize="12sp"
+            android:textColor="#ADA4A5"
+            android:fontFamily="@font/poppins_medium"
+            android:layout_marginBottom="5dp"/>
+
+        <!-- Steps Container -->
+        <LinearLayout
+            android:id="@+id/llRecipeStepsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- Add Step Button -->
+        <Button
+            android:id="@+id/btnAddRecipeStep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+ Add Step"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_medium"
+            android:backgroundTint="#C58BF2"
+            android:textColor="@color/white"
+            android:layout_marginBottom="12dp"/>
+
+    </LinearLayout>
+</ScrollView>

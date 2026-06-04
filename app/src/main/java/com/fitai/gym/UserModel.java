@@ -3,6 +3,8 @@ package com.fitai.gym;
 public class UserModel {
     private String uid, name, email, role, profilePicUrl;
     private String goal, height, weight, age;
+    private boolean isPremium;
+    private String premiumPlan;
 
     public UserModel() {
         // Required for Firestore
@@ -25,6 +27,8 @@ public class UserModel {
     public String getHeight() { return height; }
     public String getWeight() { return weight; }
     public String getAge() { return age; }
+    public boolean getIsPremium() { return isPremium; }
+    public String getPremiumPlan() { return premiumPlan; }
 
     // Setters
     public void setUid(String uid) { this.uid = uid; }
@@ -36,4 +40,6 @@ public class UserModel {
     public void setHeight(String height) { this.height = height; }
     public void setWeight(String weight) { this.weight = weight; }
     public void setAge(String age) { this.age = age; }
+    public void setIsPremium(boolean isPremium) { this.isPremium = isPremium; }
+    public void setPremiumPlan(String premiumPlan) { this.premiumPlan = premiumPlan; }
 }

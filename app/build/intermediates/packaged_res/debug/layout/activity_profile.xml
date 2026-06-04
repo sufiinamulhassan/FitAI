@@ -122,6 +122,59 @@
                     android:focusable="true" />
             </LinearLayout>
 
+            <!-- Premium Membership Banner (hidden by default, shown when user is premium) -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvPremiumBanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#F2EAFF"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/p_achi"
+                        app:tint="#C58BF2" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="12dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Premium Member"
+                            android:textColor="#7B2FBE"
+                            android:textSize="14sp"
+                            android:fontFamily="@font/poppins_bold" />
+                        <TextView
+                            android:id="@+id/tvPremiumPlan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Active Subscription"
+                            android:textColor="#A77BDB"
+                            android:textSize="11sp"
+                            android:fontFamily="@font/poppins_regular" />
+                    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="✓ Active"
+                        android:textColor="#4CAF50"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
             <!-- Stats Row -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -207,6 +260,13 @@
                     <LinearLayout android:id="@+id/llPersonalInfo" android:layout_width="match_parent" android:layout_height="48dp" android:orientation="horizontal" android:gravity="center_vertical">
                         <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/p_personal" app:tint="#92A3FD"/>
                         <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:text="Personal Data" android:textSize="12sp" android:textColor="#7B6F72" android:fontFamily="@font/poppins_regular"/>
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/p_next" app:tint="#ADA4A5"/>
+                    </LinearLayout>
+
+                    <!-- Edit Goal -->
+                    <LinearLayout android:id="@+id/llEditGoal" android:layout_width="match_parent" android:layout_height="48dp" android:orientation="horizontal" android:gravity="center_vertical">
+                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/p_achi" app:tint="#92A3FD"/>
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:text="Edit Goal" android:textSize="12sp" android:textColor="#7B6F72" android:fontFamily="@font/poppins_regular"/>
                         <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/p_next" app:tint="#ADA4A5"/>
                     </LinearLayout>
 
@@ -312,12 +372,7 @@
                         <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/p_next" app:tint="#ADA4A5"/>
                     </LinearLayout>
 
-                    <!-- Settings -->
-                    <LinearLayout android:id="@+id/llSettings" android:layout_width="match_parent" android:layout_height="48dp" android:orientation="horizontal" android:gravity="center_vertical">
-                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/p_setting" app:tint="#92A3FD"/>
-                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="12dp" android:text="Settings" android:textSize="12sp" android:textColor="#7B6F72" android:fontFamily="@font/poppins_regular"/>
-                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/p_next" app:tint="#ADA4A5"/>
-                    </LinearLayout>
+
 
                     <!-- Premium Membership -->
                     <LinearLayout android:id="@+id/llPremium" android:layout_width="match_parent" android:layout_height="48dp" android:orientation="horizontal" android:gravity="center_vertical">

@@ -2,6 +2,7 @@ package com.fitai.gym;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,19 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.User
         String goal = user.getGoal() != null ? user.getGoal() : "No Goal Set";
         holder.tvGoal.setText(role.toUpperCase() + " · " + goal);
 
+        // Show premium badge
+        if (user.getIsPremium()) {
+            holder.tvPremiumBadge.setVisibility(View.VISIBLE);
+            String plan = user.getPremiumPlan();
+            if (plan != null && plan.equals("yearly")) {
+                holder.tvPremiumBadge.setText("PRO+");
+            } else {
+                holder.tvPremiumBadge.setText("PRO");
+            }
+        } else {
+            holder.tvPremiumBadge.setVisibility(View.GONE);
+        }
+
         if (user.getProfilePicUrl() != null && !user.getProfilePicUrl().isEmpty()) {
             if (!user.getProfilePicUrl().startsWith("http")) {
                 android.graphics.Bitmap bitmap = ImageUtils.base64ToBitmap(user.getProfilePicUrl());
@@ -74,7 +88,7 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.User
 
     private void showActionDialog(UserModel user, int position) {
         new AlertDialog.Builder(context)
-            .setTitle(user.getName())
+            .setTitle(user.getName() + (user.getIsPremium() ? " ⭐ Premium" : ""))
             .setItems(new String[]{"Edit User", "Delete User", "View Progress", "Cancel"}, (d, which) -> {
                 switch (which) {
                     case 0:
@@ -84,7 +98,11 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.User
                         confirmDelete(user, position);
                         break;
                     case 2:
-                        Toast.makeText(context, "Progress viewer coming soon!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(context, AdminViewUserProgressActivity.class);
+                        intent.putExtra("user_uid", user.getUid());
+                        intent.putExtra("user_name", user.getName());
+                        intent.putExtra("user_email", user.getEmail());
+                        context.startActivity(intent);
                         break;
                 }
             })
@@ -109,7 +127,7 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.User
 
     static class UserViewHolder extends RecyclerView.ViewHolder {
         CircleImageView ivProfile;
-        TextView tvName, tvEmail, tvGoal;
+        TextView tvName, tvEmail, tvGoal, tvPremiumBadge;
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -117,6 +135,7 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.User
             tvName = itemView.findViewById(R.id.tvUserName);
             tvEmail = itemView.findViewById(R.id.tvUserEmail);
             tvGoal = itemView.findViewById(R.id.tvUserGoal);
+            tvPremiumBadge = itemView.findViewById(R.id.tvPremiumBadge);
         }
     }
 }

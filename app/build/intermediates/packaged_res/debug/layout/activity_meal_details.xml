@@ -100,7 +100,7 @@
                 <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_chip_light" android:padding="10dp" android:gravity="center_vertical" android:layout_marginEnd="10dp">
                         <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/burn" app:tint="#FF9B9B"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="180kCal" android:textSize="11sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular" android:layout_marginStart="5dp"/>
+                        <TextView android:id="@+id/tvMealCaloriesVal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="180kCal" android:textSize="11sp" android:textColor="#ADA4A5" android:fontFamily="@font/poppins_regular" android:layout_marginStart="5dp"/>
                     </LinearLayout>
                     <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_chip_light" android:padding="10dp" android:gravity="center_vertical" android:layout_marginEnd="10dp">
                         <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/water" app:tint="#9DCEFF"/>
@@ -115,9 +115,10 @@
 
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Descriptions" android:textSize="16sp" android:textColor="@color/black" android:fontFamily="@font/poppins_bold" android:layout_marginBottom="10dp" />
             <TextView
+                android:id="@+id/tvMealDescVal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pancakes are some people's favorite breakfast, who doesn't like pancakes? Especially with the real honey splash on top of the pancakes, of course everyone loves that! besides being Read More..."
+                android:text="Pancakes are some people's favorite breakfast..."
                 android:textSize="12sp"
                 android:textColor="#ADA4A5"
                 android:fontFamily="@font/poppins_regular"
@@ -127,7 +128,7 @@
             <!-- Ingredients -->
             <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="15dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ingredients That You\nWill Need" android:textSize="16sp" android:textColor="@color/black" android:fontFamily="@font/poppins_bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="6 items" android:textSize="12sp" android:textColor="#ADA4A5" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
+                <TextView android:id="@+id/tvMealIngredientsVal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="6 items" android:textSize="12sp" android:textColor="#ADA4A5" android:layout_alignParentEnd="true" android:layout_centerVertical="true"/>
             </RelativeLayout>
             
             <HorizontalScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:scrollbars="none" android:layout_marginBottom="25dp">
@@ -156,47 +157,15 @@
             <!-- Steps -->
             <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="20dp">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Step by Step" android:textSize="16sp" android:textColor="@color/black" android:fontFamily="@font/poppins_bold" />
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="6 Steps" android:textSize="12sp" android:textColor="#ADA4A5" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:fontFamily="@font/poppins_regular"/>
+                <TextView android:id="@+id/tvDetailsStepCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0 Steps" android:textSize="12sp" android:textColor="#ADA4A5" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:fontFamily="@font/poppins_regular"/>
             </RelativeLayout>
 
-            <!-- Step 1 (Active) -->
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                <TextView android:layout_width="25dp" android:layout_height="wrap_content" android:text="01" android:textColor="#C58BF2" android:textSize="12sp" android:fontFamily="@font/poppins_regular" android:layout_marginTop="0dp"/>
-                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center_horizontal" android:layout_marginStart="10dp" android:layout_marginEnd="15dp">
-                    <View android:layout_width="14dp" android:layout_height="14dp" android:background="@drawable/bg_timeline_dot_active"/>
-                    <View android:layout_width="1dp" android:layout_height="60dp" android:background="#C58BF2" android:layout_marginTop="2dp" android:layout_marginBottom="2dp" android:alpha="0.2"/>
-                </LinearLayout>
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Step 1" android:textColor="@color/black" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Prepare all of the ingredients that needed" android:textColor="#ADA4A5" android:textSize="11sp" android:layout_marginTop="4dp" android:fontFamily="@font/poppins_regular"/>
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- Step 2 -->
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="0dp">
-                <TextView android:layout_width="25dp" android:layout_height="wrap_content" android:text="02" android:textColor="#ADA4A5" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
-                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center_horizontal" android:layout_marginStart="10dp" android:layout_marginEnd="15dp">
-                    <View android:layout_width="14dp" android:layout_height="14dp" android:background="@drawable/bg_timeline_dot_inactive"/>
-                    <View android:layout_width="1dp" android:layout_height="60dp" android:background="#F1F1F1" android:layout_marginTop="2dp" android:layout_marginBottom="2dp"/>
-                </LinearLayout>
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Step 2" android:textColor="@color/black" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mix flour, sugar, salt, and baking powder" android:textColor="#ADA4A5" android:textSize="11sp" android:layout_marginTop="4dp" android:fontFamily="@font/poppins_regular"/>
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- Step 3 -->
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-                <TextView android:layout_width="25dp" android:layout_height="wrap_content" android:text="03" android:textColor="#ADA4A5" android:textSize="12sp" android:fontFamily="@font/poppins_regular"/>
-                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center_horizontal" android:layout_marginStart="10dp" android:layout_marginEnd="15dp">
-                    <View android:layout_width="14dp" android:layout_height="14dp" android:background="@drawable/bg_timeline_dot_inactive"/>
-                    <View android:layout_width="1dp" android:layout_height="60dp" android:background="#F1F1F1" android:layout_marginTop="2dp" android:layout_marginBottom="2dp"/>
-                </LinearLayout>
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Step 3" android:textColor="@color/black" android:textSize="12sp" android:fontFamily="@font/poppins_medium"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="In a separate place, mix the eggs and liquid milk until blended" android:textColor="#ADA4A5" android:textSize="11sp" android:layout_marginTop="4dp" android:fontFamily="@font/poppins_regular"/>
-                </LinearLayout>
-            </LinearLayout>
+            <!-- Dynamic Steps Container -->
+            <LinearLayout
+                android:id="@+id/llDetailsStepsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
 
             <!-- Spacer for the bottom button -->
             <View android:layout_width="match_parent" android:layout_height="80dp"/>

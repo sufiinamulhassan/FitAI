@@ -10,8 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.firebase.firestore.DocumentSnapshot;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class NotificationActivity extends AppCompatActivity {
 
@@ -28,21 +31,80 @@ public class NotificationActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> finish());
 
-        setupNotificationList();
+        fetchNotifications();
     }
 
-    private void setupNotificationList() {
-        List<NotificationData> list = new ArrayList<>();
-        // Using matching icons from drawable folder
-        list.add(new NotificationData("Hey, it's time for lunch", "About 1 minutes ago", R.drawable.apple_pie));
-        list.add(new NotificationData("Don't miss your lowerbody workout", "About 3 hours ago", R.drawable.workout_2));
-        list.add(new NotificationData("Hey, let's add some meals for your b..", "About 3 hours ago", R.drawable.honey_pan));
-        list.add(new NotificationData("Congratulations, You have finished A..", "29 May", R.drawable.complete_workout));
-        list.add(new NotificationData("Hey, it's time for lunch", "8 April", R.drawable.orange));
-        list.add(new NotificationData("Ups, You have missed your Lowerbo...", "3 April", R.drawable.workout_1));
+    private void fetchNotifications() {
+        String uid = FirebaseHelper.getInstance().getCurrentUserUid();
+        if (uid == null) return;
 
-        rvNotifications.setLayoutManager(new LinearLayoutManager(this));
-        rvNotifications.setAdapter(new NotificationAdapter(list));
+        FirebaseHelper.getInstance().getUsersCollection()
+            .document(uid)
+            .collection("notifications")
+            .orderBy("timestamp", com.google.firebase.firestore.Query.Direction.DESCENDING)
+            .get()
+            .addOnSuccessListener(snapshot -> {
+                List<NotificationData> list = new ArrayList<>();
+                if (snapshot != null && !snapshot.isEmpty()) {
+                    for (DocumentSnapshot doc : snapshot.getDocuments()) {
+                        String title = doc.getString("title");
+                        Long ts = doc.getLong("timestamp");
+                        String timeStr = "Just now";
+
+                        if (ts != null) {
+                            long diff = System.currentTimeMillis() - ts;
+                            long mins = diff / (60 * 1000);
+                            long hours = mins / 60;
+                            if (mins < 1) {
+                                timeStr = "Just now";
+                            } else if (mins < 60) {
+                                timeStr = "About " + mins + " minutes ago";
+                            } else if (hours < 24) {
+                                timeStr = "About " + hours + " hours ago";
+                            } else {
+                                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd MMM", java.util.Locale.getDefault());
+                                timeStr = sdf.format(new java.util.Date(ts));
+                            }
+                        }
+
+                        String type = doc.getString("type");
+                        int icon = R.drawable.apple_pie; // Fallback
+                        if ("workout".equalsIgnoreCase(type)) {
+                            icon = R.drawable.workout_1;
+                        } else if ("meal".equalsIgnoreCase(type)) {
+                            icon = R.drawable.honey_pan;
+                        } else if ("system".equalsIgnoreCase(type)) {
+                            icon = R.drawable.complete_workout;
+                        }
+
+                        list.add(new NotificationData(title, timeStr, icon));
+                    }
+                }
+
+                // Auto-seed a dynamic welcome notification if empty
+                if (list.isEmpty()) {
+                    Map<String, Object> welcome = new HashMap<>();
+                    welcome.put("title", "Welcome to FitAI! Start your health journey today.");
+                    welcome.put("timestamp", System.currentTimeMillis());
+                    welcome.put("type", "system");
+                    FirebaseHelper.getInstance().getUsersCollection()
+                        .document(uid)
+                        .collection("notifications")
+                        .add(welcome);
+
+                    list.add(new NotificationData("Welcome to FitAI! Start your health journey today.", "Just now", R.drawable.complete_workout));
+                }
+
+                rvNotifications.setLayoutManager(new LinearLayoutManager(NotificationActivity.this));
+                rvNotifications.setAdapter(new NotificationAdapter(list));
+            })
+            .addOnFailureListener(e -> {
+                // Fallback graceful load
+                List<NotificationData> list = new ArrayList<>();
+                list.add(new NotificationData("Welcome to FitAI! Start your health journey today.", "Just now", R.drawable.complete_workout));
+                rvNotifications.setLayoutManager(new LinearLayoutManager(NotificationActivity.this));
+                rvNotifications.setAdapter(new NotificationAdapter(list));
+            });
     }
 
     private static class NotificationData {
