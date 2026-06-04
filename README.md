@@ -4,10 +4,11 @@
   <strong>A Fully Functional Android Gym & Home Workout App Built with Java & Firebase</strong>
 </p>
 
-
+<p align="center">
   ![Language](https://img.shields.io/badge/language-Java-orange.svg)&nbsp;
   [![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE.md)&nbsp;
   ![Visitors](https://visitor-badge.laobi.icu/badge?page_id=sufiinamulhassan.FitAI)
+</p>
 
 ---
 
@@ -84,8 +85,18 @@ The Admin panel is hidden from regular users. To access it for the first time:
 
 ---
 
+## 📸 Screenshots
+*(Add your screenshots here!)*
+*   `<img src="link-to-home-dashboard" width="200" />`
+*   `<img src="link-to-admin-panel" width="200" />`
+*   `<img src="link-to-exercise-timer" width="200" />`
+
+---
+
 ## 💡 Motivation & Acknowledgements
 This project combines complex Android layout design with scalable cloud infrastructure. It proves that fully enclosed CMS systems can comfortably live alongside front-end user interfaces natively in Java.
 
+**UI Inspiration:** [Fitnest Figma Kit]
+
 ---
-*Created by Inam Ul Hassan*
+*Created by [Your Name here]*

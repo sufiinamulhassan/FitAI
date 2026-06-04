@@ -110,6 +110,12 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
+        <!-- Workout Session (Timer) Screen -->
+        <activity
+            android:name="com.fitai.gym.WorkoutSessionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
         <!-- Exercise Detail Screen -->
         <activity
             android:name="com.fitai.gym.ExerciseDetailActivity"
@@ -209,6 +215,18 @@
             android:name="com.fitai.gym.AdminAddWorkoutActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.fitai.gym.AdminManageWorkoutsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.fitai.gym.AdminViewUserProgressActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.fitai.gym.AdminManageMealsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
         <!-- Payment Selection Screen -->
         <activity
@@ -217,6 +235,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.fitai.gym.SettingsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.fitai.gym.AchievementActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
@@ -247,6 +269,18 @@
             android:name="com.fitai.gym.WorkoutCompleteActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
+
+        <!-- uCrop Activity -->
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!-- Meal Reminder Broadcast Receiver -->
+        <receiver
+            android:name="com.fitai.gym.MealReminderReceiver"
+            android:enabled="true"
+            android:exported="false" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
