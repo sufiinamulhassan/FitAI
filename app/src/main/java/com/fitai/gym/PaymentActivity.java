@@ -1,3 +1,6 @@
+/*
+ * PaymentActivity manages payment checkouts and billing details for premium subscriptions.
+ */
 package com.fitai.gym;
 
 import android.content.Intent;
@@ -14,13 +17,13 @@ import java.util.Map;
 public class PaymentActivity extends AppCompatActivity {
 
     private String selectedMethod = "";
-    private String selectedPlan = "yearly"; // default to best value
+    private String selectedPlan = "yearly"; 
     private double selectedAmount = 59.99;
     private FirebaseHelper fbHelper;
 
-    // Plan cards
+    
     private CardView cvMonthly, cvYearly;
-    // Payment method cards
+    
     private CardView btnEasypaisa, btnJazzcash, btnCard;
 
     @Override
@@ -32,19 +35,19 @@ public class PaymentActivity extends AppCompatActivity {
 
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
-        // Plan cards
+        
         cvMonthly = findViewById(R.id.cvMonthly);
         cvYearly = findViewById(R.id.cvYearly);
 
-        // Payment method cards
+        
         btnEasypaisa = findViewById(R.id.btnEasypaisa);
         btnJazzcash = findViewById(R.id.btnJazzcash);
         btnCard = findViewById(R.id.btnCard);
 
-        // Default: yearly selected
+        
         highlightPlan("yearly");
 
-        // Plan selection
+        
         cvMonthly.setOnClickListener(v -> {
             selectedPlan = "monthly";
             selectedAmount = 9.99;
@@ -57,7 +60,7 @@ public class PaymentActivity extends AppCompatActivity {
             highlightPlan("yearly");
         });
 
-        // Payment Method Selectors
+        
         btnEasypaisa.setOnClickListener(v -> selectMethod("EasyPaisa"));
         btnJazzcash.setOnClickListener(v -> selectMethod("JazzCash"));
         btnCard.setOnClickListener(v -> selectMethod("Debit Card"));
@@ -88,7 +91,7 @@ public class PaymentActivity extends AppCompatActivity {
     private void selectMethod(String method) {
         selectedMethod = method;
 
-        // Reset all method card backgrounds
+        
         btnEasypaisa.setCardBackgroundColor(Color.parseColor("#E6F7ED"));
         btnJazzcash.setCardBackgroundColor(Color.parseColor("#FFF5E6"));
         btnCard.setCardBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -97,7 +100,7 @@ public class PaymentActivity extends AppCompatActivity {
         btnJazzcash.setCardElevation(0f);
         btnCard.setCardElevation(0f);
 
-        // Highlight the selected one
+        
         switch (method) {
             case "EasyPaisa":
                 btnEasypaisa.setCardElevation(6f);
@@ -141,7 +144,7 @@ public class PaymentActivity extends AppCompatActivity {
         paymentData.put("timestamp", System.currentTimeMillis());
 
         fbHelper.getPaymentsCollection().add(paymentData).addOnSuccessListener(documentReference -> {
-            // Also mark user as premium
+            
             fbHelper.getUsersCollection().document(fbHelper.getCurrentUserUid())
                 .update("isPremium", true, "premiumPlan", selectedPlan, "premiumSince", System.currentTimeMillis())
                 .addOnCompleteListener(task -> {

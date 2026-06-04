@@ -1,7 +1,10 @@
+/*
+ * SleepLog is a model representing daily sleep duration and log timestamp details.
+ */
 package com.fitai.gym;
 
 public class SleepLog {
-    private String date; // YYYY-MM-DD
+    private String date; 
     private int hours;
     private int minutes;
 

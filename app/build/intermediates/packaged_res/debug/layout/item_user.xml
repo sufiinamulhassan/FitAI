@@ -25,21 +25,27 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:layout_marginStart="12dp">
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
+                
                 <TextView
                     android:id="@+id/tvUserName"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="User Name"
                     android:textColor="#1D1617"
                     android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
                 <TextView
                     android:id="@+id/tvPremiumBadge"
                     android:layout_width="wrap_content"
@@ -50,11 +56,11 @@
                     android:fontFamily="@font/poppins_bold"
                     android:background="@drawable/bg_badge_orange"
                     android:backgroundTint="#C58BF2"
-                    android:paddingStart="5dp"
-                    android:paddingEnd="5dp"
-                    android:paddingTop="1dp"
-                    android:paddingBottom="1dp"
-                    android:layout_marginStart="6dp"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:layout_marginStart="8dp"
                     android:visibility="gone" />
             </LinearLayout>
 
@@ -62,19 +68,32 @@
                 android:id="@+id/tvUserEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="user@email.com"
                 android:textColor="#7B6F72"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/tvUserGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Goal"
+                android:textColor="#92A3FD"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvUserGoal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Goal"
-            android:textColor="#92A3FD"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/arrow_right"
+            android:layout_marginStart="4dp"
+            app:tint="#C5C9D0" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

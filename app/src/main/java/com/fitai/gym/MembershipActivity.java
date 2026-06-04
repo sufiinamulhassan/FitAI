@@ -1,3 +1,6 @@
+/*
+ * MembershipActivity displays premium plans and redirects users to subscription checkouts.
+ */
 package com.fitai.gym;
 
 import android.content.Intent;

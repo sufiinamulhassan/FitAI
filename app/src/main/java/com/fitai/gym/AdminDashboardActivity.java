@@ -1,3 +1,6 @@
+/*
+ * AdminDashboardActivity is the central administrative panel for viewing stats, revenue, managing plans, and user roles.
+ */
 package com.fitai.gym;
 
 import android.app.AlertDialog;
@@ -60,6 +63,10 @@ public class AdminDashboardActivity extends AppCompatActivity
             startActivity(new Intent(this, AdminManageMealsActivity.class));
         });
 
+        findViewById(R.id.cardManageSubscriptions).setOnClickListener(v -> {
+            startActivity(new Intent(this, AdminManageSubscriptionsActivity.class));
+        });
+
         findViewById(R.id.cardAddAdmin).setOnClickListener(v -> {
             startActivity(new Intent(this, AdminAddMemberActivity.class));
         });
@@ -109,13 +116,13 @@ public class AdminDashboardActivity extends AppCompatActivity
             for (DocumentSnapshot doc : snapshot.getDocuments()) {
                 UserModel user = doc.toObject(UserModel.class);
                 if (user != null) {
-                    // Exclude admins from the list of registered users
+                    
                     if ("admin".equalsIgnoreCase(user.getRole()) || 
                         "admin.fitai@gmail.com".equalsIgnoreCase(user.getEmail())) {
                         continue;
                     }
                     if (user.getUid() == null || user.getUid().isEmpty()) {
-                        // Set uid from document ID if not stored in model
+                        
                         user.setUid(doc.getId());
                     }
                     userList.add(user);
@@ -127,7 +134,7 @@ public class AdminDashboardActivity extends AppCompatActivity
         });
     }
 
-    // ── CRUD Callbacks ──────────────────────────────────────
+    
 
     @Override
     public void onEditUser(UserModel user, int position) {
@@ -164,14 +171,14 @@ public class AdminDashboardActivity extends AppCompatActivity
         EditText etWeight = dialogView.findViewById(R.id.etEditWeight);
         Spinner spRole = dialogView.findViewById(R.id.spEditRole);
 
-        // Pre-fill fields
+        
         etName.setText(user.getName());
         etGoal.setText(user.getGoal());
         etAge.setText(user.getAge());
         etHeight.setText(user.getHeight());
         etWeight.setText(user.getWeight());
 
-        // Role spinner
+        
         String[] roles = {"user", "admin"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_dropdown_item, roles);
@@ -200,7 +207,7 @@ public class AdminDashboardActivity extends AppCompatActivity
                 fbHelper.getUsersCollection().document(uid).update(updates)
                     .addOnSuccessListener(v -> {
                         Toast.makeText(this, "User updated!", Toast.LENGTH_SHORT).show();
-                        loadUsers(); // Refresh
+                        loadUsers(); 
                     })
                     .addOnFailureListener(e -> {
                         Toast.makeText(this, "Update failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();

@@ -1,3 +1,6 @@
+/*
+ * ExerciseExecutionActivity handles the active workout execution timer, exercise sequence navigation, and calorie-burn logs.
+ */
 package com.fitai.gym;
 
 import android.content.Intent;
@@ -22,15 +25,15 @@ public class ExerciseExecutionActivity extends AppCompatActivity {
     private List<Exercise> exercises = new ArrayList<>();
     private int currentExIndex = 0;
     private int currentSet = 1;
-    private int timeRemaining; // seconds
-    private int totalTime;     // seconds for current exercise
-    private long totalTimeSpent = 0; // accumulator
+    private int timeRemaining;
+    private int totalTime;
+    private long totalTimeSpent = 0;
+    private int completedExerciseCount = 0;
 
     private boolean isPaused = false;
     private CountDownTimer countDownTimer;
     private CountDownTimer restTimer;
 
-    // Views
     private TextView tvExProgress, tvExerciseName, tvExerciseInfo, tvTimer;
     private TextView btnPauseResume, btnSkip, btnDone, btnMinus10, btnPlus10;
     private ProgressBar pbTimer;
@@ -50,7 +53,6 @@ public class ExerciseExecutionActivity extends AppCompatActivity {
         planTitle = getIntent().getStringExtra("PLAN_TITLE");
         level = getIntent().getStringExtra("LEVEL");
 
-        // Bind views
         tvExProgress = findViewById(R.id.tvExProgress);
         tvExerciseName = findViewById(R.id.tvExerciseName);
         tvExerciseInfo = findViewById(R.id.tvExerciseInfo);
@@ -66,7 +68,6 @@ public class ExerciseExecutionActivity extends AppCompatActivity {
         tvRestTimer = findViewById(R.id.tvRestTimer);
         btnSkipRest = findViewById(R.id.btnSkipRest);
 
-        // Listeners
         findViewById(R.id.btnClose).setOnClickListener(v -> confirmQuit());
         btnPauseResume.setOnClickListener(v -> togglePause());
         btnSkip.setOnClickListener(v -> skipExercise());
@@ -172,12 +173,10 @@ public class ExerciseExecutionActivity extends AppCompatActivity {
 
     private void togglePause() {
         if (isPaused) {
-            // Resume
             isPaused = false;
             btnPauseResume.setText("Pause");
             startTimer();
         } else {
-            // Pause
             isPaused = true;
             btnPauseResume.setText("Resume");
             if (countDownTimer != null) countDownTimer.cancel();
@@ -204,10 +203,10 @@ public class ExerciseExecutionActivity extends AppCompatActivity {
         if (countDownTimer != null) countDownTimer.cancel();
         Exercise ex = exercises.get(currentExIndex);
 
-        // Check if more sets remain
         if (currentSet < ex.getSets()) {
             showRestPeriod(ex.getRestTime(), () -> startExercise(currentExIndex, currentSet + 1));
         } else {
+            completedExerciseCount++;
             moveToNext();
         }
     }
@@ -215,10 +214,8 @@ public class ExerciseExecutionActivity extends AppCompatActivity {
     private void moveToNext() {
         Exercise currentEx = exercises.get(currentExIndex);
         if (currentExIndex < exercises.size() - 1) {
-            // More exercises → show rest then next
             showRestPeriod(currentEx.getRestTime(), () -> startExercise(currentExIndex + 1, 1));
         } else {
-            // All done!
             workoutComplete();
         }
     }
@@ -259,13 +256,11 @@ public class ExerciseExecutionActivity extends AppCompatActivity {
     }
 
     private void workoutComplete() {
-        // Save to local SQLite database for local history/offline resiliency
         LocalDatabaseHelper localDb = new LocalDatabaseHelper(this);
         String nowStr = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss", java.util.Locale.getDefault()).format(new java.util.Date());
-        int estCal = exercises.size() > 0 ? exercises.size() * 15 : 0;
-        localDb.insertWorkoutHistory((planTitle != null ? planTitle : "Workout") + " - Day " + dayNumber, exercises.size(), (int) totalTimeSpent, estCal, nowStr);
+        int estCal = completedExerciseCount * 15;
+        localDb.insertWorkoutHistory((planTitle != null ? planTitle : "Workout") + " - Day " + dayNumber, completedExerciseCount, (int) totalTimeSpent, estCal, nowStr);
 
-        // Save progress to Firebase
         String uid = fbHelper.getCurrentUserUid();
         if (uid != null && planId != null) {
             fbHelper.getUserProgressCollection(uid).document(planId).get()
@@ -277,20 +272,17 @@ public class ExerciseExecutionActivity extends AppCompatActivity {
                         progress = new UserProgress(planId, planTitle != null ? planTitle : "Workout", level);
                     }
                     if (progress != null) {
-                        int cal = 0;
-                        if (exercises.size() > 0) {
-                            // Estimate calories from plan
-                            cal = exercises.size() * 15; // rough estimate
-                        }
+                        int cal = completedExerciseCount * 15;
                         int finalCal = cal;
                         progress.markDayComplete(dayNumber, cal, (int) totalTimeSpent);
                         fbHelper.getUserProgressCollection(uid).document(planId)
                             .set(progress)
                             .addOnSuccessListener(v -> {
-                                // Save to workout_history for home dashboard sync
                                 java.util.Map<String, Object> historyEntry = new java.util.HashMap<>();
                                 historyEntry.put("workoutTitle", (planTitle != null ? planTitle : "Workout") + " - Day " + dayNumber);
-                                historyEntry.put("exerciseCount", exercises.size());
+                                historyEntry.put("exerciseCount", completedExerciseCount);
+                                historyEntry.put("totalExercises", exercises.size());
+                                historyEntry.put("skippedCount", exercises.size() - completedExerciseCount);
                                 historyEntry.put("totalTimeSeconds", (int) totalTimeSpent);
                                 historyEntry.put("caloriesBurned", finalCal);
                                 historyEntry.put("completedAt", com.google.firebase.Timestamp.now());
@@ -299,7 +291,6 @@ public class ExerciseExecutionActivity extends AppCompatActivity {
                                     .collection("workout_history")
                                     .add(historyEntry)
                                     .addOnCompleteListener(t -> {
-                                         // Log dynamic notification
                                          java.util.Map<String, Object> notif = new java.util.HashMap<>();
                                          notif.put("title", "Congratulations! You completed " + (planTitle != null ? planTitle : "Workout") + " - Day " + dayNumber);
                                          notif.put("timestamp", System.currentTimeMillis());
@@ -324,7 +315,7 @@ public class ExerciseExecutionActivity extends AppCompatActivity {
         Intent intent = new Intent(this, WorkoutCompleteActivity.class);
         intent.putExtra("PLAN_TITLE", planTitle);
         intent.putExtra("DAY_NUMBER", dayNumber);
-        intent.putExtra("TOTAL_EXERCISES", exercises.size());
+        intent.putExtra("TOTAL_EXERCISES", completedExerciseCount);
         intent.putExtra("TOTAL_TIME", (int) totalTimeSpent);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

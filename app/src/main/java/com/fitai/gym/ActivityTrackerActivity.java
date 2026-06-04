@@ -1,3 +1,6 @@
+/*
+ * ActivityTrackerActivity displays physical activity levels, steps, and progress goals tracking.
+ */
 package com.fitai.gym;
 
 import android.app.AlertDialog;
@@ -52,7 +55,7 @@ public class ActivityTrackerActivity extends AppCompatActivity {
         uid = fbHelper.getCurrentUserUid();
         prefs = getSharedPreferences("FitAI_Prefs", MODE_PRIVATE);
 
-        // Bind view elements
+        
         btnBack = findViewById(R.id.btnBack);
         tvWaterTarget = findViewById(R.id.tvWaterTarget);
         tvStepsTarget = findViewById(R.id.tvStepsTarget);
@@ -135,7 +138,7 @@ public class ActivityTrackerActivity extends AppCompatActivity {
     private void setupActivityGraphToggle() {
         if (tvWeeklyToggle == null) return;
 
-        // Default to Weekly
+        
         loadActivityGraph(uid, "Weekly");
 
         tvWeeklyToggle.setOnClickListener(v -> {
@@ -161,7 +164,7 @@ public class ActivityTrackerActivity extends AppCompatActivity {
         llActivityLabels.removeAllViews();
         if (rlActivityTooltip != null) rlActivityTooltip.setVisibility(View.INVISIBLE);
 
-        // Track water intake milliliters dynamically for the graph
+        
         fbHelper.getUsersCollection().document(userId).collection("water_logs")
             .get()
             .addOnSuccessListener(snapshot -> {
@@ -175,7 +178,7 @@ public class ActivityTrackerActivity extends AppCompatActivity {
                     for (DocumentSnapshot doc : docs) {
                         String logDate = doc.getString("date");
                         if (todayStr.equals(logDate)) {
-                            String logTime = doc.getString("time"); // e.g. "08:30 AM"
+                            String logTime = doc.getString("time"); 
                             Long amt = doc.getLong("amountMl");
                             int amount = amt != null ? amt.intValue() : 0;
 
@@ -205,7 +208,7 @@ public class ActivityTrackerActivity extends AppCompatActivity {
                     int currentYear = currentCal.get(Calendar.YEAR);
 
                     for (DocumentSnapshot doc : docs) {
-                        String logDate = doc.getString("date"); // YYYY-MM-DD
+                        String logDate = doc.getString("date"); 
                         if (logDate != null) {
                             try {
                                 Date d = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(logDate);
@@ -220,7 +223,7 @@ public class ActivityTrackerActivity extends AppCompatActivity {
                                         water[idx] += amt.intValue();
                                     }
                                 }
-                            } catch (Exception e) { /* ignore */ }
+                            } catch (Exception e) {  }
                         }
                     }
 
@@ -258,7 +261,7 @@ public class ActivityTrackerActivity extends AppCompatActivity {
                                         water[weekIdx] += amt.intValue();
                                     }
                                 }
-                            } catch (Exception e) { /* ignore */ }
+                            } catch (Exception e) {  }
                         }
                     }
 
@@ -274,7 +277,7 @@ public class ActivityTrackerActivity extends AppCompatActivity {
     }
 
     private int parseHourFromTime(String timeStr) {
-        // e.g. "08:30 AM" or "20:00"
+        
         try {
             if (timeStr == null || timeStr.isEmpty()) return 12;
             Date date = new SimpleDateFormat("hh:mm a", Locale.getDefault()).parse(timeStr);
@@ -288,7 +291,7 @@ public class ActivityTrackerActivity extends AppCompatActivity {
                 cal.setTime(date);
                 return cal.get(Calendar.HOUR_OF_DAY);
             } catch (Exception ex) {
-                return 12; // fallback to midday
+                return 12; 
             }
         }
     }
@@ -347,7 +350,7 @@ public class ActivityTrackerActivity extends AppCompatActivity {
 
         final List<ActivityLogItem> items = new ArrayList<>();
 
-        // 1. Fetch completed workouts
+        
         ListenerRegistration workoutListener = fbHelper.getUsersCollection().document(uid)
             .collection("workout_history")
             .orderBy("completedAt", Query.Direction.DESCENDING)
@@ -355,9 +358,9 @@ public class ActivityTrackerActivity extends AppCompatActivity {
             .addSnapshotListener((snapshot, e) -> {
                 if (e != null || snapshot == null) return;
                 
-                // Rebuild and refresh lists to handle updates properly
+                
                 synchronized (items) {
-                    // Remove old workout history logs
+                    
                     items.removeIf(item -> item.type == ActivityType.WORKOUT);
 
                     for (DocumentSnapshot doc : snapshot.getDocuments()) {
@@ -380,7 +383,7 @@ public class ActivityTrackerActivity extends AppCompatActivity {
             });
         listeners.add(workoutListener);
 
-        // 2. Fetch water intake logs
+        
         ListenerRegistration waterListener = fbHelper.getUsersCollection().document(uid)
             .collection("water_logs")
             .addSnapshotListener((snapshot, e) -> {
@@ -401,7 +404,7 @@ public class ActivityTrackerActivity extends AppCompatActivity {
                         } catch (Exception ex) {
                             try {
                                 d = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(dateStr);
-                            } catch (Exception exc) { /* ignore */ }
+                            } catch (Exception exc) {  }
                         }
 
                         items.add(new ActivityLogItem(
@@ -417,7 +420,7 @@ public class ActivityTrackerActivity extends AppCompatActivity {
             });
         listeners.add(waterListener);
 
-        // 3. Fetch sleep logs
+        
         ListenerRegistration sleepListener = fbHelper.getUsersCollection().document(uid)
             .collection("sleep_logs")
             .addSnapshotListener((snapshot, e) -> {
@@ -437,7 +440,7 @@ public class ActivityTrackerActivity extends AppCompatActivity {
                         Date d = new Date();
                         try {
                             d = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(dateStr);
-                        } catch (Exception ex) { /* ignore */ }
+                        } catch (Exception ex) {  }
 
                         items.add(new ActivityLogItem(
                                 "Logged Sleep: " + h + "h " + m + "m",
@@ -450,7 +453,7 @@ public class ActivityTrackerActivity extends AppCompatActivity {
                     refreshLatestActivitiesUI(items);
                 }
             });
-        // 4. Fetch meal logs
+        
         ListenerRegistration mealListener = fbHelper.getUsersCollection().document(uid)
             .collection("meal_logs")
             .addSnapshotListener((snapshot, e) -> {
@@ -485,10 +488,10 @@ public class ActivityTrackerActivity extends AppCompatActivity {
         runOnUiThread(() -> {
             llLatestActivities.removeAllViews();
 
-            // Sort descending by timestamp
+            
             Collections.sort(items, (o1, o2) -> o2.timestamp.compareTo(o1.timestamp));
 
-            // Show top 6 activities
+            
             int limit = Math.min(items.size(), 6);
             LayoutInflater inflater = LayoutInflater.from(this);
 
@@ -503,7 +506,7 @@ public class ActivityTrackerActivity extends AppCompatActivity {
                 ivIcon.setImageResource(item.icon);
                 tvTitle.setText(item.title);
 
-                // Format friendly time description
+                
                 long diffMs = new Date().getTime() - item.timestamp.getTime();
                 long diffMins = diffMs / (60 * 1000);
                 long diffHours = diffMins / 60;

@@ -1,3 +1,6 @@
+/*
+ * MealNutritionGraphView is a custom UI View that renders target vs consumed nutrition progress graphs.
+ */
 package com.fitai.gym;
 
 import android.content.Context;
@@ -12,7 +15,7 @@ import android.view.View;
 
 public class MealNutritionGraphView extends View {
 
-    private float[] dataPoints = new float[]{0.3f, 0.5f, 0.4f, 0.7f, 0.6f, 0.8f, 0.5f}; // default weekly
+    private float[] dataPoints = new float[]{0.3f, 0.5f, 0.4f, 0.7f, 0.6f, 0.8f, 0.5f}; 
     private Paint linePaint;
     private Paint fillPaint;
     private Paint dotPaint;
@@ -34,7 +37,7 @@ public class MealNutritionGraphView extends View {
 
     private void init() {
         linePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        linePaint.setColor(Color.parseColor("#C58BF2")); // Primary color: purple
+        linePaint.setColor(Color.parseColor("#C58BF2")); 
         linePaint.setStyle(Paint.Style.STROKE);
         linePaint.setStrokeWidth(6f);
         linePaint.setStrokeCap(Paint.Cap.ROUND);
@@ -43,7 +46,7 @@ public class MealNutritionGraphView extends View {
         fillPaint.setStyle(Paint.Style.FILL);
 
         dotPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        dotPaint.setColor(Color.parseColor("#92A3FD")); // Secondary color: blue
+        dotPaint.setColor(Color.parseColor("#92A3FD")); 
         dotPaint.setStyle(Paint.Style.FILL);
     }
 
@@ -69,7 +72,7 @@ public class MealNutritionGraphView extends View {
         Path path = new Path();
         Path fillPath = new Path();
 
-        // Start path
+        
         float startX = 0;
         float startY = h - (dataPoints[0] * h);
         path.moveTo(startX, startY);
@@ -82,7 +85,7 @@ public class MealNutritionGraphView extends View {
             float x2 = i * stepX;
             float y2 = h - (dataPoints[i] * h);
 
-            // Control points for cubic bezier curve
+            
             float conX1 = x1 + (stepX / 2f);
             float conY1 = y1;
             float conX2 = x1 + (stepX / 2f);
@@ -95,26 +98,26 @@ public class MealNutritionGraphView extends View {
         fillPath.lineTo(w, h);
         fillPath.close();
 
-        // Apply LinearGradient Shader for premium fade
+        
         LinearGradient gradient = new LinearGradient(
                 0, 0, 0, h,
-                Color.parseColor("#30C58BF2"), // Semi-transparent purple
-                Color.parseColor("#00FFFFFF"), // Transparent
+                Color.parseColor("#30C58BF2"), 
+                Color.parseColor("#00FFFFFF"), 
                 Shader.TileMode.CLAMP
         );
         fillPaint.setShader(gradient);
 
-        // Draw fills and lines
+        
         canvas.drawPath(fillPath, fillPaint);
         canvas.drawPath(path, linePaint);
 
-        // Draw dots at data points
+        
         for (int i = 0; i < dataPoints.length; i++) {
             float x = i * stepX;
             float y = h - (dataPoints[i] * h);
             canvas.drawCircle(x, y, 10f, dotPaint);
 
-            // Draw inner white dot for premium ring effect
+            
             Paint whitePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
             whitePaint.setColor(Color.WHITE);
             whitePaint.setStyle(Paint.Style.FILL);

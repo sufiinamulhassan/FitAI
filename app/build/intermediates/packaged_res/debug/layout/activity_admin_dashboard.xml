@@ -91,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="20dp"
-                    android:background="@drawable/btn_secondary_gradient">
+                    android:background="@drawable/bg_purple_gradient">
                     
                     <TextView
                         android:layout_width="wrap_content"
@@ -190,6 +190,41 @@
         </androidx.cardview.widget.CardView>
 
 
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardManageSubscriptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            android:layout_marginBottom="12dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+                <ImageView
+                    android:id="@+id/ivIcon3"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/p_achi"
+                    app:tint="#C58BF2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/ivIcon3"
+                    android:layout_marginStart="12dp"
+                    android:layout_centerVertical="true"
+                    android:text="Manage Subscriptions"
+                    android:textColor="#1D1617"
+                    android:textSize="16sp" />
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/p_next" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardAddAdmin"

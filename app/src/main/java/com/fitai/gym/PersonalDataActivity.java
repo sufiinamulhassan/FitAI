@@ -1,3 +1,6 @@
+/*
+ * PersonalDataActivity displays account information and profile attributes.
+ */
 package com.fitai.gym;
 
 import android.os.Bundle;

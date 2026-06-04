@@ -1,3 +1,6 @@
+/*
+ * AdminAddMemberActivity enables administrators to register new member accounts and setup initial roles.
+ */
 package com.fitai.gym;
 
 import android.content.Intent;
@@ -60,7 +63,7 @@ public class AdminAddMemberActivity extends AppCompatActivity {
             return;
         }
 
-        // Logout current admin first (required by Firebase client SDK to create another user)
+        
         fbHelper.getAuth().signOut();
         getSharedPreferences("FitAI_Prefs", MODE_PRIVATE).edit().putBoolean("is_logged_in", false).apply();
 

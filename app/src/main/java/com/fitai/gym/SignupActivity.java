@@ -1,3 +1,6 @@
+/*
+ * SignupActivity manages new user registrations and default profile creations.
+ */
 package com.fitai.gym;
 
 import android.content.Intent;
@@ -98,14 +101,14 @@ public class SignupActivity extends AppCompatActivity {
         if (password.length() < 6) { etPassword.setError("Password must be at least 6 characters"); etPassword.requestFocus(); return; }
         if (!cbTerms.isChecked()) { Toast.makeText(this, "Please accept Terms and Privacy Policy", Toast.LENGTH_SHORT).show(); return; }
 
-        // Firebase Register
+        
         FirebaseHelper helper = FirebaseHelper.getInstance();
         helper.getAuth().createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this, task -> {
                 if (task.isSuccessful()) {
                     String uid = task.getResult().getUser().getUid();
                     String fullName = firstName + " " + lastName;
-                    UserModel user = new UserModel(uid, fullName, email, "user"); // Default role is user
+                    UserModel user = new UserModel(uid, fullName, email, "user"); 
                     
                     helper.getUsersCollection().document(uid).set(user)
                         .addOnSuccessListener(aVoid -> {

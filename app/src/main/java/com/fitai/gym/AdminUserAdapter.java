@@ -1,3 +1,6 @@
+/*
+ * AdminUserAdapter binds and renders the list of registered users in the Admin Dashboard, enabling edit and delete actions.
+ */
 package com.fitai.gym;
 
 import android.app.AlertDialog;
@@ -53,7 +56,7 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.User
         String goal = user.getGoal() != null ? user.getGoal() : "No Goal Set";
         holder.tvGoal.setText(role.toUpperCase() + " · " + goal);
 
-        // Show premium badge
+        
         if (user.getIsPremium()) {
             holder.tvPremiumBadge.setVisibility(View.VISIBLE);
             String plan = user.getPremiumPlan();
@@ -75,7 +78,7 @@ public class AdminUserAdapter extends RecyclerView.Adapter<AdminUserAdapter.User
             holder.ivProfile.setImageResource(R.drawable.pp_1);
         }
 
-        // Long press to show actions
+        
         holder.itemView.setOnLongClickListener(v -> {
             showActionDialog(user, position);
             return true;

@@ -1,9 +1,12 @@
+/*
+ * WaterIntake is a data model tracking daily hydration records and fluid ounces consumed.
+ */
 package com.fitai.gym;
 
 public class WaterIntake {
     private String time;
     private int amountMl;
-    private String date; // YYYY-MM-DD
+    private String date; 
 
     public WaterIntake() {
     }

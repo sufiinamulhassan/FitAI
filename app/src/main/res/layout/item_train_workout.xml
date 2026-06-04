@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cvTrainCard"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:layout_marginStart="24dp"
+    android:layout_marginEnd="24dp"
+    android:layout_marginBottom="15dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="#F1F5FF">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:id="@+id/tvTrainTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fullbody Workout"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_medium" />
+
+            <TextView
+                android:id="@+id/tvTrainDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11 Exercises | 32mins"
+                android:textColor="#ADA4A5"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                android:id="@+id/tvTrainViewMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View more"
+                android:textColor="#9DCEFF"
+                android:textSize="10sp"
+                android:fontFamily="@font/poppins_bold"
+                android:background="@drawable/bg_pill_button"
+                android:backgroundTint="@color/white"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginTop="12dp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivTrainIcon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/workout_1"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

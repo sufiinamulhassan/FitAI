@@ -85,23 +85,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
-        <!-- Workout Detail Screen -->
-        <activity
-            android:name=".WorkoutDetailActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
 
-        <!-- Workout Session (Timer) Screen -->
-        <activity
-            android:name=".WorkoutSessionActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <!-- Exercise Detail Screen -->
-        <activity
-            android:name=".ExerciseDetailActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
 
         <!-- Workout Schedule Screen -->
         <activity
@@ -167,23 +151,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
-        <!-- Sleep Tracker Screen -->
-        <activity
-            android:name=".SleepTrackerActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
 
-        <!-- Sleep Schedule Screen -->
-        <activity
-            android:name=".SleepScheduleActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <!-- Add Alarm Screen -->
-        <activity
-            android:name=".AddAlarmActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
 
         <!-- Admin Dashboard Screens -->
         <activity
@@ -271,6 +239,12 @@
             android:name=".MealReminderReceiver"
             android:enabled="true"
             android:exported="false" />
+
+        <!-- Admin Manage Subscriptions Screen -->
+        <activity
+            android:name=".AdminManageSubscriptionsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
     </application>
 

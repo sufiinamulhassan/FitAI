@@ -1,3 +1,6 @@
+/*
+ * GoalSelectionActivity displays fitness objectives to help customize the user's default recommendations.
+ */
 package com.fitai.gym;
 
 import android.content.Intent;
@@ -38,7 +41,7 @@ public class GoalSelectionActivity extends AppCompatActivity {
         GoalAdapter adapter = new GoalAdapter(goalImages, goalTitles, goalDescs);
         viewPagerGoals.setAdapter(adapter);
 
-        // Add some fancy transform like the design (scaling side cards)
+        
         viewPagerGoals.setOffscreenPageLimit(3);
         viewPagerGoals.getChildAt(0).setOverScrollMode(View.OVER_SCROLL_NEVER);
 
@@ -57,7 +60,7 @@ public class GoalSelectionActivity extends AppCompatActivity {
             int currentPos = viewPagerGoals.getCurrentItem();
             String selectedGoal = goalTitles[currentPos];
 
-            // Use set with merge to ensure document exists
+            
             FirebaseHelper fbHelper = FirebaseHelper.getInstance();
             if (fbHelper.getAuth().getCurrentUser() != null) {
                 String uid = fbHelper.getAuth().getUid();

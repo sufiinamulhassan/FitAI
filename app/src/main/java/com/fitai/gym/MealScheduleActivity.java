@@ -1,3 +1,6 @@
+/*
+ * MealScheduleActivity handles setting up and listing scheduled meal reminders.
+ */
 package com.fitai.gym;
 
 import android.app.AlarmManager;
@@ -52,7 +55,7 @@ public class MealScheduleActivity extends AppCompatActivity {
 
         reminderPrefs = getSharedPreferences("meal_reminders", MODE_PRIVATE);
 
-        // Bind views
+        
         findViewById(R.id.ivBack).setOnClickListener(v -> finish());
         tvMonthYear = findViewById(R.id.tvMonthYear);
         llDateSliderContainer = findViewById(R.id.llDateSliderContainer);
@@ -75,11 +78,11 @@ public class MealScheduleActivity extends AppCompatActivity {
         pbProgressProt = findViewById(R.id.pbProgressProt);
         pbProgressFats = findViewById(R.id.pbProgressFats);
 
-        // Initialize calendar to today
+        
         selectedCalendar = Calendar.getInstance();
         selectedDay = selectedCalendar.get(Calendar.DAY_OF_MONTH);
 
-        // Month listeners
+        
         findViewById(R.id.btnPrevMonth).setOnClickListener(v -> {
             selectedCalendar.add(Calendar.MONTH, -1);
             selectedDay = 1;
@@ -95,7 +98,7 @@ public class MealScheduleActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.fabAdd).setOnClickListener(v -> {
-            // Open Meal Planner to let them select and add meals
+            
             startActivity(new Intent(this, MealPlannerActivity.class));
         });
 
@@ -122,7 +125,7 @@ public class MealScheduleActivity extends AppCompatActivity {
                     for (DocumentSnapshot doc : snapshots.getDocuments()) {
                         Map<String, Object> data = doc.getData();
                         if (data != null) {
-                            // Save document ID so we can toggle alarm states uniquely
+                            
                             data.put("_id", doc.getId());
                             mealLogs.add(data);
                         }
@@ -251,24 +254,24 @@ public class MealScheduleActivity extends AppCompatActivity {
             }
         }
 
-        // Update headers
+        
         tvBreakfastSubheader.setText(breakfastCount + " meals | " + breakfastCal + " calories");
         tvLunchSubheader.setText(lunchCount + " meals | " + lunchCal + " calories");
         tvSnacksSubheader.setText(snacksCount + " meals | " + snacksCal + " calories");
         tvDinnerSubheader.setText(dinnerCount + " meals | " + dinnerCal + " calories");
 
-        // Show empty states
+        
         showEmptyIfEmpty(llBreakfastContainer, "Breakfast");
         showEmptyIfEmpty(llLunchContainer, "Lunch");
         showEmptyIfEmpty(llSnacksContainer, "Snacks");
         showEmptyIfEmpty(llDinnerContainer, "Dinner");
 
-        // Update nutritions progress
+        
         tvProgressCalVal.setText(totalCal + " kCal");
         tvProgressProtVal.setText(totalProt + "g");
         tvProgressFatsVal.setText(totalFats + "g");
 
-        // Goals: Calories: 2000, Proteins: 150g, Fats: 70g
+        
         pbProgressCal.setProgress(Math.min(100, (int) ((totalCal / 2000.0) * 100)));
         pbProgressProt.setProgress(Math.min(100, (int) ((totalProt / 150.0) * 100)));
         pbProgressFats.setProgress(Math.min(100, (int) ((totalFats / 70.0) * 100)));
@@ -288,7 +291,7 @@ public class MealScheduleActivity extends AppCompatActivity {
         rowLp.bottomMargin = dpToPx(15);
         row.setLayoutParams(rowLp);
 
-        // Icon
+        
         ImageView ivMeal = new ImageView(this);
         LinearLayout.LayoutParams ivLp = new LinearLayout.LayoutParams(dpToPx(50), dpToPx(50));
         ivMeal.setLayoutParams(ivLp);
@@ -300,7 +303,7 @@ public class MealScheduleActivity extends AppCompatActivity {
         ivMeal.setPadding(dpToPx(10), dpToPx(10), dpToPx(10), dpToPx(10));
         ivMeal.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
 
-        // Text Info
+        
         LinearLayout info = new LinearLayout(this);
         info.setOrientation(LinearLayout.VERTICAL);
         LinearLayout.LayoutParams infoLp = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
@@ -322,7 +325,7 @@ public class MealScheduleActivity extends AppCompatActivity {
         info.addView(tvName);
         info.addView(tvTime);
 
-        // Alarm Bell Status
+        
         ImageView ivBell = new ImageView(this);
         LinearLayout.LayoutParams bellLp = new LinearLayout.LayoutParams(dpToPx(26), dpToPx(26));
         ivBell.setLayoutParams(bellLp);
@@ -333,11 +336,11 @@ public class MealScheduleActivity extends AppCompatActivity {
         ivBell.setColorFilter(hasReminder ? Color.parseColor("#C58BF2") : Color.parseColor("#ADA4A5"));
         ivBell.setBackgroundResource(R.drawable.bg_circle_hollow_nav);
 
-        // Click on row to set or toggle alarm
+        
         final String finalLogId = logId;
         View.OnClickListener clickListener = v -> {
             if (reminderPrefs.getBoolean(finalLogId, false)) {
-                // Cancel Dialog
+                
                 new AlertDialog.Builder(this)
                         .setTitle("Cancel Reminder")
                         .setMessage("Do you want to cancel the notification reminder for " + name + "?")
@@ -349,7 +352,7 @@ public class MealScheduleActivity extends AppCompatActivity {
                         .setNegativeButton("No", null)
                         .show();
             } else {
-                // Show Time Picker to schedule
+                
                 Calendar now = Calendar.getInstance();
                 new TimePickerDialog(this, (view, hourOfDay, minute) -> {
                     scheduleAlarm(finalLogId, name, category, hourOfDay, minute);
@@ -395,7 +398,7 @@ public class MealScheduleActivity extends AppCompatActivity {
         target.set(Calendar.SECOND, 0);
         target.set(Calendar.MILLISECOND, 0);
 
-        // If target is in the past, add 1 day
+        
         if (target.getTimeInMillis() < System.currentTimeMillis()) {
             target.add(Calendar.DAY_OF_MONTH, 1);
         }

@@ -1,3 +1,6 @@
+/*
+ * AdminManageWorkoutsActivity allows admins to list, edit, or delete existing workout plans.
+ */
 package com.fitai.gym;
 
 import android.app.AlertDialog;
@@ -54,25 +57,27 @@ public class AdminManageWorkoutsActivity extends AppCompatActivity {
     }
 
     private void loadWorkouts() {
-        FirebaseHelper.getInstance().getWorkoutPlansCollection()
-            .orderBy("createdAt", Query.Direction.DESCENDING)
-            .get()
-            .addOnSuccessListener(snapshot -> {
-                workoutList.clear();
-                if (snapshot != null) {
-                    for (DocumentSnapshot doc : snapshot.getDocuments()) {
-                        WorkoutPlan plan = doc.toObject(WorkoutPlan.class);
-                        if (plan != null) {
-                            plan.setId(doc.getId());
-                            workoutList.add(plan);
+        WorkoutSeeder.checkAndSeed(this, () -> {
+            FirebaseHelper.getInstance().getWorkoutPlansCollection()
+                .orderBy("createdAt", Query.Direction.DESCENDING)
+                .get()
+                .addOnSuccessListener(snapshot -> {
+                    workoutList.clear();
+                    if (snapshot != null) {
+                        for (DocumentSnapshot doc : snapshot.getDocuments()) {
+                            WorkoutPlan plan = doc.toObject(WorkoutPlan.class);
+                            if (plan != null) {
+                                plan.setId(doc.getId());
+                                workoutList.add(plan);
+                            }
                         }
                     }
-                }
-                adapter.notifyDataSetChanged();
-            })
-            .addOnFailureListener(e -> {
-                Toast.makeText(this, "Failed to load workout plans: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            });
+                    adapter.notifyDataSetChanged();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Failed to load workout plans: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+        });
     }
 
     private void deleteWorkout(WorkoutPlan plan, int position) {
@@ -80,17 +85,30 @@ public class AdminManageWorkoutsActivity extends AppCompatActivity {
             .setTitle("Delete Workout Plan")
             .setMessage("Are you sure you want to delete " + plan.getTitle() + "?")
             .setPositiveButton("Delete", (d, w) -> {
-                FirebaseHelper.getInstance().getWorkoutPlansCollection()
-                    .document(plan.getId())
-                    .delete()
-                    .addOnSuccessListener(v -> {
-                        workoutList.remove(position);
-                        adapter.notifyItemRemoved(position);
-                        adapter.notifyItemRangeChanged(position, workoutList.size());
-                        Toast.makeText(this, "Workout Plan deleted", Toast.LENGTH_SHORT).show();
+                
+                FirebaseHelper.getInstance().getDaysCollection(plan.getId()).get()
+                    .addOnSuccessListener(snapshot -> {
+                        if (snapshot != null) {
+                            for (com.google.firebase.firestore.DocumentSnapshot doc : snapshot.getDocuments()) {
+                                doc.getReference().delete();
+                            }
+                        }
+                        
+                        FirebaseHelper.getInstance().getWorkoutPlansCollection()
+                            .document(plan.getId())
+                            .delete()
+                            .addOnSuccessListener(v -> {
+                                workoutList.remove(position);
+                                adapter.notifyItemRemoved(position);
+                                adapter.notifyItemRangeChanged(position, workoutList.size());
+                                Toast.makeText(this, "Workout Plan deleted", Toast.LENGTH_SHORT).show();
+                            })
+                            .addOnFailureListener(e -> {
+                                Toast.makeText(this, "Failed to delete: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            });
                     })
                     .addOnFailureListener(e -> {
-                        Toast.makeText(this, "Failed to delete: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Failed to clean days: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     });
             })
             .setNegativeButton("Cancel", null)
@@ -111,7 +129,7 @@ public class AdminManageWorkoutsActivity extends AppCompatActivity {
             WorkoutPlan plan = workoutList.get(position);
             holder.tvName.setText(plan.getTitle());
 
-            // Build difficulty text
+            
             String diff = plan.getDifficulty() != null && !plan.getDifficulty().isEmpty() ? plan.getDifficulty().get(0) : "Beginner";
             holder.tvDifficulty.setText(diff.substring(0, 1).toUpperCase() + diff.substring(1));
 

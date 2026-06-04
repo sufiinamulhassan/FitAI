@@ -1,3 +1,6 @@
+/*
+ * ProfileActivity displays the user profile settings, height, weight, activity goals, and logouts.
+ */
 package com.fitai.gym;
 
 import android.content.Intent;
@@ -27,11 +30,11 @@ public class ProfileActivity extends AppCompatActivity {
         initViews();
         loadUserData();
 
-        // Header controls
+        
         ImageView btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> finish());
 
-        // Consolidate listeners: personal info now goes to the read-only view
+        
         findViewById(R.id.llPersonalInfo).setOnClickListener(v -> 
             startActivity(new Intent(this, PersonalDataActivity.class)));
 
@@ -61,7 +64,7 @@ public class ProfileActivity extends AppCompatActivity {
         findViewById(R.id.llPremium).setOnClickListener(v -> startActivity(new Intent(this, PaymentActivity.class)));
         findViewById(R.id.llAdminPanel).setOnClickListener(v -> startActivity(new Intent(this, AdminDashboardActivity.class)));
 
-        // Edit button takes you to setup/edit mode
+        
         findViewById(R.id.btnEditProfile).setOnClickListener(v -> {
             Intent intent = new Intent(this, ProfileSetupActivity.class);
             intent.putExtra("is_edit", true);
@@ -126,7 +129,7 @@ public class ProfileActivity extends AppCompatActivity {
         
         String uid = fbHelper.getAuth().getUid();
         
-        // Use SnapshotListener for REAL-TIME updates!
+        
         fbHelper.getUsersCollection().document(uid)
             .addSnapshotListener((snapshot, e) -> {
                 if (e != null || snapshot == null || !snapshot.exists()) return;
@@ -139,7 +142,7 @@ public class ProfileActivity extends AppCompatActivity {
                 String age = snapshot.getString("age");
                 String role = snapshot.getString("role");
                 
-                // Fallback: Calculate age from DOB if missing
+                
                 if (age == null && dob != null) {
                     try {
                         String[] parts = dob.split("/");
@@ -164,19 +167,19 @@ public class ProfileActivity extends AppCompatActivity {
                     if (profilePicUrl.startsWith("http")) {
                         Glide.with(this).load(profilePicUrl).into(ivProfile);
                     } else {
-                        // Decode Base64 for FREE storage
+                        
                         android.graphics.Bitmap bitmap = ImageUtils.base64ToBitmap(profilePicUrl);
                         if (bitmap != null) ivProfile.setImageBitmap(bitmap);
                     }
                 }
 
-                // Dynamically show/hide Admin Panel based on real role
+                
                 View adminPanel = findViewById(R.id.llAdminPanel);
                 if (adminPanel != null) {
                     adminPanel.setVisibility("admin".equalsIgnoreCase(role) ? View.VISIBLE : View.GONE);
                 }
 
-                // Show/hide Premium banner
+                
                 Boolean isPremium = snapshot.getBoolean("isPremium");
                 String premiumPlan = snapshot.getString("premiumPlan");
                 View cvPremiumBanner = findViewById(R.id.cvPremiumBanner);
@@ -188,7 +191,7 @@ public class ProfileActivity extends AppCompatActivity {
                             String planLabel = premiumPlan.equals("yearly") ? "12-Month Plan" : "1-Month Plan";
                             tvPremiumPlan.setText(planLabel + " • Active");
                         }
-                        // Change Premium button text to "Manage Subscription"
+                        
                         LinearLayout llPremium = findViewById(R.id.llPremium);
                         if (llPremium != null) {
                             ((TextView) llPremium.getChildAt(1)).setText("Manage Subscription");
@@ -231,10 +234,10 @@ public class ProfileActivity extends AppCompatActivity {
         
         String uid = fbHelper.getAuth().getUid();
         
-        // 1. Delete from Firestore first
+        
         fbHelper.getUsersCollection().document(uid).delete()
             .addOnSuccessListener(aVoid -> {
-                // 2. Delete from Firebase Auth
+                
                 fbHelper.getAuth().getCurrentUser().delete()
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {

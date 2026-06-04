@@ -1,3 +1,6 @@
+/*
+ * AchievementActivity displays the badges, progress landmarks, and user achievements unlocked in the app.
+ */
 package com.fitai.gym;
 
 import android.os.Bundle;
@@ -36,7 +39,7 @@ public class AchievementActivity extends AppCompatActivity {
         String uid = fbHelper.getCurrentUserUid();
         if (uid == null) return;
 
-        // Fetch counts from subcollections to determine unlocked achievements
+        
         Task<QuerySnapshot> tWorkouts = fbHelper.getUsersCollection().document(uid).collection("workout_progress").get();
         Task<QuerySnapshot> tMeals = fbHelper.getUsersCollection().document(uid).collection("meal_logs").get();
         Task<QuerySnapshot> tWater = fbHelper.getUsersCollection().document(uid).collection("water_logs").get();
@@ -71,7 +74,7 @@ public class AchievementActivity extends AppCompatActivity {
 
         List<Badge> badges = new ArrayList<>();
         
-        // Workout Badges (7)
+        
         badges.add(new Badge("First Step", "Complete your first workout", R.drawable.barbell, workouts >= 1));
         badges.add(new Badge("Getting Warmer", "Complete 3 workouts", R.drawable.burn, workouts >= 3));
         badges.add(new Badge("Warrior", "Complete 5 workouts", R.drawable.burn, workouts >= 5));
@@ -80,21 +83,21 @@ public class AchievementActivity extends AppCompatActivity {
         badges.add(new Badge("Unstoppable", "Complete 50 workouts", R.drawable.burn, workouts >= 50));
         badges.add(new Badge("Legend", "Complete 100 workouts", R.drawable.time_workout, workouts >= 100));
 
-        // Meal Badges (5)
+        
         badges.add(new Badge("Healthy Eater", "Log your first meal", R.drawable.apple_pie, meals >= 1));
         badges.add(new Badge("Chef", "Log 5 meals", R.drawable.pancake_1, meals >= 5));
         badges.add(new Badge("Nutritionist", "Log 10 meals", R.drawable.salad, meals >= 10));
         badges.add(new Badge("Dietitian", "Log 25 meals", R.drawable.chicken, meals >= 25));
         badges.add(new Badge("Master Chef", "Log 50 meals", R.drawable.nigiri, meals >= 50));
 
-        // Water Badges (5)
+        
         badges.add(new Badge("Hydrated", "Log water for the first time", R.drawable.glass_of_milk, water >= 1));
         badges.add(new Badge("Splash", "Log 5 water intakes", R.drawable.glass_of_milk, water >= 5));
         badges.add(new Badge("Aqua", "Log 10 water intakes", R.drawable.glass_of_milk, water >= 10));
         badges.add(new Badge("Ocean", "Log 25 water intakes", R.drawable.glass_of_milk, water >= 25));
         badges.add(new Badge("Poseidon", "Log 50 water intakes", R.drawable.glass_of_milk, water >= 50));
 
-        // Sleep Badges (3)
+        
         badges.add(new Badge("Restful", "Log your first sleep", R.drawable.bed, sleep >= 1));
         badges.add(new Badge("Dreamer", "Log 10 sleep sessions", R.drawable.bed, sleep >= 10));
         badges.add(new Badge("Deep Sleeper", "Log 30 sleep sessions", R.drawable.bed, sleep >= 30));
@@ -113,7 +116,7 @@ public class AchievementActivity extends AppCompatActivity {
 
             if (b.unlocked) {
                 ivIcon.setAlpha(1.0f);
-                tvTitle.setTextColor(android.graphics.Color.parseColor("#1D1617")); // dark text
+                tvTitle.setTextColor(android.graphics.Color.parseColor("#1D1617")); 
                 cvBadge.setCardBackgroundColor(android.graphics.Color.WHITE);
                 cvBadge.setCardElevation(4f);
             } else {

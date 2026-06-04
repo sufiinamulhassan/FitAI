@@ -1,3 +1,6 @@
+/*
+ * FirebaseHelper is a singleton that provides centralized access to Firebase Auth, Firestore, and Storage.
+ */
 package com.fitai.gym;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,14 +33,8 @@ public class FirebaseHelper {
     public FirebaseAuth getAuth() { return auth; }
     public FirebaseFirestore getDb() { return db; }
 
-    // ── Collections ──────────────────────────────────────────
-
     public CollectionReference getUsersCollection() {
         return db.collection("users");
-    }
-
-    public CollectionReference getWorkoutsCollection() {
-        return db.collection("workouts");
     }
 
     public CollectionReference getWorkoutPlansCollection() {
@@ -60,8 +57,6 @@ public class FirebaseHelper {
         return auth.getCurrentUser() != null ? auth.getCurrentUser().getUid() : null;
     }
 
-    // ── User Document Helpers ────────────────────────────────
-
     public DocumentReference getCurrentUserDoc() {
         String uid = getCurrentUserUid();
         if (uid == null) return null;
@@ -82,8 +77,6 @@ public class FirebaseHelper {
         return getUsersCollection().document(uid).collection("workout_schedule");
     }
 
-    // ── Workout Plan Helpers ─────────────────────────────────
-
     public CollectionReference getDaysCollection(String planId) {
         return getWorkoutPlansCollection().document(planId).collection("days");
     }
@@ -91,8 +84,6 @@ public class FirebaseHelper {
     public DocumentReference getDayDocument(String planId, int dayNumber) {
         return getDaysCollection(planId).document(String.valueOf(dayNumber));
     }
-
-    // ── Query Helpers ────────────────────────────────────────
 
     public Query getWorkoutPlansByDate() {
         return getWorkoutPlansCollection().orderBy("createdAt", Query.Direction.DESCENDING);

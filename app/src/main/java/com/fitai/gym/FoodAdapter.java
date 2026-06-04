@@ -1,3 +1,6 @@
+/*
+ * FoodAdapter binds and renders the list of food and meal items in the nutrition screens.
+ */
 package com.fitai.gym;
 
 import android.content.Context;

@@ -104,24 +104,6 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
-        <!-- Workout Detail Screen -->
-        <activity
-            android:name="com.fitai.gym.WorkoutDetailActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <!-- Workout Session (Timer) Screen -->
-        <activity
-            android:name="com.fitai.gym.WorkoutSessionActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <!-- Exercise Detail Screen -->
-        <activity
-            android:name="com.fitai.gym.ExerciseDetailActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
         <!-- Workout Schedule Screen -->
         <activity
             android:name="com.fitai.gym.WorkoutScheduleActivity"
@@ -181,24 +163,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.fitai.gym.ProgressPhotoActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <!-- Sleep Tracker Screen -->
-        <activity
-            android:name="com.fitai.gym.SleepTrackerActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <!-- Sleep Schedule Screen -->
-        <activity
-            android:name="com.fitai.gym.SleepScheduleActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <!-- Add Alarm Screen -->
-        <activity
-            android:name="com.fitai.gym.AddAlarmActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
 
@@ -281,6 +245,12 @@
             android:name="com.fitai.gym.MealReminderReceiver"
             android:enabled="true"
             android:exported="false" />
+
+        <!-- Admin Manage Subscriptions Screen -->
+        <activity
+            android:name="com.fitai.gym.AdminManageSubscriptionsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

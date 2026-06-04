@@ -1,3 +1,6 @@
+/*
+ * AdminViewUserProgressActivity displays detailed workout execution logs and statistics for a selected member account.
+ */
 package com.fitai.gym;
 
 import android.os.Bundle;
@@ -81,7 +84,7 @@ public class AdminViewUserProgressActivity extends AppCompatActivity {
 
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
-        // Fetch profile pic from user doc
+        
         fbHelper.getUsersCollection().document(userUid).get().addOnSuccessListener(snapshot -> {
             if (snapshot.exists()) {
                 String profilePicUrl = snapshot.getString("profilePicUrl");
@@ -108,7 +111,7 @@ public class AdminViewUserProgressActivity extends AppCompatActivity {
     private void loadUserProgressHistory() {
         items.clear();
 
-        // 1. Fetch completed workouts
+        
         ListenerRegistration workoutListener = fbHelper.getUsersCollection().document(userUid)
             .collection("workout_progress")
             .addSnapshotListener((snapshot, e) -> {
@@ -136,7 +139,7 @@ public class AdminViewUserProgressActivity extends AppCompatActivity {
             });
         listeners.add(workoutListener);
 
-        // 2. Fetch water intake
+        
         ListenerRegistration waterListener = fbHelper.getUsersCollection().document(userUid)
             .collection("water_logs")
             .addSnapshotListener((snapshot, e) -> {
@@ -162,7 +165,7 @@ public class AdminViewUserProgressActivity extends AppCompatActivity {
             });
         listeners.add(waterListener);
 
-        // 3. Fetch sleep logs
+        
         ListenerRegistration sleepListener = fbHelper.getUsersCollection().document(userUid)
             .collection("sleep_logs")
             .addSnapshotListener((snapshot, e) -> {
@@ -180,7 +183,7 @@ public class AdminViewUserProgressActivity extends AppCompatActivity {
                         Date d = new Date();
                         try {
                             d = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(dateStr);
-                        } catch (Exception ex) { /* ignore */ }
+                        } catch (Exception ex) {  }
 
                         items.add(new ActivityLogItem(
                                 "Logged Sleep: " + h + "h " + m + "m",
@@ -195,7 +198,7 @@ public class AdminViewUserProgressActivity extends AppCompatActivity {
             });
         listeners.add(sleepListener);
 
-        // 4. Fetch meal logs
+        
         ListenerRegistration mealListener = fbHelper.getUsersCollection().document(userUid)
             .collection("meal_logs")
             .addSnapshotListener((snapshot, e) -> {
@@ -231,7 +234,7 @@ public class AdminViewUserProgressActivity extends AppCompatActivity {
         runOnUiThread(() -> {
             llLatestActivities.removeAllViews();
 
-            // Sort descending by timestamp
+            
             Collections.sort(items, (o1, o2) -> o2.timestamp.compareTo(o1.timestamp));
 
             int limit = Math.min(items.size(), 10);
@@ -248,7 +251,7 @@ public class AdminViewUserProgressActivity extends AppCompatActivity {
                 ivIcon.setImageResource(item.iconRes);
                 tvTitle.setText(item.title);
 
-                // Format timestamp
+                
                 SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, hh:mm a", Locale.getDefault());
                 tvSubtitle.setText(item.subtitle + " • " + sdf.format(item.timestamp));
 

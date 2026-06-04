@@ -3251,6 +3251,7 @@ drawable bg_nav_back
 drawable bg_onboarding_next
 drawable bg_pill_button
 drawable bg_profile_circle
+drawable bg_purple_gradient
 drawable bg_rounded
 drawable bg_rounded_bg
 drawable bg_rounded_rectangle_5256
@@ -3686,6 +3687,7 @@ id browser_actions_menu_items
 id browser_actions_menu_view
 id btnAdd
 id btnAddDay
+id btnAddExInDialog
 id btnAddMeal
 id btnAddRecipeStep
 id btnAddSchedule
@@ -3716,6 +3718,7 @@ id btnGetStarted
 id btnGoToHome
 id btnGoogleLogin
 id btnGoogleSignup
+id btnGrantPremium
 id btnJazzcash
 id btnLevelAdvanced
 id btnLevelBeginner
@@ -3738,6 +3741,7 @@ id btnPrevMonth
 id btnPublish
 id btnRegister
 id btnRemoveExercise
+id btnRevokePremium
 id btnSave
 id btnSelectBreakfast
 id btnSelectDinner
@@ -3758,23 +3762,19 @@ id buttonPanel
 id cache_measures
 id callMeasure
 id cancel_button
-id cardAB
 id cardAddAdmin
 id cardBedtime
 id cardDayContainer
-id cardFullBody
 id cardGoal
 id cardHours
 id cardLogoutAdmin
-id cardLowerBody
 id cardManageMeals
+id cardManageSubscriptions
 id cardManageWorkouts
 id cardMonthly
 id cardQuarterly
 id cardRepeat
 id cardSleep
-id cardUpcoming1
-id cardUpcoming2
 id cardWater
 id cardWorkout
 id cardYearly
@@ -3825,6 +3825,7 @@ id cut
 id cvBadge
 id cvMonthly
 id cvPremiumBanner
+id cvTrainCard
 id cvYearly
 id dark
 id date_picker_actions
@@ -3890,6 +3891,7 @@ id etExSets
 id etFirstName
 id etHeight
 id etLastName
+id etManageDayTitle
 id etMealCalories
 id etMealIngredients
 id etMealInstructions
@@ -3995,6 +3997,7 @@ id ivFullPhoto
 id ivGoalImg
 id ivIcon1
 id ivIcon2
+id ivIcon3
 id ivIconAdmin
 id ivIconLogout
 id ivMainProfilePic
@@ -4017,6 +4020,8 @@ id ivRecImage1
 id ivRecImage2
 id ivShowPassword
 id ivSleepGraph
+id ivTrainIcon
+id ivUpcomingImg
 id ivUserImage
 id ivUserProfile
 id ivWelcome
@@ -4265,10 +4270,14 @@ id rvDays
 id rvDaysGrid
 id rvExercises
 id rvGallery
+id rvManageDayExercises
 id rvNotifications
 id rvPopular
 id rvSchedule
+id rvSubscriptions
+id rvUpcomingWorkouts
 id rvUserList
+id rvWhatToTrain
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -4308,6 +4317,7 @@ id snackbar_text
 id snap
 id snapMargins
 id south
+id spChartFilter
 id spEditRole
 id spMealCategory
 id spMealImage
@@ -4346,6 +4356,7 @@ id switchDarkMode
 id switchPopNotification
 id switchPushNotif
 id switchUnits
+id switchUpcoming
 id switchVibration
 id tabMode
 id tag_accessibility_actions
@@ -4447,6 +4458,7 @@ id tvDifficultyValue
 id tvDinnerFoodCount
 id tvDinnerSubheader
 id tvDuration
+id tvEstRevenue
 id tvExCount
 id tvExDetail
 id tvExDone
@@ -4534,6 +4546,9 @@ id tvStepNumText
 id tvStepNumber
 id tvStepTitle
 id tvStepsTarget
+id tvSubPlanLabel
+id tvSubUserEmail
+id tvSubUserName
 id tvSubtitle
 id tvSuccessMessage
 id tvSuccessSubtitle
@@ -4549,10 +4564,18 @@ id tvTodayMealsTitle
 id tvTotal
 id tvTotalCal
 id tvTotalDuration
+id tvTotalFree
 id tvTotalMins
+id tvTotalPremium
 id tvTotalUsers
+id tvTrainDetail
+id tvTrainTitle
+id tvTrainViewMore
+id tvUpcomingTime
+id tvUpcomingTitle
 id tvUserEmail
 id tvUserGoal
+id tvUserInitial
 id tvUserName
 id tvWaterTarget
 id tvWaterTotal
@@ -4729,6 +4752,7 @@ layout activity_admin_add_member
 layout activity_admin_add_workout
 layout activity_admin_dashboard
 layout activity_admin_manage_meals
+layout activity_admin_manage_subscriptions
 layout activity_admin_manage_workouts
 layout activity_admin_view_user_progress
 layout activity_day_exercises
@@ -4785,6 +4809,7 @@ layout dialog_add_edit_meal
 layout dialog_add_exercise
 layout dialog_edit_user
 layout dialog_full_screen_photo
+layout dialog_manage_day
 layout fragment_onboarding_page
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
@@ -4793,6 +4818,7 @@ layout item_admin_day
 layout item_admin_exercise
 layout item_admin_meal
 layout item_admin_recipe_step
+layout item_admin_subscription
 layout item_admin_workout
 layout item_calendar_day
 layout item_day_exercise
@@ -4807,6 +4833,8 @@ layout item_latest_workout
 layout item_meal_schedule
 layout item_notification
 layout item_recipe_step_timeline
+layout item_train_workout
+layout item_upcoming_workout
 layout item_user
 layout item_water_log
 layout item_workout_card

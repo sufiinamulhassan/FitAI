@@ -1,3 +1,6 @@
+/*
+ * MealReminderReceiver manages alarm broadcast events to trigger notifications for daily meals.
+ */
 package com.fitai.gym;
 
 import android.app.NotificationChannel;

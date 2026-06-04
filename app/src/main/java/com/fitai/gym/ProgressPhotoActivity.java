@@ -1,3 +1,6 @@
+/*
+ * ProgressPhotoActivity lists progress photos and handles camera captures.
+ */
 package com.fitai.gym;
 
 import android.app.AlertDialog;
@@ -45,7 +48,7 @@ public class ProgressPhotoActivity extends AppCompatActivity {
     private List<ProgressPhotoItem> photoList = new ArrayList<>();
     private GalleryAdapter adapter;
 
-    // Camera Result Launcher
+    
     private final ActivityResultLauncher<Intent> cameraLauncher = registerForActivityResult(
         new ActivityResultContracts.StartActivityForResult(),
         result -> {
@@ -61,7 +64,7 @@ public class ProgressPhotoActivity extends AppCompatActivity {
             }
         });
 
-    // Gallery / Photo Picker Launcher
+    
     private final ActivityResultLauncher<String> galleryLauncher = registerForActivityResult(
         new ActivityResultContracts.GetContent(),
         uri -> {
@@ -162,8 +165,8 @@ public class ProgressPhotoActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Optimizing and saving photo...", Toast.LENGTH_SHORT).show();
 
-        // Standard Firestore backup with premium hybrid storage to avoid Storage issues
-        String base64Image = ImageUtils.bitmapToBase64(bitmap, 480); // 480px is perfectly optimized and sharp
+        
+        String base64Image = ImageUtils.bitmapToBase64(bitmap, 480); 
 
         ProgressPhotoItem item = new ProgressPhotoItem(base64Image, date, timestamp);
 
@@ -211,7 +214,7 @@ public class ProgressPhotoActivity extends AppCompatActivity {
 
         tvPhotoDate.setText("Logged Date: " + item.getDate());
 
-        // Load image dynamically (supports URL + Base64 fallback)
+        
         String url = item.getPhotoUrl();
         if (url != null && (url.startsWith("data:image") || !url.startsWith("http"))) {
             Bitmap bmp = ImageUtils.base64ToBitmap(url);
@@ -249,7 +252,7 @@ public class ProgressPhotoActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    // Dynamic item model mapping
+    
     public static class ProgressPhotoItem {
         private String photoUrl;
         private String date;
@@ -290,7 +293,7 @@ public class ProgressPhotoActivity extends AppCompatActivity {
             ProgressPhotoItem item = photos.get(position);
             String url = item.getPhotoUrl();
 
-            // Load dynamically from Base64 or URL
+            
             if (url != null && (url.startsWith("data:image") || !url.startsWith("http"))) {
                 Bitmap bmp = ImageUtils.base64ToBitmap(url);
                 if (bmp != null) {

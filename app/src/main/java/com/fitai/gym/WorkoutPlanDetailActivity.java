@@ -1,3 +1,6 @@
+/*
+ * WorkoutPlanDetailActivity displays overall workout plans, schedules, and start options.
+ */
 package com.fitai.gym;
 
 import android.content.Intent;
@@ -46,7 +49,7 @@ public class WorkoutPlanDetailActivity extends AppCompatActivity {
             return;
         }
 
-        // Bind views
+        
         tvPlanTitle = findViewById(R.id.tvPlanTitle);
         tvPlanDesc = findViewById(R.id.tvPlanDesc);
         tvPlanCalories = findViewById(R.id.tvPlanCalories);
@@ -60,12 +63,12 @@ public class WorkoutPlanDetailActivity extends AppCompatActivity {
 
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
-        // Level selectors
+        
         btnLevelBeginner.setOnClickListener(v -> selectLevel("beginner"));
         btnLevelIntermediate.setOnClickListener(v -> selectLevel("intermediate"));
         btnLevelAdvanced.setOnClickListener(v -> selectLevel("advanced"));
 
-        // Start next day
+        
         findViewById(R.id.btnStartPlan).setOnClickListener(v -> startNextDay());
 
         loadPlan();
@@ -132,7 +135,7 @@ public class WorkoutPlanDetailActivity extends AppCompatActivity {
     private void selectLevel(String level) {
         selectedLevel = level;
 
-        // Reset all
+        
         btnLevelBeginner.setTextColor(0xFFADA4A5);
         btnLevelBeginner.setBackgroundTintList(ColorStateList.valueOf(0xFFF7F8F8));
         btnLevelIntermediate.setTextColor(0xFFADA4A5);
@@ -140,7 +143,7 @@ public class WorkoutPlanDetailActivity extends AppCompatActivity {
         btnLevelAdvanced.setTextColor(0xFFADA4A5);
         btnLevelAdvanced.setBackgroundTintList(ColorStateList.valueOf(0xFFF7F8F8));
 
-        // Highlight selected
+        
         switch (level) {
             case "beginner":
                 btnLevelBeginner.setTextColor(0xFFFFFFFF);
@@ -156,7 +159,7 @@ public class WorkoutPlanDetailActivity extends AppCompatActivity {
                 break;
         }
 
-        // Save level preference
+        
         if (userProgress != null) {
             userProgress.setLevel(level);
             String uid = fbHelper.getCurrentUserUid();
@@ -186,15 +189,15 @@ public class WorkoutPlanDetailActivity extends AppCompatActivity {
 
                 boolean completed = userProgress != null && userProgress.isDayCompleted(dayNum);
                 if (completed) {
-                    // Green = completed
+                    
                     holder.tvDayNum.setTextColor(0xFFFFFFFF);
                     holder.tvDayNum.setBackgroundTintList(ColorStateList.valueOf(0xFF5DD672));
                 } else if (dayNum == getNextDay()) {
-                    // Blue = current
+                    
                     holder.tvDayNum.setTextColor(0xFFFFFFFF);
                     holder.tvDayNum.setBackgroundTintList(ColorStateList.valueOf(0xFF9DCEFF));
                 } else {
-                    // Grey = locked/future
+                    
                     holder.tvDayNum.setTextColor(0xFFADA4A5);
                     holder.tvDayNum.setBackgroundTintList(ColorStateList.valueOf(0xFFF7F8F8));
                 }

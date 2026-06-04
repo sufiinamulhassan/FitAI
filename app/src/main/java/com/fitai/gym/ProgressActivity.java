@@ -1,3 +1,6 @@
+/*
+ * ProgressActivity displays visual body progress charts, BMI categories, and weight tracking history.
+ */
 package com.fitai.gym;
 
 import android.os.Bundle;
@@ -53,7 +56,7 @@ public class ProgressActivity extends AppCompatActivity {
         String uid = fb.getCurrentUserUid();
         if (uid == null) return;
 
-        // Get start of current week (Monday)
+        
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
         cal.set(Calendar.HOUR_OF_DAY, 0);
@@ -67,8 +70,8 @@ public class ProgressActivity extends AppCompatActivity {
             .orderBy("completedAt", Query.Direction.ASCENDING)
             .get()
             .addOnSuccessListener(snapshot -> {
-                // Track calories per day of week and totals
-                int[] dayCals = new int[7]; // Mon=0 ... Sun=6
+                
+                int[] dayCals = new int[7]; 
                 int totalCal = 0;
                 int totalSec = 0;
 
@@ -98,7 +101,7 @@ public class ProgressActivity extends AppCompatActivity {
                     }
                 }
 
-                // Find max for scaling bars (cap at 500 cal per day)
+                
                 int maxCal = 500;
                 for (int d : dayCals) if (d > maxCal) maxCal = d;
 
@@ -128,7 +131,7 @@ public class ProgressActivity extends AppCompatActivity {
                 llProgressPhotos.removeAllViews();
                 
                 if (snapshot.isEmpty()) {
-                    // Show a placeholder or text if no photos are uploaded
+                    
                     TextView tvEmpty = new TextView(this);
                     tvEmpty.setText("No photos uploaded yet. Tap 'See more' to add some!");
                     tvEmpty.setTextColor(android.graphics.Color.GRAY);
@@ -152,7 +155,7 @@ public class ProgressActivity extends AppCompatActivity {
                     iv.setLayoutParams(params);
                     iv.setScaleType(ImageView.ScaleType.CENTER_CROP);
                     
-                    // Premium rounded corners for the dynamic images
+                    
                     iv.setOutlineProvider(new android.view.ViewOutlineProvider() {
                         @Override
                         public void getOutline(android.view.View view, android.graphics.Outline outline) {
@@ -169,7 +172,7 @@ public class ProgressActivity extends AppCompatActivity {
                             iv.setImageBitmap(bitmap);
                         }
                     } else {
-                        // Attempt to decode as local fallback base64
+                        
                         android.graphics.Bitmap bitmap = ImageUtils.base64ToBitmap(photoUrl);
                         if (bitmap != null) {
                             iv.setImageBitmap(bitmap);

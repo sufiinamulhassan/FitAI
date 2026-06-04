@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Day Title"
+        android:textSize="13sp"
+        android:textColor="#1D1617"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/etManageDayTitle"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="@drawable/bg_input"
+        android:hint="e.g. Day 1 - Chest Focus"
+        android:textSize="14sp"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:fontFamily="@font/poppins_regular"
+        android:inputType="text"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exercises"
+        android:textSize="13sp"
+        android:textColor="#1D1617"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_marginBottom="8dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvManageDayExercises"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scrollbars="vertical" />
+
+    <android.widget.Button
+        android:id="@+id/btnAddExInDialog"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="+ Add Exercise"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_pill_button"
+        android:backgroundTint="#9DCEFF"
+        android:layout_marginTop="16dp"
+        android:textAllCaps="false"
+        android:fontFamily="@font/poppins_bold" />
+
+</LinearLayout>

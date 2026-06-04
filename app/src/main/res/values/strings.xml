@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MyApp</string>
+    <string name="app_name">FitAI</string>
     <string name="txt_11_exercises___32mins___320_ca">11 Exercises | 32mins | 320 Calories Burn</string>
     <string name="fullbody_workout">Fullbody Workout</string>
     <string name="schedule_workout">Schedule Workout</string>

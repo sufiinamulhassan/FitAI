@@ -1,3 +1,6 @@
+/*
+ * ImageLoaderHelper implements asynchronous image downloading and caching for workout and food items.
+ */
 package com.fitai.gym;
 
 import android.content.Context;
@@ -8,10 +11,7 @@ import android.widget.ImageView;
 
 public class ImageLoaderHelper {
 
-    /**
-     * Loads an image into an ImageView dynamically.
-     * Supports both preset drawable resource names and Base64 encoded custom images.
-     */
+    
     public static void loadImage(Context context, ImageView imageView, String imageKey, int fallbackResId) {
         if (imageView == null) return;
 
@@ -29,7 +29,7 @@ public class ImageLoaderHelper {
             }
         }
 
-        // Fallback to local drawable
+        
         int resId = fallbackResId;
         if (imageKey != null && !imageKey.isEmpty() && !imageKey.startsWith("base64:")) {
             int identifier = context.getResources().getIdentifier(imageKey.toLowerCase(), "drawable", context.getPackageName());

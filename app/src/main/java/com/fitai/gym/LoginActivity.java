@@ -1,3 +1,6 @@
+/*
+ * LoginActivity handles user authentication, session persistence, and role redirection.
+ */
 package com.fitai.gym;
 
 import android.content.Intent;
@@ -42,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     private GoogleSignInClient googleSignInClient;
     private ActivityResultLauncher<Intent> googleSignInLauncher;
 
-    // Dummy credentials for demo
+    
     private static final String DEMO_EMAIL = "demo@FitnesX.com";
     private static final String DEMO_PASSWORD = "FitnesX123";
 
@@ -96,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
 
         tvRegister.setOnClickListener(v -> {
             startActivity(new Intent(this, SignupActivity.class));
-            // Keep in backstack or finish? Usually keep so they can go back.
+            
         });
 
         tvForgotPassword.setOnClickListener(v -> {
@@ -131,13 +134,13 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        // Admin check
+        
         if (email.equals("admin.fitai@gmail.com") && password.equals("admin@1122")) {
             fbHelper.getAuth().signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         String uid = task.getResult().getUser().getUid();
-                        // Ensure role is admin
+                        
                         Map<String, Object> adminData = new HashMap<>();
                         adminData.put("name", "Admin");
                         adminData.put("email", email);
@@ -152,7 +155,7 @@ public class LoginActivity extends AppCompatActivity {
                                 finish();
                             });
                     } else {
-                        // If admin account doesn't exist yet, auto-create it
+                        
                         fbHelper.getAuth().createUserWithEmailAndPassword(email, password)
                             .addOnCompleteListener(this, regTask -> {
                                 if (regTask.isSuccessful()) {
@@ -179,13 +182,13 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        // Firebase auth logic
+        
         fbHelper.getAuth().signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this, task -> {
                 if (task.isSuccessful()) {
                     String uid = task.getResult().getUser().getUid();
                     
-                    // Check if role is admin
+                    
                     fbHelper.getUsersCollection().document(uid).get().addOnSuccessListener(snapshot -> {
                         String role = snapshot.getString("role");
                         if (role == null) role = "user";

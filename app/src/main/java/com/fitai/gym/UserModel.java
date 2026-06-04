@@ -1,3 +1,6 @@
+/*
+ * UserModel is a data model holding member details, subscription state, role access, and target metrics.
+ */
 package com.fitai.gym;
 
 public class UserModel {
@@ -7,7 +10,7 @@ public class UserModel {
     private String premiumPlan;
 
     public UserModel() {
-        // Required for Firestore
+        
     }
 
     public UserModel(String uid, String name, String email, String role) {
@@ -17,7 +20,7 @@ public class UserModel {
         this.role = role;
     }
 
-    // Getters
+    
     public String getUid() { return uid; }
     public String getName() { return name; }
     public String getEmail() { return email; }
@@ -30,7 +33,7 @@ public class UserModel {
     public boolean getIsPremium() { return isPremium; }
     public String getPremiumPlan() { return premiumPlan; }
 
-    // Setters
+    
     public void setUid(String uid) { this.uid = uid; }
     public void setName(String name) { this.name = name; }
     public void setEmail(String email) { this.email = email; }

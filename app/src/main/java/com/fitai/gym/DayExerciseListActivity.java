@@ -1,3 +1,6 @@
+/*
+ * DayExerciseListActivity displays the sequence of exercises designated for a specific training day.
+ */
 package com.fitai.gym;
 
 import android.content.Intent;
@@ -64,7 +67,7 @@ public class DayExerciseListActivity extends AppCompatActivity {
                 TextView tvDayTitle = findViewById(R.id.tvDayTitle);
                 tvDayTitle.setText(dayTitle != null ? dayTitle : "Day " + dayNumber);
 
-                // Parse exercises from the document
+                
                 List<Map<String, Object>> exList =
                     (List<Map<String, Object>>) doc.get("exercises");
 
@@ -83,7 +86,7 @@ public class DayExerciseListActivity extends AppCompatActivity {
                     }
                 }
 
-                // Update UI
+                
                 TextView tvExCount = findViewById(R.id.tvExCount);
                 tvExCount.setText(exercises.size() + " Exercise" + (exercises.size() != 1 ? "s" : ""));
 

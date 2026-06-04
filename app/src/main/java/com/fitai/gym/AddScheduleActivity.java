@@ -1,3 +1,6 @@
+/*
+ * AddScheduleActivity allows users to schedule new workouts with custom dates, times, and tags.
+ */
 package com.fitai.gym;
 
 import android.os.Bundle;
@@ -35,7 +38,7 @@ public class AddScheduleActivity extends AppCompatActivity {
         tvDifficultyValue = findViewById(R.id.tvDifficultyValue);
         timePicker = findViewById(R.id.timePicker);
 
-        // Format date for display like "Thu, 27 May 2021"
+        
         try {
             java.util.Date date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(selectedDate);
             tvSelectedDate.setText(new SimpleDateFormat("EEE, d MMM yyyy", Locale.getDefault()).format(date));

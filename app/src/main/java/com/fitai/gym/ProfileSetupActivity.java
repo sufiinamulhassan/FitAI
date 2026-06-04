@@ -1,3 +1,6 @@
+/*
+ * ProfileSetupActivity manages the multi-step onboarding data entry for new accounts.
+ */
 package com.fitai.gym;
 
 import android.app.DatePickerDialog;
@@ -77,7 +80,7 @@ public class ProfileSetupActivity extends AppCompatActivity {
 
         ivProfileSelect.setOnClickListener(v -> pickImageLauncher.launch("image/*"));
 
-        // Styling the spinner
+        
         String[] genders = {"Choose Gender", "Male", "Female", "Other"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, genders) {
             @Override
@@ -102,7 +105,7 @@ public class ProfileSetupActivity extends AppCompatActivity {
             ).show();
         });
 
-        // Toggle units for fun (optional but good for UX)
+        
         tvWeightUnit.setOnClickListener(v -> {
             if (tvWeightUnit.getText().toString().equals("KG")) {
                 tvWeightUnit.setText("LB");
@@ -119,7 +122,7 @@ public class ProfileSetupActivity extends AppCompatActivity {
             }
         });
 
-        // Fetch existing user data to pre-fill the form
+        
         FirebaseHelper fbHelper = FirebaseHelper.getInstance();
         if (fbHelper.getAuth().getCurrentUser() != null) {
             String uid = fbHelper.getAuth().getUid();
@@ -192,8 +195,8 @@ public class ProfileSetupActivity extends AppCompatActivity {
             String gender = spinnerGender.getSelectedItem().toString();
             String dob = etDateOfBirth.getText().toString();
 
-            // Calculate precise age from DOB (DD/MM/YYYY)
-            int age = 0; // Default
+            
+            int age = 0; 
             try {
                 String[] parts = dob.split("/");
                 int day = Integer.parseInt(parts[0]);
@@ -210,7 +213,7 @@ public class ProfileSetupActivity extends AppCompatActivity {
                 }
             } catch (Exception e) { e.printStackTrace(); }
 
-            // Save data locally for quick dashboard calculation
+            
             getSharedPreferences("FitAI_Prefs", MODE_PRIVATE).edit()
                 .putString("weight", weight)
                 .putString("height", height)
@@ -219,12 +222,12 @@ public class ProfileSetupActivity extends AppCompatActivity {
                 .putString("gender", gender)
                 .apply();
 
-            // Show feedback and disable button
+            
             btnNext.setEnabled(false);
             btnNext.setText("Saving...");
             Toast.makeText(this, "Optimizing your profile...", Toast.LENGTH_SHORT).show();
 
-            // Run in background thread to avoid UI freeze
+            
             final int finalAge = age;
             new Thread(() -> {
                 FirebaseHelper fbHelperBackground = FirebaseHelper.getInstance();
@@ -247,7 +250,7 @@ public class ProfileSetupActivity extends AppCompatActivity {
                         }
                     }
 
-                    // Use set with merge to ensure document exists
+                    
                     fbHelperBackground.getUsersCollection().document(uid)
                         .set(updates, com.google.firebase.firestore.SetOptions.merge())
                         .addOnCompleteListener(task -> {

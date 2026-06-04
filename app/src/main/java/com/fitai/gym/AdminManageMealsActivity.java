@@ -1,3 +1,6 @@
+/*
+ * AdminManageMealsActivity enables admins to edit, add, or remove items from the nutrition plan collection.
+ */
 package com.fitai.gym;
 
 import android.app.AlertDialog;
@@ -120,7 +123,7 @@ public class AdminManageMealsActivity extends AppCompatActivity {
     }
 
     private void showAddEditMealDialog(FoodModel mealToEdit) {
-        selectedBase64Image = null; // reset
+        selectedBase64Image = null; 
         View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_edit_meal, null);
         EditText etName = dialogView.findViewById(R.id.etMealName);
         Spinner spCategory = dialogView.findViewById(R.id.spMealCategory);
@@ -133,13 +136,13 @@ public class AdminManageMealsActivity extends AppCompatActivity {
 
         ivDialogPreview = ivMealDialogPreview;
 
-        // Populate Categories
+        
         String[] categories = {"Breakfast", "Lunch", "Snacks", "Dinner"};
         ArrayAdapter<String> catAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_dropdown_item, categories);
         spCategory.setAdapter(catAdapter);
 
-        // Populate Images
+        
         String[] images = {"pancake_1", "chicken", "nigiri", "salad", "apple_pie", "orange", "coffee", "glass_of_milk", "oatmeal"};
         ArrayAdapter<String> imgAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_dropdown_item, images);
@@ -151,12 +154,12 @@ public class AdminManageMealsActivity extends AppCompatActivity {
             pickImageLauncher.launch(intent);
         });
 
-        // Steps Builder setup
+        
         LinearLayout llStepsContainer = dialogView.findViewById(R.id.llRecipeStepsContainer);
         android.widget.Button btnAddStep = dialogView.findViewById(R.id.btnAddRecipeStep);
         List<EditText> stepEditTexts = new ArrayList<>();
 
-        // Helper to update numbers
+        
         Runnable updateStepNumbers = new Runnable() {
             @Override
             public void run() {
@@ -170,7 +173,7 @@ public class AdminManageMealsActivity extends AppCompatActivity {
             }
         };
 
-        // Helper to add step row
+        
         class StepHelper {
             void addField(String text) {
                 View stepRow = LayoutInflater.from(AdminManageMealsActivity.this)
@@ -219,7 +222,7 @@ public class AdminManageMealsActivity extends AppCompatActivity {
                 stepHelper.addField(currentInstructions);
             }
 
-            // Select Category
+            
             for (int i = 0; i < categories.length; i++) {
                 if (categories[i].equalsIgnoreCase(mealToEdit.getMealType())) {
                     spCategory.setSelection(i);
@@ -227,12 +230,12 @@ public class AdminManageMealsActivity extends AppCompatActivity {
                 }
             }
 
-            // Load cover preview
+            
             if (mealToEdit.getImageName() != null && mealToEdit.getImageName().startsWith("base64:")) {
                 selectedBase64Image = mealToEdit.getImageName();
                 ImageLoaderHelper.loadImage(this, ivMealDialogPreview, selectedBase64Image, R.drawable.pancake_1);
             } else {
-                // Select Image Spinner
+                
                 for (int i = 0; i < images.length; i++) {
                     if (images[i].equalsIgnoreCase(mealToEdit.getImageName())) {
                         spImage.setSelection(i);
@@ -243,7 +246,7 @@ public class AdminManageMealsActivity extends AppCompatActivity {
             }
         }
 
-        // Listener to change preview when spinner changes (only if no custom image is selected yet)
+        
         spImage.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(android.widget.AdapterView<?> parent, View view, int position, long id) {

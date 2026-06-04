@@ -1,3 +1,6 @@
+/*
+ * OnboardingActivity manages the initial welcome slides and page viewer navigation.
+ */
 package com.fitai.gym;
 
 import android.content.Intent;
@@ -46,7 +49,7 @@ public class OnboardingActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 currentItem = position;
-                // Progress from 25% to 100%
+                
                 int progress = (position + 1) * 25;
                 if (progressBar != null) {
                     progressBar.setProgress(progress);
@@ -58,7 +61,7 @@ public class OnboardingActivity extends AppCompatActivity {
             if (currentItem < 3) {
                 viewPager.setCurrentItem(currentItem + 1, true);
             } else {
-                // Completed onboarding
+                
                 getSharedPreferences("FitAI_Prefs", MODE_PRIVATE).edit()
                     .putBoolean("onboarding_done", true)
                     .apply();

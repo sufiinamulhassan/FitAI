@@ -1,8 +1,11 @@
+/*
+ * ProgressPhoto is a model representing logged photos documenting fitness transformations.
+ */
 package com.fitai.gym;
 
 public class ProgressPhoto {
     private String photoUrl;
-    private String date; // YYYY-MM-DD
+    private String date; 
     private long timestamp;
 
     public ProgressPhoto() {}

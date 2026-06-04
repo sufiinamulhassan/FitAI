@@ -1,21 +1,21 @@
+/*
+ * UserProgress represents workout milestones and completion achievements.
+ */
 package com.fitai.gym;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Tracks a user's progress on a specific workout plan.
- * Stored in Firestore: users/{uid}/workout_progress/{planId}
- */
+
 public class UserProgress {
     private String planId;
     private String planTitle;
-    private String level;                // "beginner", "intermediate", "advanced"
-    private List<Integer> completedDays; // [1, 2, 3, 5, ...]
+    private String level;                
+    private List<Integer> completedDays; 
     private long startDate;
     private long lastWorkoutDate;
     private int totalCaloriesBurned;
-    private int totalTimeSpent;          // seconds
+    private int totalTimeSpent;          
 
     public UserProgress() {
         completedDays = new ArrayList<>();
@@ -32,7 +32,7 @@ public class UserProgress {
         this.totalTimeSpent = 0;
     }
 
-    // Getters
+    
     public String getPlanId() { return planId; }
     public String getPlanTitle() { return planTitle; }
     public String getLevel() { return level; }
@@ -42,7 +42,7 @@ public class UserProgress {
     public int getTotalCaloriesBurned() { return totalCaloriesBurned; }
     public int getTotalTimeSpent() { return totalTimeSpent; }
 
-    // Setters
+    
     public void setPlanId(String planId) { this.planId = planId; }
     public void setPlanTitle(String planTitle) { this.planTitle = planTitle; }
     public void setLevel(String level) { this.level = level; }

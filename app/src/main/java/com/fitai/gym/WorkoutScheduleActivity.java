@@ -1,3 +1,6 @@
+/*
+ * WorkoutScheduleActivity lists monthly schedules and upcoming sessions.
+ */
 package com.fitai.gym;
 
 import android.os.Bundle;
@@ -27,7 +30,7 @@ public class WorkoutScheduleActivity extends AppCompatActivity {
     private LinearLayout llWeekDays;
     private TextView tvMonth;
     private java.util.Calendar calendar = java.util.Calendar.getInstance();
-    private String selectedDateStr; // YYYY-MM-DD
+    private String selectedDateStr; 
     private java.util.List<ScheduledWorkout> dailyWorkouts = new java.util.ArrayList<>();
     private RecyclerView rvSchedule;
 
@@ -147,7 +150,7 @@ public class WorkoutScheduleActivity extends AppCompatActivity {
                         holder.tvWorkoutName.setText(sw.getName() + ", " + sw.getTime().toLowerCase());
                         try {
                             holder.tvWorkoutName.setBackgroundColor(android.graphics.Color.parseColor(sw.getColor()));
-                            // Set contrast text color
+                            
                             holder.tvWorkoutName.setTextColor(0xFFFFFFFF);
                         } catch (Exception ex) {
                             holder.tvWorkoutName.setBackgroundColor(0xFFC58BF2);

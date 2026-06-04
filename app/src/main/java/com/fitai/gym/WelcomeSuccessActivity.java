@@ -1,3 +1,6 @@
+/*
+ * WelcomeSuccessActivity shows a congratulatory landing page after profile setup.
+ */
 package com.fitai.gym;
 
 import android.content.Intent;
@@ -19,9 +22,9 @@ public class WelcomeSuccessActivity extends AppCompatActivity {
         tvWelcomeUser = findViewById(R.id.tvWelcomeUser);
         btnGoToHome = findViewById(R.id.btnGoToHome);
 
-        // Fetch user name from SharedPreferences
+        
         String userName = getSharedPreferences("FitnesX_Prefs", MODE_PRIVATE)
-                .getString("user_name", "Stefani"); // Default to Stefani as per design
+                .getString("user_name", "Stefani"); 
 
         tvWelcomeUser.setText("Welcome, " + userName);
 

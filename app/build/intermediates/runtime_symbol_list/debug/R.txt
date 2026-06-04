@@ -3250,6 +3250,7 @@ int drawable bg_nav_back 0x7f0700a0
 int drawable bg_onboarding_next 0x7f0700a1
 int drawable bg_pill_button 0x7f0700a2
 int drawable bg_profile_circle 0x7f0700a3
+int drawable bg_purple_gradient 0x7f0701e8
 int drawable bg_rounded 0x7f0700a4
 int drawable bg_rounded_bg 0x7f0700a5
 int drawable bg_rounded_rectangle_5256 0x7f0700a6
@@ -3685,6 +3686,7 @@ int id browser_actions_menu_items 0x7f090068
 int id browser_actions_menu_view 0x7f090069
 int id btnAdd 0x7f09006a
 int id btnAddDay 0x7f09006b
+int id btnAddExInDialog 0x7f090403
 int id btnAddMeal 0x7f09006c
 int id btnAddRecipeStep 0x7f0903f7
 int id btnAddSchedule 0x7f09006d
@@ -3715,6 +3717,7 @@ int id btnGetStarted 0x7f090085
 int id btnGoToHome 0x7f090086
 int id btnGoogleLogin 0x7f090087
 int id btnGoogleSignup 0x7f090088
+int id btnGrantPremium 0x7f090404
 int id btnJazzcash 0x7f090089
 int id btnLevelAdvanced 0x7f09008a
 int id btnLevelBeginner 0x7f09008b
@@ -3737,6 +3740,7 @@ int id btnPrevMonth 0x7f0903dc
 int id btnPublish 0x7f09009a
 int id btnRegister 0x7f09009b
 int id btnRemoveExercise 0x7f09009c
+int id btnRevokePremium 0x7f090405
 int id btnSave 0x7f09009d
 int id btnSelectBreakfast 0x7f09009e
 int id btnSelectDinner 0x7f09009f
@@ -3757,23 +3761,19 @@ int id buttonPanel 0x7f0900ad
 int id cache_measures 0x7f0900ae
 int id callMeasure 0x7f0900af
 int id cancel_button 0x7f0900b0
-int id cardAB 0x7f0900b1
 int id cardAddAdmin 0x7f0900b2
 int id cardBedtime 0x7f0900b3
 int id cardDayContainer 0x7f0900b4
-int id cardFullBody 0x7f0900b5
 int id cardGoal 0x7f0900b6
 int id cardHours 0x7f0900b7
 int id cardLogoutAdmin 0x7f0900b8
-int id cardLowerBody 0x7f0900b9
 int id cardManageMeals 0x7f0900ba
+int id cardManageSubscriptions 0x7f090406
 int id cardManageWorkouts 0x7f0900bb
 int id cardMonthly 0x7f0900bc
 int id cardQuarterly 0x7f0900bd
 int id cardRepeat 0x7f0900be
 int id cardSleep 0x7f0900bf
-int id cardUpcoming1 0x7f0900c0
-int id cardUpcoming2 0x7f0900c1
 int id cardWater 0x7f0900c2
 int id cardWorkout 0x7f0900c3
 int id cardYearly 0x7f0900c4
@@ -3824,6 +3824,7 @@ int id cut 0x7f0900f0
 int id cvBadge 0x7f0900f1
 int id cvMonthly 0x7f0900f2
 int id cvPremiumBanner 0x7f0900f3
+int id cvTrainCard 0x7f090407
 int id cvYearly 0x7f0900f4
 int id dark 0x7f0900f5
 int id date_picker_actions 0x7f0900f6
@@ -3889,6 +3890,7 @@ int id etExSets 0x7f090131
 int id etFirstName 0x7f090132
 int id etHeight 0x7f090133
 int id etLastName 0x7f090134
+int id etManageDayTitle 0x7f090408
 int id etMealCalories 0x7f090135
 int id etMealIngredients 0x7f090136
 int id etMealInstructions 0x7f090137
@@ -3994,6 +3996,7 @@ int id ivFullPhoto 0x7f090198
 int id ivGoalImg 0x7f090199
 int id ivIcon1 0x7f09019a
 int id ivIcon2 0x7f09019b
+int id ivIcon3 0x7f090409
 int id ivIconAdmin 0x7f09019c
 int id ivIconLogout 0x7f09019d
 int id ivMainProfilePic 0x7f09019e
@@ -4016,6 +4019,8 @@ int id ivRecImage1 0x7f0903ed
 int id ivRecImage2 0x7f0903ee
 int id ivShowPassword 0x7f0901ae
 int id ivSleepGraph 0x7f0901af
+int id ivTrainIcon 0x7f09040a
+int id ivUpcomingImg 0x7f09040b
 int id ivUserImage 0x7f0901b0
 int id ivUserProfile 0x7f0901b1
 int id ivWelcome 0x7f0901b2
@@ -4264,10 +4269,14 @@ int id rvDays 0x7f09029a
 int id rvDaysGrid 0x7f09029b
 int id rvExercises 0x7f09029c
 int id rvGallery 0x7f09029d
+int id rvManageDayExercises 0x7f09040c
 int id rvNotifications 0x7f09029e
 int id rvPopular 0x7f09029f
 int id rvSchedule 0x7f0902a0
+int id rvSubscriptions 0x7f09040d
+int id rvUpcomingWorkouts 0x7f09040e
 int id rvUserList 0x7f0902a1
+int id rvWhatToTrain 0x7f09040f
 int id save_non_transition_alpha 0x7f0902a2
 int id save_overlay_view 0x7f0902a3
 int id sawtooth 0x7f0902a4
@@ -4307,6 +4316,7 @@ int id snackbar_text 0x7f0902c5
 int id snap 0x7f0902c6
 int id snapMargins 0x7f0902c7
 int id south 0x7f0902c8
+int id spChartFilter 0x7f090410
 int id spEditRole 0x7f0902c9
 int id spMealCategory 0x7f0902ca
 int id spMealImage 0x7f0902cb
@@ -4345,6 +4355,7 @@ int id switchDarkMode 0x7f0902eb
 int id switchPopNotification 0x7f0902ec
 int id switchPushNotif 0x7f0902ed
 int id switchUnits 0x7f0902ee
+int id switchUpcoming 0x7f090411
 int id switchVibration 0x7f0902ef
 int id tabMode 0x7f0902f0
 int id tag_accessibility_actions 0x7f0902f1
@@ -4446,6 +4457,7 @@ int id tvDifficultyValue 0x7f09034d
 int id tvDinnerFoodCount 0x7f0903f4
 int id tvDinnerSubheader 0x7f0903e6
 int id tvDuration 0x7f09034e
+int id tvEstRevenue 0x7f090412
 int id tvExCount 0x7f09034f
 int id tvExDetail 0x7f090350
 int id tvExDone 0x7f090351
@@ -4533,6 +4545,9 @@ int id tvStepNumText 0x7f0903ff
 int id tvStepNumber 0x7f0903fb
 int id tvStepTitle 0x7f090400
 int id tvStepsTarget 0x7f090395
+int id tvSubPlanLabel 0x7f090413
+int id tvSubUserEmail 0x7f090414
+int id tvSubUserName 0x7f090415
 int id tvSubtitle 0x7f090396
 int id tvSuccessMessage 0x7f090397
 int id tvSuccessSubtitle 0x7f090398
@@ -4548,10 +4563,18 @@ int id tvTodayMealsTitle 0x7f0903a1
 int id tvTotal 0x7f0903a2
 int id tvTotalCal 0x7f0903a3
 int id tvTotalDuration 0x7f0903a4
+int id tvTotalFree 0x7f090416
 int id tvTotalMins 0x7f0903a5
+int id tvTotalPremium 0x7f090417
 int id tvTotalUsers 0x7f0903a6
+int id tvTrainDetail 0x7f090418
+int id tvTrainTitle 0x7f090419
+int id tvTrainViewMore 0x7f09041a
+int id tvUpcomingTime 0x7f09041b
+int id tvUpcomingTitle 0x7f09041c
 int id tvUserEmail 0x7f0903a7
 int id tvUserGoal 0x7f0903a8
+int id tvUserInitial 0x7f09041d
 int id tvUserName 0x7f0903a9
 int id tvWaterTarget 0x7f0903aa
 int id tvWaterTotal 0x7f0903ab
@@ -4728,6 +4751,7 @@ int layout activity_admin_add_member 0x7f0c0020
 int layout activity_admin_add_workout 0x7f0c0021
 int layout activity_admin_dashboard 0x7f0c0022
 int layout activity_admin_manage_meals 0x7f0c0023
+int layout activity_admin_manage_subscriptions 0x7f0c00bb
 int layout activity_admin_manage_workouts 0x7f0c0024
 int layout activity_admin_view_user_progress 0x7f0c0025
 int layout activity_day_exercises 0x7f0c0026
@@ -4784,6 +4808,7 @@ int layout dialog_add_edit_meal 0x7f0c0058
 int layout dialog_add_exercise 0x7f0c0059
 int layout dialog_edit_user 0x7f0c005a
 int layout dialog_full_screen_photo 0x7f0c005b
+int layout dialog_manage_day 0x7f0c00bc
 int layout fragment_onboarding_page 0x7f0c005c
 int layout ime_base_split_test_activity 0x7f0c005d
 int layout ime_secondary_split_test_activity 0x7f0c005e
@@ -4792,6 +4817,7 @@ int layout item_admin_day 0x7f0c0060
 int layout item_admin_exercise 0x7f0c0061
 int layout item_admin_meal 0x7f0c0062
 int layout item_admin_recipe_step 0x7f0c00b9
+int layout item_admin_subscription 0x7f0c00bd
 int layout item_admin_workout 0x7f0c0063
 int layout item_calendar_day 0x7f0c0064
 int layout item_day_exercise 0x7f0c0065
@@ -4806,6 +4832,8 @@ int layout item_latest_workout 0x7f0c006d
 int layout item_meal_schedule 0x7f0c006e
 int layout item_notification 0x7f0c006f
 int layout item_recipe_step_timeline 0x7f0c00ba
+int layout item_train_workout 0x7f0c00be
+int layout item_upcoming_workout 0x7f0c00bf
 int layout item_user 0x7f0c0070
 int layout item_water_log 0x7f0c0071
 int layout item_workout_card 0x7f0c0072

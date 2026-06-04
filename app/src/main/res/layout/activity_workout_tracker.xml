@@ -67,12 +67,46 @@
             android:orientation="vertical"
             android:paddingBottom="50dp">
 
+            <!-- Chart Filter Header -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Workout Activity"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:layout_centerVertical="true" />
+
+                <Spinner
+                    android:id="@+id/spChartFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_pill_button"
+                    android:backgroundTint="#F1F5FF"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:spinnerMode="dropdown" />
+            </RelativeLayout>
+
             <!-- Chart Section -->
             <com.fitai.gym.WorkoutChart
                 android:id="@+id/lineChart"
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:layout_marginTop="8dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/bg_blue_gradient" />
 
@@ -150,121 +184,12 @@
                     android:layout_centerVertical="true"/>
             </RelativeLayout>
 
-            <!-- Upcoming Workout 1 -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardUpcoming1"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvUpcomingWorkouts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:cardBackgroundColor="@color/white"
-                android:layout_marginBottom="15dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:gravity="center_vertical">
-                    
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/img_1"
-                        android:scaleType="centerCrop"/>
-                    
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:layout_marginStart="15dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Fullbody Workout"
-                            android:textColor="@color/black"
-                            android:textSize="14sp"
-                            android:fontFamily="@font/poppins_medium"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Today, 03:00pm"
-                            android:textColor="#ADA4A5"
-                            android:textSize="12sp"
-                            android:fontFamily="@font/poppins_regular"/>
-                    </LinearLayout>
-                    
-                    <androidx.appcompat.widget.SwitchCompat
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        app:thumbTint="#C58BF2"
-                        app:trackTint="#EAF0FF"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Upcoming Workout 2 -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardUpcoming2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
-                app:cardBackgroundColor="@color/white"
-                android:layout_marginBottom="30dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingTop="15dp"
-                    android:paddingBottom="15dp"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:gravity="center_vertical">
-                    
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/img_2"
-                        android:scaleType="centerCrop"/>
-                    
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:layout_marginStart="15dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Upperbody Workout"
-                            android:textColor="@color/black"
-                            android:textSize="14sp"
-                            android:fontFamily="@font/poppins_medium"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="June 05, 02:00pm"
-                            android:textColor="#ADA4A5"
-                            android:textSize="12sp"
-                            android:fontFamily="@font/poppins_regular"/>
-                    </LinearLayout>
-                    
-                    <androidx.appcompat.widget.SwitchCompat
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="false"
-                        app:thumbTint="#C58BF2"
-                        app:trackTint="#EAF0FF"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                android:nestedScrollingEnabled="false"
+                android:layout_marginBottom="24dp" />
 
             <!-- What Do You Want to Train -->
             <TextView
@@ -277,194 +202,11 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginBottom="16dp"/>
 
-            <!-- Train Card 1 -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardFullBody"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvWhatToTrain"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp"
-                app:cardBackgroundColor="#F1F5FF"
-                android:layout_marginBottom="15dp">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="20dp">
-                    
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Fullbody Workout"
-                            android:textColor="@color/black"
-                            android:textSize="14sp"
-                            android:fontFamily="@font/poppins_medium"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="11 Exercises | 32mins"
-                            android:textColor="#ADA4A5"
-                            android:textSize="12sp"
-                            android:fontFamily="@font/poppins_regular"
-                            android:layout_marginTop="2dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="View more"
-                            android:textColor="#9DCEFF"
-                            android:textSize="10sp"
-                            android:fontFamily="@font/poppins_bold"
-                            android:background="@drawable/bg_pill_button"
-                            android:backgroundTint="@color/white"
-                            android:paddingStart="15dp"
-                            android:paddingEnd="15dp"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:layout_marginTop="12dp"/>
-                    </LinearLayout>
-                    
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/workout_1"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:scaleType="fitCenter"/>
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Train Card 2 -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardLowerBody"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp"
-                app:cardBackgroundColor="#F9F1FF"
-                android:layout_marginBottom="15dp">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="20dp">
-                    
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Lowbody Workout"
-                            android:textColor="@color/black"
-                            android:textSize="14sp"
-                            android:fontFamily="@font/poppins_medium"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="12 Exercises | 40mins"
-                            android:textColor="#ADA4A5"
-                            android:textSize="12sp"
-                            android:fontFamily="@font/poppins_regular"
-                            android:layout_marginTop="2dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="View more"
-                            android:textColor="#C58BF2"
-                            android:textSize="10sp"
-                            android:fontFamily="@font/poppins_bold"
-                            android:background="@drawable/bg_pill_button"
-                            android:backgroundTint="@color/white"
-                            android:paddingStart="15dp"
-                            android:paddingEnd="15dp"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:layout_marginTop="12dp"/>
-                    </LinearLayout>
-                    
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/workout_2"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:scaleType="fitCenter"/>
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Train Card 3 -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardAB"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp"
-                app:cardBackgroundColor="#F1F5FF"
-                android:layout_marginBottom="15dp">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="20dp">
-                    
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="AB Workout"
-                            android:textColor="@color/black"
-                            android:textSize="14sp"
-                            android:fontFamily="@font/poppins_medium"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="14 Exercises | 20mins"
-                            android:textColor="#ADA4A5"
-                            android:textSize="12sp"
-                            android:fontFamily="@font/poppins_regular"
-                            android:layout_marginTop="2dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="View more"
-                            android:textColor="#9DCEFF"
-                            android:textSize="10sp"
-                            android:fontFamily="@font/poppins_bold"
-                            android:background="@drawable/bg_pill_button"
-                            android:backgroundTint="@color/white"
-                            android:paddingStart="15dp"
-                            android:paddingEnd="15dp"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
-                            android:layout_marginTop="12dp"/>
-                    </LinearLayout>
-                    
-                    <ImageView
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/workout_3"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:scaleType="fitCenter"/>
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
 
             </LinearLayout>
         </LinearLayout>

@@ -1,3 +1,6 @@
+/*
+ * MealDetailActivity displays ingredients, instructions, and nutritional information for selected meals.
+ */
 package com.fitai.gym;
 
 import android.os.Bundle;
@@ -22,7 +25,7 @@ public class MealDetailActivity extends AppCompatActivity {
 
         findViewById(R.id.ivBack).setOnClickListener(v -> finish());
 
-        // Get extras from dynamic intent
+        
         String name = getIntent().getStringExtra("meal_name");
         String calories = getIntent().getStringExtra("meal_calories");
         String instructions = getIntent().getStringExtra("meal_instructions");
@@ -43,14 +46,14 @@ public class MealDetailActivity extends AppCompatActivity {
         if (instructions != null) tvDesc.setText(instructions);
         if (ingredients != null) tvIngredients.setText(ingredients);
 
-        // Resolve Image
+        
         ImageLoaderHelper.loadImage(this, ivFood, imageName, R.drawable.pancake_1);
 
         if (name != null) {
             btnAddMeal.setText("Add to " + name);
         }
 
-        // Populate dynamic step-by-step timeline
+        
         populateSteps(instructions);
 
         btnAddMeal.setOnClickListener(v -> {
@@ -60,7 +63,7 @@ public class MealDetailActivity extends AppCompatActivity {
                 return;
             }
 
-            // Extract numeric calorie value
+            
             int calVal = 180;
             if (calories != null) {
                 String clean = calories;
@@ -76,7 +79,7 @@ public class MealDetailActivity extends AppCompatActivity {
                 } catch (Exception e) {}
             }
 
-            // Generate realistic macronutrient values based on meal name & category
+            
             int proteins = 15;
             int carbs = 20;
             int fats = 5;
@@ -85,15 +88,15 @@ public class MealDetailActivity extends AppCompatActivity {
 
             String mealLower = (name != null) ? name.toLowerCase() : "";
             if (mealLower.contains("chicken") || mealLower.contains("steak") || mealLower.contains("salmon") || mealLower.contains("nigiri")) {
-                proteins = Math.max(5, (int) (calVal * 0.35 / 4)); // 35% protein
-                fats = Math.max(2, (int) (calVal * 0.30 / 9));     // 30% fat
-                carbs = Math.max(5, (int) (calVal * 0.35 / 4));    // 35% carbs
+                proteins = Math.max(5, (int) (calVal * 0.35 / 4)); 
+                fats = Math.max(2, (int) (calVal * 0.30 / 9));     
+                carbs = Math.max(5, (int) (calVal * 0.35 / 4));    
                 fiber = 1;
                 sugar = 1;
             } else if (mealLower.contains("pancake") || mealLower.contains("pie") || mealLower.contains("bread") || mealLower.contains("oatmeal") || mealLower.contains("oats")) {
-                carbs = Math.max(10, (int) (calVal * 0.65 / 4));    // 65% carbs
-                proteins = Math.max(3, (int) (calVal * 0.15 / 4)); // 15% protein
-                fats = Math.max(2, (int) (calVal * 0.20 / 9));     // 20% fat
+                carbs = Math.max(10, (int) (calVal * 0.65 / 4));    
+                proteins = Math.max(3, (int) (calVal * 0.15 / 4)); 
+                fats = Math.max(2, (int) (calVal * 0.20 / 9));     
                 fiber = Math.max(1, (int) (carbs * 0.15));
                 sugar = Math.max(1, (int) (carbs * 0.25));
             } else if (mealLower.contains("salad")) {
@@ -110,10 +113,10 @@ public class MealDetailActivity extends AppCompatActivity {
                 sugar = Math.max(1, (int) (carbs * 0.15));
             }
 
-            // Detect category based on calories instruction or pass from intent if available
+            
             String category = getIntent().getStringExtra("meal_type");
             if (category == null) {
-                // fallback detection
+                
                 if (mealLower.contains("pancake") || mealLower.contains("coffee") || mealLower.contains("bread") || mealLower.contains("oatmeal")) {
                     category = "Breakfast";
                 } else if (mealLower.contains("chicken") || mealLower.contains("steak") || mealLower.contains("nigiri")) {
@@ -125,7 +128,7 @@ public class MealDetailActivity extends AppCompatActivity {
                 }
             }
 
-            // Save to Firestore under user progress
+            
             final int finalCalVal = calVal;
             Map<String, Object> mealLog = new HashMap<>();
             mealLog.put("mealName", name != null ? name : "Healthy Meal");
@@ -142,7 +145,7 @@ public class MealDetailActivity extends AppCompatActivity {
                 .collection("meal_logs")
                 .add(mealLog)
                 .addOnSuccessListener(ref -> {
-                    // Log dynamic notification
+                    
                     Map<String, Object> notif = new HashMap<>();
                     notif.put("title", "Logged Meal: " + (name != null ? name : "Healthy Meal") + " - " + finalCalVal + " kCal");
                     notif.put("timestamp", System.currentTimeMillis());
@@ -163,7 +166,7 @@ public class MealDetailActivity extends AppCompatActivity {
         TextView tvStepCount = findViewById(R.id.tvDetailsStepCount);
         if (container == null || instructions == null || instructions.trim().isEmpty()) return;
 
-        // Parse steps: split on "Step N:" pattern
+        
         List<String> steps = new ArrayList<>();
         if (instructions.contains("Step 1:")) {
             String[] parts = instructions.split("Step \\d+:");
@@ -174,14 +177,14 @@ public class MealDetailActivity extends AppCompatActivity {
                 }
             }
         } else {
-            // Fallback: treat the whole string as a single step
+            
             steps.add(instructions.trim());
         }
 
-        // Update step count label
+        
         tvStepCount.setText(steps.size() + (steps.size() == 1 ? " Step" : " Steps"));
 
-        // Inflate one timeline row per step
+        
         LayoutInflater inflater = LayoutInflater.from(this);
         for (int i = 0; i < steps.size(); i++) {
             View row = inflater.inflate(R.layout.item_recipe_step_timeline, container, false);
@@ -192,12 +195,12 @@ public class MealDetailActivity extends AppCompatActivity {
             TextView tvTitle  = row.findViewById(R.id.tvStepTitle);
             TextView tvDesc   = row.findViewById(R.id.tvStepDesc);
 
-            // Format step number as "01", "02" ...
+            
             tvNum.setText(String.format("%02d", i + 1));
             tvTitle.setText("Step " + (i + 1));
             tvDesc.setText(steps.get(i));
 
-            // First step gets the active (purple) styling
+            
             if (i == 0) {
                 tvNum.setTextColor(android.graphics.Color.parseColor("#C58BF2"));
                 dot.setBackgroundResource(R.drawable.bg_timeline_dot_active);
@@ -207,7 +210,7 @@ public class MealDetailActivity extends AppCompatActivity {
                 }
             }
 
-            // Hide the connecting line on the last step
+            
             if (i == steps.size() - 1 && line != null) {
                 line.setVisibility(View.INVISIBLE);
             }

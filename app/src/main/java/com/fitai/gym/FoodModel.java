@@ -1,13 +1,16 @@
+/*
+ * FoodModel represents nutritional items, tracking calories, proteins, carbohydrates, fats, and meal categorization.
+ */
 package com.fitai.gym;
 
 public class FoodModel {
     private String id;
     private String name;
-    private String calories; // E.g. "Medium | 30mins | 230kCal" or "180kCal"
-    private String mealType; // E.g. "Breakfast", "Lunch", "Snacks", "Dinner"
+    private String calories; 
+    private String mealType; 
     private String instructions;
     private String ingredients;
-    private String imageName; // E.g. "pancake_1", "chicken", "nigiri"
+    private String imageName; 
     private long createdAt;
 
     public FoodModel() {}
@@ -22,11 +25,11 @@ public class FoodModel {
         this.createdAt = System.currentTimeMillis();
     }
 
-    // Compatibility constructor for existing code calling new FoodModel(name, cal, int)
+    
     public FoodModel(String name, String calories, int imageRes) {
         this.name = name;
         this.calories = calories;
-        this.imageName = "pancake_1"; // Default name
+        this.imageName = "pancake_1"; 
         this.mealType = "Breakfast";
         this.createdAt = System.currentTimeMillis();
     }
@@ -55,7 +58,7 @@ public class FoodModel {
     public long getCreatedAt() { return createdAt; }
     public void setCreatedAt(long createdAt) { this.createdAt = createdAt; }
 
-    // Helper to get local drawable resource ID
+    
     public int getImageRes() {
         if (imageName == null) return R.drawable.pancake_1;
         switch (imageName.toLowerCase()) {

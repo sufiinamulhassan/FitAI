@@ -1,3 +1,6 @@
+/*
+ * GoalAdapter binds and renders different fitness goals during profile onboarding.
+ */
 package com.fitai.gym;
 
 import android.view.LayoutInflater;

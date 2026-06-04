@@ -1,3 +1,6 @@
+/*
+ * PaymentConfirmationActivity shows transaction status success prompts.
+ */
 package com.fitai.gym;
 
 import android.content.Intent;
@@ -12,8 +15,8 @@ public class PaymentConfirmationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_confirmation);
 
-        // The confirmation page is a success screen; the data was already saved in PaymentActivity.
-        // We just display a summary and let the user proceed.
+        
+        
 
         findViewById(R.id.btnPayNow).setOnClickListener(v -> {
             Intent intent = new Intent(this, MainActivity.class);

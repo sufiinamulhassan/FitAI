@@ -33,7 +33,7 @@
 20-->[androidx.core:core:1.12.0] C:\Users\inamu\.gradle\caches\transforms-3\39ffce018f7818904d44ab1852c3e5c6\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
 21
 22    <application
-22-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:7:5-275:19
+22-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:7:5-249:19
 23        android:allowBackup="true"
 23-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:8:9-35
 24        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -177,570 +177,520 @@
 105            android:screenOrientation="portrait" />
 105-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:86:13-49
 106
-107        <!-- Workout Detail Screen -->
+107        <!-- Workout Schedule Screen -->
 108        <activity
-108-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:89:9-92:52
-109            android:name="com.fitai.gym.WorkoutDetailActivity"
-109-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:90:13-50
+108-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:91:9-94:52
+109            android:name="com.fitai.gym.WorkoutScheduleActivity"
+109-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:92:13-52
 110            android:exported="false"
-110-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:91:13-37
+110-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:93:13-37
 111            android:screenOrientation="portrait" />
-111-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:92:13-49
-112
-113        <!-- Workout Session (Timer) Screen -->
-114        <activity
-114-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:95:9-98:52
-115            android:name="com.fitai.gym.WorkoutSessionActivity"
-115-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:96:13-51
-116            android:exported="false"
-116-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:97:13-37
-117            android:screenOrientation="portrait" />
-117-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:98:13-49
-118
-119        <!-- Exercise Detail Screen -->
-120        <activity
-120-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:101:9-104:52
-121            android:name="com.fitai.gym.ExerciseDetailActivity"
-121-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:102:13-51
-122            android:exported="false"
-122-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:103:13-37
-123            android:screenOrientation="portrait" />
-123-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:104:13-49
-124
-125        <!-- Workout Schedule Screen -->
-126        <activity
-126-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:107:9-110:52
-127            android:name="com.fitai.gym.WorkoutScheduleActivity"
-127-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:108:13-52
-128            android:exported="false"
-128-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:109:13-37
-129            android:screenOrientation="portrait" />
-129-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:110:13-49
+111-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:94:13-49
+112        <activity
+112-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:96:9-99:52
+113            android:name="com.fitai.gym.AddScheduleActivity"
+113-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:97:13-48
+114            android:exported="false"
+114-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:98:13-37
+115            android:screenOrientation="portrait" />
+115-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:99:13-49
+116
+117        <!-- Nutrition Screen -->
+118        <activity
+118-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:102:9-105:52
+119            android:name="com.fitai.gym.NutritionActivity"
+119-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:103:13-46
+120            android:exported="false"
+120-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:104:13-37
+121            android:screenOrientation="portrait" />
+121-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:105:13-49
+122
+123        <!-- Meal Detail Screen -->
+124        <activity
+124-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:108:9-111:52
+125            android:name="com.fitai.gym.MealDetailActivity"
+125-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:109:13-47
+126            android:exported="false"
+126-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:110:13-37
+127            android:screenOrientation="portrait" />
+127-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:111:13-49
+128
+129        <!-- Profile Screen -->
 130        <activity
-130-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:112:9-115:52
-131            android:name="com.fitai.gym.AddScheduleActivity"
-131-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:113:13-48
+130-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:114:9-117:52
+131            android:name="com.fitai.gym.ProfileActivity"
+131-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:115:13-44
 132            android:exported="false"
-132-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:114:13-37
+132-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:116:13-37
 133            android:screenOrientation="portrait" />
-133-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:115:13-49
+133-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:117:13-49
 134
-135        <!-- Nutrition Screen -->
+135        <!-- Meal Schedule Screen -->
 136        <activity
-136-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:118:9-121:52
-137            android:name="com.fitai.gym.NutritionActivity"
-137-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:119:13-46
+136-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:120:9-123:52
+137            android:name="com.fitai.gym.MealScheduleActivity"
+137-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:121:13-49
 138            android:exported="false"
-138-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:120:13-37
+138-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:122:13-37
 139            android:screenOrientation="portrait" />
-139-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:121:13-49
+139-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:123:13-49
 140
-141        <!-- Meal Detail Screen -->
+141        <!-- Notification Screen -->
 142        <activity
-142-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:124:9-127:52
-143            android:name="com.fitai.gym.MealDetailActivity"
-143-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:125:13-47
+142-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:126:9-129:52
+143            android:name="com.fitai.gym.NotificationActivity"
+143-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:127:13-49
 144            android:exported="false"
-144-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:126:13-37
+144-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:128:13-37
 145            android:screenOrientation="portrait" />
-145-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:127:13-49
+145-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:129:13-49
 146
-147        <!-- Profile Screen -->
+147        <!-- Membership Screen -->
 148        <activity
-148-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:130:9-133:52
-149            android:name="com.fitai.gym.ProfileActivity"
-149-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:131:13-44
+148-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:132:9-135:52
+149            android:name="com.fitai.gym.MembershipActivity"
+149-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:133:13-47
 150            android:exported="false"
-150-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:132:13-37
+150-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:134:13-37
 151            android:screenOrientation="portrait" />
-151-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:133:13-49
+151-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:135:13-49
 152
-153        <!-- Meal Schedule Screen -->
+153        <!-- Payment Confirmation Screen -->
 154        <activity
-154-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:136:9-139:52
-155            android:name="com.fitai.gym.MealScheduleActivity"
-155-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:137:13-49
+154-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:138:9-141:52
+155            android:name="com.fitai.gym.PaymentConfirmationActivity"
+155-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:139:13-56
 156            android:exported="false"
-156-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:138:13-37
+156-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:140:13-37
 157            android:screenOrientation="portrait" />
-157-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:139:13-49
+157-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:141:13-49
 158
-159        <!-- Notification Screen -->
+159        <!-- Progress Screen -->
 160        <activity
-160-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:142:9-145:52
-161            android:name="com.fitai.gym.NotificationActivity"
-161-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:143:13-49
+160-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:144:9-147:52
+161            android:name="com.fitai.gym.ProgressActivity"
+161-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:145:13-45
 162            android:exported="false"
-162-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:144:13-37
+162-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:146:13-37
 163            android:screenOrientation="portrait" />
-163-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:145:13-49
-164
-165        <!-- Membership Screen -->
-166        <activity
-166-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:148:9-151:52
-167            android:name="com.fitai.gym.MembershipActivity"
-167-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:149:13-47
-168            android:exported="false"
-168-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:150:13-37
-169            android:screenOrientation="portrait" />
-169-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:151:13-49
-170
-171        <!-- Payment Confirmation Screen -->
-172        <activity
-172-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:154:9-157:52
-173            android:name="com.fitai.gym.PaymentConfirmationActivity"
-173-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:155:13-56
-174            android:exported="false"
-174-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:156:13-37
-175            android:screenOrientation="portrait" />
-175-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:157:13-49
-176
-177        <!-- Progress Screen -->
+163-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:147:13-49
+164        <activity
+164-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:149:9-152:52
+165            android:name="com.fitai.gym.ProgressPhotoActivity"
+165-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:150:13-50
+166            android:exported="false"
+166-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:151:13-37
+167            android:screenOrientation="portrait" />
+167-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:152:13-49
+168
+169        <!-- Admin Dashboard Screens -->
+170        <activity
+170-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:157:9-160:52
+171            android:name="com.fitai.gym.AdminDashboardActivity"
+171-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:158:13-51
+172            android:exported="false"
+172-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:159:13-37
+173            android:screenOrientation="portrait" />
+173-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:160:13-49
+174        <activity
+174-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:162:9-165:52
+175            android:name="com.fitai.gym.AdminAddMemberActivity"
+175-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:163:13-51
+176            android:exported="false"
+176-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:164:13-37
+177            android:screenOrientation="portrait" />
+177-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:165:13-49
 178        <activity
-178-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:160:9-163:52
-179            android:name="com.fitai.gym.ProgressActivity"
-179-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:161:13-45
+178-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:167:9-170:52
+179            android:name="com.fitai.gym.AdminAddWorkoutActivity"
+179-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:168:13-52
 180            android:exported="false"
-180-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:162:13-37
+180-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:169:13-37
 181            android:screenOrientation="portrait" />
-181-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:163:13-49
+181-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:170:13-49
 182        <activity
-182-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:165:9-168:52
-183            android:name="com.fitai.gym.ProgressPhotoActivity"
-183-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:166:13-50
+182-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:172:9-175:52
+183            android:name="com.fitai.gym.AdminManageWorkoutsActivity"
+183-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:173:13-56
 184            android:exported="false"
-184-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:167:13-37
+184-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:174:13-37
 185            android:screenOrientation="portrait" />
-185-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:168:13-49
-186
-187        <!-- Sleep Tracker Screen -->
-188        <activity
-188-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:171:9-174:52
-189            android:name="com.fitai.gym.SleepTrackerActivity"
-189-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:172:13-49
-190            android:exported="false"
-190-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:173:13-37
-191            android:screenOrientation="portrait" />
-191-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:174:13-49
-192
-193        <!-- Sleep Schedule Screen -->
-194        <activity
-194-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:177:9-180:52
-195            android:name="com.fitai.gym.SleepScheduleActivity"
-195-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:178:13-50
-196            android:exported="false"
-196-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:179:13-37
-197            android:screenOrientation="portrait" />
-197-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:180:13-49
-198
-199        <!-- Add Alarm Screen -->
+185-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:175:13-49
+186        <activity
+186-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:177:9-180:52
+187            android:name="com.fitai.gym.AdminViewUserProgressActivity"
+187-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:178:13-58
+188            android:exported="false"
+188-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:179:13-37
+189            android:screenOrientation="portrait" />
+189-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:180:13-49
+190        <activity
+190-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:182:9-185:52
+191            android:name="com.fitai.gym.AdminManageMealsActivity"
+191-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:183:13-53
+192            android:exported="false"
+192-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:184:13-37
+193            android:screenOrientation="portrait" />
+193-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:185:13-49
+194
+195        <!-- Payment Selection Screen -->
+196        <activity
+196-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:188:9-191:52
+197            android:name="com.fitai.gym.PaymentActivity"
+197-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:189:13-44
+198            android:exported="false"
+198-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:190:13-37
+199            android:screenOrientation="portrait" />
+199-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:191:13-49
 200        <activity
-200-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:183:9-186:52
-201            android:name="com.fitai.gym.AddAlarmActivity"
-201-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:184:13-45
+200-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:193:9-196:52
+201            android:name="com.fitai.gym.SettingsActivity"
+201-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:194:13-45
 202            android:exported="false"
-202-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:185:13-37
+202-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:195:13-37
 203            android:screenOrientation="portrait" />
-203-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:186:13-49
-204
-205        <!-- Admin Dashboard Screens -->
-206        <activity
-206-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:189:9-192:52
-207            android:name="com.fitai.gym.AdminDashboardActivity"
-207-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:190:13-51
-208            android:exported="false"
-208-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:191:13-37
-209            android:screenOrientation="portrait" />
-209-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:192:13-49
-210        <activity
-210-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:194:9-197:52
-211            android:name="com.fitai.gym.AdminAddMemberActivity"
-211-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:195:13-51
-212            android:exported="false"
-212-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:196:13-37
-213            android:screenOrientation="portrait" />
-213-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:197:13-49
+203-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:196:13-49
+204        <activity
+204-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:198:9-201:52
+205            android:name="com.fitai.gym.AchievementActivity"
+205-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:199:13-48
+206            android:exported="false"
+206-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:200:13-37
+207            android:screenOrientation="portrait" />
+207-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:201:13-49
+208        <activity
+208-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:203:9-205:76
+209            android:name="com.fitai.gym.MealPlannerActivity"
+209-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:203:19-54
+210            android:configChanges="orientation|keyboardHidden|screenSize"
+210-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:205:13-74
+211            android:screenOrientation="portrait" />
+211-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:204:13-49
+212
+213        <!-- Workout Plan Detail Screen -->
 214        <activity
-214-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:199:9-202:52
-215            android:name="com.fitai.gym.AdminAddWorkoutActivity"
-215-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:200:13-52
+214-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:208:9-211:52
+215            android:name="com.fitai.gym.WorkoutPlanDetailActivity"
+215-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:209:13-54
 216            android:exported="false"
-216-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:201:13-37
+216-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:210:13-37
 217            android:screenOrientation="portrait" />
-217-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:202:13-49
-218        <activity
-218-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:204:9-207:52
-219            android:name="com.fitai.gym.AdminManageWorkoutsActivity"
-219-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:205:13-56
-220            android:exported="false"
-220-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:206:13-37
-221            android:screenOrientation="portrait" />
-221-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:207:13-49
-222        <activity
-222-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:209:9-212:52
-223            android:name="com.fitai.gym.AdminViewUserProgressActivity"
-223-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:210:13-58
-224            android:exported="false"
-224-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:211:13-37
-225            android:screenOrientation="portrait" />
-225-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:212:13-49
+217-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:211:13-49
+218
+219        <!-- Day Exercise List Screen -->
+220        <activity
+220-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:214:9-217:52
+221            android:name="com.fitai.gym.DayExerciseListActivity"
+221-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:215:13-52
+222            android:exported="false"
+222-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:216:13-37
+223            android:screenOrientation="portrait" />
+223-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:217:13-49
+224
+225        <!-- Exercise Execution Timer Screen -->
 226        <activity
-226-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:214:9-217:52
-227            android:name="com.fitai.gym.AdminManageMealsActivity"
-227-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:215:13-53
+226-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:220:9-223:52
+227            android:name="com.fitai.gym.ExerciseExecutionActivity"
+227-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:221:13-54
 228            android:exported="false"
-228-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:216:13-37
+228-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:222:13-37
 229            android:screenOrientation="portrait" />
-229-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:217:13-49
+229-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:223:13-49
 230
-231        <!-- Payment Selection Screen -->
+231        <!-- Workout Complete Screen -->
 232        <activity
-232-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:220:9-223:52
-233            android:name="com.fitai.gym.PaymentActivity"
-233-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:221:13-44
+232-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:226:9-229:52
+233            android:name="com.fitai.gym.WorkoutCompleteActivity"
+233-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:227:13-52
 234            android:exported="false"
-234-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:222:13-37
+234-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:228:13-37
 235            android:screenOrientation="portrait" />
-235-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:223:13-49
-236        <activity
-236-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:225:9-228:52
-237            android:name="com.fitai.gym.SettingsActivity"
-237-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:226:13-45
-238            android:exported="false"
-238-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:227:13-37
-239            android:screenOrientation="portrait" />
-239-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:228:13-49
-240        <activity
-240-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:230:9-233:52
-241            android:name="com.fitai.gym.AchievementActivity"
-241-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:231:13-48
-242            android:exported="false"
-242-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:232:13-37
-243            android:screenOrientation="portrait" />
-243-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:233:13-49
-244        <activity
-244-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:235:9-237:76
-245            android:name="com.fitai.gym.MealPlannerActivity"
-245-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:235:19-54
-246            android:configChanges="orientation|keyboardHidden|screenSize"
-246-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:237:13-74
-247            android:screenOrientation="portrait" />
-247-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:236:13-49
+235-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:229:13-49
+236
+237        <!-- uCrop Activity -->
+238        <activity
+238-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:232:9-235:71
+239            android:name="com.yalantis.ucrop.UCropActivity"
+239-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:233:13-60
+240            android:screenOrientation="portrait"
+240-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:234:13-49
+241            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+241-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:235:13-69
+242
+243        <!-- Meal Reminder Broadcast Receiver -->
+244        <receiver
+244-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:238:9-241:40
+245            android:name="com.fitai.gym.MealReminderReceiver"
+245-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:239:13-49
+246            android:enabled="true"
+246-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:240:13-35
+247            android:exported="false" />
+247-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:241:13-37
 248
-249        <!-- Workout Plan Detail Screen -->
+249        <!-- Admin Manage Subscriptions Screen -->
 250        <activity
-250-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:240:9-243:52
-251            android:name="com.fitai.gym.WorkoutPlanDetailActivity"
-251-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:241:13-54
+250-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:244:9-247:52
+251            android:name="com.fitai.gym.AdminManageSubscriptionsActivity"
+251-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:245:13-61
 252            android:exported="false"
-252-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:242:13-37
+252-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:246:13-37
 253            android:screenOrientation="portrait" />
-253-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:243:13-49
+253-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:247:13-49
 254
-255        <!-- Day Exercise List Screen -->
-256        <activity
-256-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:246:9-249:52
-257            android:name="com.fitai.gym.DayExerciseListActivity"
-257-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:247:13-52
-258            android:exported="false"
-258-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:248:13-37
-259            android:screenOrientation="portrait" />
-259-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:249:13-49
-260
-261        <!-- Exercise Execution Timer Screen -->
-262        <activity
-262-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:252:9-255:52
-263            android:name="com.fitai.gym.ExerciseExecutionActivity"
-263-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:253:13-54
-264            android:exported="false"
-264-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:254:13-37
-265            android:screenOrientation="portrait" />
-265-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:255:13-49
-266
-267        <!-- Workout Complete Screen -->
-268        <activity
-268-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:258:9-261:52
-269            android:name="com.fitai.gym.WorkoutCompleteActivity"
-269-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:259:13-52
-270            android:exported="false"
-270-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:260:13-37
-271            android:screenOrientation="portrait" />
-271-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:261:13-49
-272
-273        <!-- uCrop Activity -->
-274        <activity
-274-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:264:9-267:71
-275            android:name="com.yalantis.ucrop.UCropActivity"
-275-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:265:13-60
-276            android:screenOrientation="portrait"
-276-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:266:13-49
-277            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-277-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:267:13-69
-278
-279        <!-- Meal Reminder Broadcast Receiver -->
-280        <receiver
-280-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:270:9-273:40
-281            android:name="com.fitai.gym.MealReminderReceiver"
-281-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:271:13-49
-282            android:enabled="true"
-282-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:272:13-35
-283            android:exported="false" />
-283-->D:\Downloads\FitAI\app\src\main\AndroidManifest.xml:273:13-37
+255        <provider
+255-->[androidx.emoji2:emoji2:1.2.0] C:\Users\inamu\.gradle\caches\transforms-3\59eac9e710be3ba6f78a2c1a1f5211ef\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+256            android:name="androidx.startup.InitializationProvider"
+256-->[androidx.emoji2:emoji2:1.2.0] C:\Users\inamu\.gradle\caches\transforms-3\59eac9e710be3ba6f78a2c1a1f5211ef\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+257            android:authorities="com.fitai.gym.androidx-startup"
+257-->[androidx.emoji2:emoji2:1.2.0] C:\Users\inamu\.gradle\caches\transforms-3\59eac9e710be3ba6f78a2c1a1f5211ef\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+258            android:exported="false" >
+258-->[androidx.emoji2:emoji2:1.2.0] C:\Users\inamu\.gradle\caches\transforms-3\59eac9e710be3ba6f78a2c1a1f5211ef\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+259            <meta-data
+259-->[androidx.emoji2:emoji2:1.2.0] C:\Users\inamu\.gradle\caches\transforms-3\59eac9e710be3ba6f78a2c1a1f5211ef\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+260                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+260-->[androidx.emoji2:emoji2:1.2.0] C:\Users\inamu\.gradle\caches\transforms-3\59eac9e710be3ba6f78a2c1a1f5211ef\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+261                android:value="androidx.startup" />
+261-->[androidx.emoji2:emoji2:1.2.0] C:\Users\inamu\.gradle\caches\transforms-3\59eac9e710be3ba6f78a2c1a1f5211ef\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+262            <meta-data
+262-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\inamu\.gradle\caches\transforms-3\f7ceaea8fab441d24feaf54fbd7e622e\transformed\jetified-lifecycle-process-2.6.1\AndroidManifest.xml:29:13-31:52
+263                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+263-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\inamu\.gradle\caches\transforms-3\f7ceaea8fab441d24feaf54fbd7e622e\transformed\jetified-lifecycle-process-2.6.1\AndroidManifest.xml:30:17-78
+264                android:value="androidx.startup" />
+264-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\inamu\.gradle\caches\transforms-3\f7ceaea8fab441d24feaf54fbd7e622e\transformed\jetified-lifecycle-process-2.6.1\AndroidManifest.xml:31:17-49
+265            <meta-data
+265-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+266                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+266-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+267                android:value="androidx.startup" />
+267-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+268        </provider>
+269
+270        <activity
+270-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:23:9-27:75
+271            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+271-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:24:13-93
+272            android:excludeFromRecents="true"
+272-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:25:13-46
+273            android:exported="false"
+273-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:26:13-37
+274            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+274-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:27:13-72
+275        <!--
+276            Service handling Google Sign-In user revocation. For apps that do not integrate with
+277            Google Sign-In, this service will never be started.
+278        -->
+279        <service
+279-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:33:9-37:51
+280            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+280-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:34:13-89
+281            android:exported="true"
+281-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:35:13-36
+282            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+282-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:36:13-107
+283            android:visibleToInstantApps="true" />
+283-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:37:13-48
 284
-285        <provider
-285-->[androidx.emoji2:emoji2:1.2.0] C:\Users\inamu\.gradle\caches\transforms-3\59eac9e710be3ba6f78a2c1a1f5211ef\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
-286            android:name="androidx.startup.InitializationProvider"
-286-->[androidx.emoji2:emoji2:1.2.0] C:\Users\inamu\.gradle\caches\transforms-3\59eac9e710be3ba6f78a2c1a1f5211ef\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
-287            android:authorities="com.fitai.gym.androidx-startup"
-287-->[androidx.emoji2:emoji2:1.2.0] C:\Users\inamu\.gradle\caches\transforms-3\59eac9e710be3ba6f78a2c1a1f5211ef\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
-288            android:exported="false" >
-288-->[androidx.emoji2:emoji2:1.2.0] C:\Users\inamu\.gradle\caches\transforms-3\59eac9e710be3ba6f78a2c1a1f5211ef\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
-289            <meta-data
-289-->[androidx.emoji2:emoji2:1.2.0] C:\Users\inamu\.gradle\caches\transforms-3\59eac9e710be3ba6f78a2c1a1f5211ef\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
-290                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-290-->[androidx.emoji2:emoji2:1.2.0] C:\Users\inamu\.gradle\caches\transforms-3\59eac9e710be3ba6f78a2c1a1f5211ef\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
-291                android:value="androidx.startup" />
-291-->[androidx.emoji2:emoji2:1.2.0] C:\Users\inamu\.gradle\caches\transforms-3\59eac9e710be3ba6f78a2c1a1f5211ef\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
-292            <meta-data
-292-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\inamu\.gradle\caches\transforms-3\f7ceaea8fab441d24feaf54fbd7e622e\transformed\jetified-lifecycle-process-2.6.1\AndroidManifest.xml:29:13-31:52
-293                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-293-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\inamu\.gradle\caches\transforms-3\f7ceaea8fab441d24feaf54fbd7e622e\transformed\jetified-lifecycle-process-2.6.1\AndroidManifest.xml:30:17-78
-294                android:value="androidx.startup" />
-294-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\inamu\.gradle\caches\transforms-3\f7ceaea8fab441d24feaf54fbd7e622e\transformed\jetified-lifecycle-process-2.6.1\AndroidManifest.xml:31:17-49
-295            <meta-data
-295-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
-296                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-296-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
-297                android:value="androidx.startup" />
-297-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
-298        </provider>
-299
-300        <activity
-300-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:23:9-27:75
-301            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-301-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:24:13-93
-302            android:excludeFromRecents="true"
-302-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:25:13-46
-303            android:exported="false"
-303-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:26:13-37
-304            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-304-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:27:13-72
-305        <!--
-306            Service handling Google Sign-In user revocation. For apps that do not integrate with
-307            Google Sign-In, this service will never be started.
-308        -->
-309        <service
-309-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:33:9-37:51
-310            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-310-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:34:13-89
-311            android:exported="true"
-311-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:35:13-36
-312            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
-312-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:36:13-107
-313            android:visibleToInstantApps="true" />
-313-->[com.google.android.gms:play-services-auth:21.3.0] C:\Users\inamu\.gradle\caches\transforms-3\cd322f9e96dda0da099dd9b15d51e734\transformed\jetified-play-services-auth-21.3.0\AndroidManifest.xml:37:13-48
+285        <activity
+285-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:29:9-46:20
+286            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+286-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:30:13-80
+287            android:excludeFromRecents="true"
+287-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:31:13-46
+288            android:exported="true"
+288-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:32:13-36
+289            android:launchMode="singleTask"
+289-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:33:13-44
+290            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+290-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:34:13-72
+291            <intent-filter>
+291-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:35:13-45:29
+292                <action android:name="android.intent.action.VIEW" />
+292-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:36:17-69
+292-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:36:25-66
+293
+294                <category android:name="android.intent.category.DEFAULT" />
+294-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:38:17-76
+294-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:38:27-73
+295                <category android:name="android.intent.category.BROWSABLE" />
+295-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:39:17-78
+295-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:39:27-75
+296
+297                <data
+297-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:41:17-44:51
+298                    android:host="firebase.auth"
+298-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:42:21-49
+299                    android:path="/"
+299-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:43:21-37
+300                    android:scheme="genericidp" />
+300-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:44:21-48
+301            </intent-filter>
+302        </activity>
+303        <activity
+303-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:47:9-64:20
+304            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+304-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:48:13-79
+305            android:excludeFromRecents="true"
+305-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:49:13-46
+306            android:exported="true"
+306-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:50:13-36
+307            android:launchMode="singleTask"
+307-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:51:13-44
+308            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+308-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:52:13-72
+309            <intent-filter>
+309-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:53:13-63:29
+310                <action android:name="android.intent.action.VIEW" />
+310-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:36:17-69
+310-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:36:25-66
+311
+312                <category android:name="android.intent.category.DEFAULT" />
+312-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:38:17-76
+312-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:38:27-73
+313                <category android:name="android.intent.category.BROWSABLE" />
+313-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:39:17-78
+313-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:39:27-75
 314
-315        <activity
-315-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:29:9-46:20
-316            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-316-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:30:13-80
-317            android:excludeFromRecents="true"
-317-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:31:13-46
-318            android:exported="true"
-318-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:32:13-36
-319            android:launchMode="singleTask"
-319-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:33:13-44
-320            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-320-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:34:13-72
-321            <intent-filter>
-321-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:35:13-45:29
-322                <action android:name="android.intent.action.VIEW" />
-322-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:36:17-69
-322-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:36:25-66
-323
-324                <category android:name="android.intent.category.DEFAULT" />
-324-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:38:17-76
-324-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:38:27-73
-325                <category android:name="android.intent.category.BROWSABLE" />
-325-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:39:17-78
-325-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:39:27-75
-326
-327                <data
-327-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:41:17-44:51
-328                    android:host="firebase.auth"
-328-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:42:21-49
-329                    android:path="/"
-329-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:43:21-37
-330                    android:scheme="genericidp" />
-330-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:44:21-48
-331            </intent-filter>
-332        </activity>
-333        <activity
-333-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:47:9-64:20
-334            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-334-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:48:13-79
-335            android:excludeFromRecents="true"
-335-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:49:13-46
-336            android:exported="true"
-336-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:50:13-36
-337            android:launchMode="singleTask"
-337-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:51:13-44
-338            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-338-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:52:13-72
-339            <intent-filter>
-339-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:53:13-63:29
-340                <action android:name="android.intent.action.VIEW" />
-340-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:36:17-69
-340-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:36:25-66
-341
-342                <category android:name="android.intent.category.DEFAULT" />
-342-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:38:17-76
-342-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:38:27-73
-343                <category android:name="android.intent.category.BROWSABLE" />
-343-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:39:17-78
-343-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:39:27-75
-344
-345                <data
-345-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:41:17-44:51
-346                    android:host="firebase.auth"
-346-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:42:21-49
-347                    android:path="/"
-347-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:43:21-37
-348                    android:scheme="recaptcha" />
-348-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:44:21-48
-349            </intent-filter>
-350        </activity>
-351
-352        <service
-352-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:66:9-72:19
-353            android:name="com.google.firebase.components.ComponentDiscoveryService"
-353-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:67:13-84
-354            android:directBootAware="true"
-354-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:32:13-43
-355            android:exported="false" >
-355-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:68:13-37
-356            <meta-data
-356-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:69:13-71:85
-357                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-357-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:70:17-109
-358                android:value="com.google.firebase.components.ComponentRegistrar" />
-358-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:71:17-82
-359            <meta-data
-359-->[com.google.firebase:firebase-firestore:24.10.2] C:\Users\inamu\.gradle\caches\transforms-3\94bc2d2aab3f9142253149a4dca3cfb6\transformed\jetified-firebase-firestore-24.10.2\AndroidManifest.xml:17:13-19:85
-360                android:name="com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar"
-360-->[com.google.firebase:firebase-firestore:24.10.2] C:\Users\inamu\.gradle\caches\transforms-3\94bc2d2aab3f9142253149a4dca3cfb6\transformed\jetified-firebase-firestore-24.10.2\AndroidManifest.xml:18:17-122
-361                android:value="com.google.firebase.components.ComponentRegistrar" />
-361-->[com.google.firebase:firebase-firestore:24.10.2] C:\Users\inamu\.gradle\caches\transforms-3\94bc2d2aab3f9142253149a4dca3cfb6\transformed\jetified-firebase-firestore-24.10.2\AndroidManifest.xml:19:17-82
-362            <meta-data
-362-->[com.google.firebase:firebase-firestore:24.10.2] C:\Users\inamu\.gradle\caches\transforms-3\94bc2d2aab3f9142253149a4dca3cfb6\transformed\jetified-firebase-firestore-24.10.2\AndroidManifest.xml:20:13-22:85
-363                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
-363-->[com.google.firebase:firebase-firestore:24.10.2] C:\Users\inamu\.gradle\caches\transforms-3\94bc2d2aab3f9142253149a4dca3cfb6\transformed\jetified-firebase-firestore-24.10.2\AndroidManifest.xml:21:17-111
-364                android:value="com.google.firebase.components.ComponentRegistrar" />
-364-->[com.google.firebase:firebase-firestore:24.10.2] C:\Users\inamu\.gradle\caches\transforms-3\94bc2d2aab3f9142253149a4dca3cfb6\transformed\jetified-firebase-firestore-24.10.2\AndroidManifest.xml:22:17-82
-365            <meta-data
-365-->[com.google.firebase:firebase-storage:20.3.0] C:\Users\inamu\.gradle\caches\transforms-3\8c10c7abd13954744d4d17686a16ff4d\transformed\jetified-firebase-storage-20.3.0\AndroidManifest.xml:30:13-32:85
-366                android:name="com.google.firebase.components:com.google.firebase.storage.FirebaseStorageKtxRegistrar"
-366-->[com.google.firebase:firebase-storage:20.3.0] C:\Users\inamu\.gradle\caches\transforms-3\8c10c7abd13954744d4d17686a16ff4d\transformed\jetified-firebase-storage-20.3.0\AndroidManifest.xml:31:17-118
-367                android:value="com.google.firebase.components.ComponentRegistrar" />
-367-->[com.google.firebase:firebase-storage:20.3.0] C:\Users\inamu\.gradle\caches\transforms-3\8c10c7abd13954744d4d17686a16ff4d\transformed\jetified-firebase-storage-20.3.0\AndroidManifest.xml:32:17-82
-368            <meta-data
-368-->[com.google.firebase:firebase-storage:20.3.0] C:\Users\inamu\.gradle\caches\transforms-3\8c10c7abd13954744d4d17686a16ff4d\transformed\jetified-firebase-storage-20.3.0\AndroidManifest.xml:33:13-35:85
-369                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
-369-->[com.google.firebase:firebase-storage:20.3.0] C:\Users\inamu\.gradle\caches\transforms-3\8c10c7abd13954744d4d17686a16ff4d\transformed\jetified-firebase-storage-20.3.0\AndroidManifest.xml:34:17-107
-370                android:value="com.google.firebase.components.ComponentRegistrar" />
-370-->[com.google.firebase:firebase-storage:20.3.0] C:\Users\inamu\.gradle\caches\transforms-3\8c10c7abd13954744d4d17686a16ff4d\transformed\jetified-firebase-storage-20.3.0\AndroidManifest.xml:35:17-82
-371            <meta-data
-371-->[com.google.firebase:firebase-appcheck:17.1.2] C:\Users\inamu\.gradle\caches\transforms-3\831cd6102682547bf49ba14534098c62\transformed\jetified-firebase-appcheck-17.1.2\AndroidManifest.xml:25:13-27:85
-372                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckKtxRegistrar"
-372-->[com.google.firebase:firebase-appcheck:17.1.2] C:\Users\inamu\.gradle\caches\transforms-3\831cd6102682547bf49ba14534098c62\transformed\jetified-firebase-appcheck-17.1.2\AndroidManifest.xml:26:17-120
-373                android:value="com.google.firebase.components.ComponentRegistrar" />
-373-->[com.google.firebase:firebase-appcheck:17.1.2] C:\Users\inamu\.gradle\caches\transforms-3\831cd6102682547bf49ba14534098c62\transformed\jetified-firebase-appcheck-17.1.2\AndroidManifest.xml:27:17-82
-374            <meta-data
-374-->[com.google.firebase:firebase-appcheck:17.1.2] C:\Users\inamu\.gradle\caches\transforms-3\831cd6102682547bf49ba14534098c62\transformed\jetified-firebase-appcheck-17.1.2\AndroidManifest.xml:28:13-30:85
-375                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckRegistrar"
-375-->[com.google.firebase:firebase-appcheck:17.1.2] C:\Users\inamu\.gradle\caches\transforms-3\831cd6102682547bf49ba14534098c62\transformed\jetified-firebase-appcheck-17.1.2\AndroidManifest.xml:29:17-117
-376                android:value="com.google.firebase.components.ComponentRegistrar" />
-376-->[com.google.firebase:firebase-appcheck:17.1.2] C:\Users\inamu\.gradle\caches\transforms-3\831cd6102682547bf49ba14534098c62\transformed\jetified-firebase-appcheck-17.1.2\AndroidManifest.xml:30:17-82
-377            <meta-data
-377-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\982632f0f4aea94447529f99935dbbc5\transformed\jetified-firebase-common-ktx-20.4.2\AndroidManifest.xml:12:13-14:85
-378                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
-378-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\982632f0f4aea94447529f99935dbbc5\transformed\jetified-firebase-common-ktx-20.4.2\AndroidManifest.xml:13:17-116
-379                android:value="com.google.firebase.components.ComponentRegistrar" />
-379-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\982632f0f4aea94447529f99935dbbc5\transformed\jetified-firebase-common-ktx-20.4.2\AndroidManifest.xml:14:17-82
-380            <meta-data
-380-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:35:13-37:85
-381                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
-381-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:36:17-109
-382                android:value="com.google.firebase.components.ComponentRegistrar" />
-382-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:37:17-82
-383        </service>
-384
-385        <activity
-385-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\inamu\.gradle\caches\transforms-3\334c77b07eef87efe3e129fdb9ab9177\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:9-173
-386            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-386-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\inamu\.gradle\caches\transforms-3\334c77b07eef87efe3e129fdb9ab9177\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:19-85
-387            android:exported="false"
-387-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\inamu\.gradle\caches\transforms-3\334c77b07eef87efe3e129fdb9ab9177\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:146-170
-388            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-388-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\inamu\.gradle\caches\transforms-3\334c77b07eef87efe3e129fdb9ab9177\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:86-145
-389
-390        <provider
-390-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:23:9-28:39
-391            android:name="com.google.firebase.provider.FirebaseInitProvider"
-391-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:24:13-77
-392            android:authorities="com.fitai.gym.firebaseinitprovider"
-392-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:25:13-72
-393            android:directBootAware="true"
-393-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:26:13-43
-394            android:exported="false"
-394-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:27:13-37
-395            android:initOrder="100" />
-395-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:28:13-36
-396
-397        <meta-data
-397-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\inamu\.gradle\caches\transforms-3\dc10fbba7869ff7f3848cf6e20606f4e\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:9-122
-398            android:name="com.google.android.gms.version"
-398-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\inamu\.gradle\caches\transforms-3\dc10fbba7869ff7f3848cf6e20606f4e\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:20-65
-399            android:value="@integer/google_play_services_version" />
-399-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\inamu\.gradle\caches\transforms-3\dc10fbba7869ff7f3848cf6e20606f4e\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:66-119
-400
-401        <receiver
-401-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
-402            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-402-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
-403            android:directBootAware="false"
-403-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
-404            android:enabled="true"
-404-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
-405            android:exported="true"
-405-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
-406            android:permission="android.permission.DUMP" >
-406-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
-407            <intent-filter>
-407-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
-408                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-408-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
-408-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
-409            </intent-filter>
-410            <intent-filter>
-410-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
-411                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-411-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
-411-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
-412            </intent-filter>
-413            <intent-filter>
-413-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
-414                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-414-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
-414-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
-415            </intent-filter>
-416            <intent-filter>
-416-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
-417                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-417-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
-417-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
-418            </intent-filter>
-419        </receiver>
-420    </application>
-421
-422</manifest>
+315                <data
+315-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:41:17-44:51
+316                    android:host="firebase.auth"
+316-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:42:21-49
+317                    android:path="/"
+317-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:43:21-37
+318                    android:scheme="recaptcha" />
+318-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:44:21-48
+319            </intent-filter>
+320        </activity>
+321
+322        <service
+322-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:66:9-72:19
+323            android:name="com.google.firebase.components.ComponentDiscoveryService"
+323-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:67:13-84
+324            android:directBootAware="true"
+324-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:32:13-43
+325            android:exported="false" >
+325-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:68:13-37
+326            <meta-data
+326-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:69:13-71:85
+327                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+327-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:70:17-109
+328                android:value="com.google.firebase.components.ComponentRegistrar" />
+328-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\inamu\.gradle\caches\transforms-3\00e75843698081290cfbf69d418c556d\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:71:17-82
+329            <meta-data
+329-->[com.google.firebase:firebase-firestore:24.10.2] C:\Users\inamu\.gradle\caches\transforms-3\94bc2d2aab3f9142253149a4dca3cfb6\transformed\jetified-firebase-firestore-24.10.2\AndroidManifest.xml:17:13-19:85
+330                android:name="com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar"
+330-->[com.google.firebase:firebase-firestore:24.10.2] C:\Users\inamu\.gradle\caches\transforms-3\94bc2d2aab3f9142253149a4dca3cfb6\transformed\jetified-firebase-firestore-24.10.2\AndroidManifest.xml:18:17-122
+331                android:value="com.google.firebase.components.ComponentRegistrar" />
+331-->[com.google.firebase:firebase-firestore:24.10.2] C:\Users\inamu\.gradle\caches\transforms-3\94bc2d2aab3f9142253149a4dca3cfb6\transformed\jetified-firebase-firestore-24.10.2\AndroidManifest.xml:19:17-82
+332            <meta-data
+332-->[com.google.firebase:firebase-firestore:24.10.2] C:\Users\inamu\.gradle\caches\transforms-3\94bc2d2aab3f9142253149a4dca3cfb6\transformed\jetified-firebase-firestore-24.10.2\AndroidManifest.xml:20:13-22:85
+333                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+333-->[com.google.firebase:firebase-firestore:24.10.2] C:\Users\inamu\.gradle\caches\transforms-3\94bc2d2aab3f9142253149a4dca3cfb6\transformed\jetified-firebase-firestore-24.10.2\AndroidManifest.xml:21:17-111
+334                android:value="com.google.firebase.components.ComponentRegistrar" />
+334-->[com.google.firebase:firebase-firestore:24.10.2] C:\Users\inamu\.gradle\caches\transforms-3\94bc2d2aab3f9142253149a4dca3cfb6\transformed\jetified-firebase-firestore-24.10.2\AndroidManifest.xml:22:17-82
+335            <meta-data
+335-->[com.google.firebase:firebase-storage:20.3.0] C:\Users\inamu\.gradle\caches\transforms-3\8c10c7abd13954744d4d17686a16ff4d\transformed\jetified-firebase-storage-20.3.0\AndroidManifest.xml:30:13-32:85
+336                android:name="com.google.firebase.components:com.google.firebase.storage.FirebaseStorageKtxRegistrar"
+336-->[com.google.firebase:firebase-storage:20.3.0] C:\Users\inamu\.gradle\caches\transforms-3\8c10c7abd13954744d4d17686a16ff4d\transformed\jetified-firebase-storage-20.3.0\AndroidManifest.xml:31:17-118
+337                android:value="com.google.firebase.components.ComponentRegistrar" />
+337-->[com.google.firebase:firebase-storage:20.3.0] C:\Users\inamu\.gradle\caches\transforms-3\8c10c7abd13954744d4d17686a16ff4d\transformed\jetified-firebase-storage-20.3.0\AndroidManifest.xml:32:17-82
+338            <meta-data
+338-->[com.google.firebase:firebase-storage:20.3.0] C:\Users\inamu\.gradle\caches\transforms-3\8c10c7abd13954744d4d17686a16ff4d\transformed\jetified-firebase-storage-20.3.0\AndroidManifest.xml:33:13-35:85
+339                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+339-->[com.google.firebase:firebase-storage:20.3.0] C:\Users\inamu\.gradle\caches\transforms-3\8c10c7abd13954744d4d17686a16ff4d\transformed\jetified-firebase-storage-20.3.0\AndroidManifest.xml:34:17-107
+340                android:value="com.google.firebase.components.ComponentRegistrar" />
+340-->[com.google.firebase:firebase-storage:20.3.0] C:\Users\inamu\.gradle\caches\transforms-3\8c10c7abd13954744d4d17686a16ff4d\transformed\jetified-firebase-storage-20.3.0\AndroidManifest.xml:35:17-82
+341            <meta-data
+341-->[com.google.firebase:firebase-appcheck:17.1.2] C:\Users\inamu\.gradle\caches\transforms-3\831cd6102682547bf49ba14534098c62\transformed\jetified-firebase-appcheck-17.1.2\AndroidManifest.xml:25:13-27:85
+342                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckKtxRegistrar"
+342-->[com.google.firebase:firebase-appcheck:17.1.2] C:\Users\inamu\.gradle\caches\transforms-3\831cd6102682547bf49ba14534098c62\transformed\jetified-firebase-appcheck-17.1.2\AndroidManifest.xml:26:17-120
+343                android:value="com.google.firebase.components.ComponentRegistrar" />
+343-->[com.google.firebase:firebase-appcheck:17.1.2] C:\Users\inamu\.gradle\caches\transforms-3\831cd6102682547bf49ba14534098c62\transformed\jetified-firebase-appcheck-17.1.2\AndroidManifest.xml:27:17-82
+344            <meta-data
+344-->[com.google.firebase:firebase-appcheck:17.1.2] C:\Users\inamu\.gradle\caches\transforms-3\831cd6102682547bf49ba14534098c62\transformed\jetified-firebase-appcheck-17.1.2\AndroidManifest.xml:28:13-30:85
+345                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckRegistrar"
+345-->[com.google.firebase:firebase-appcheck:17.1.2] C:\Users\inamu\.gradle\caches\transforms-3\831cd6102682547bf49ba14534098c62\transformed\jetified-firebase-appcheck-17.1.2\AndroidManifest.xml:29:17-117
+346                android:value="com.google.firebase.components.ComponentRegistrar" />
+346-->[com.google.firebase:firebase-appcheck:17.1.2] C:\Users\inamu\.gradle\caches\transforms-3\831cd6102682547bf49ba14534098c62\transformed\jetified-firebase-appcheck-17.1.2\AndroidManifest.xml:30:17-82
+347            <meta-data
+347-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\982632f0f4aea94447529f99935dbbc5\transformed\jetified-firebase-common-ktx-20.4.2\AndroidManifest.xml:12:13-14:85
+348                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+348-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\982632f0f4aea94447529f99935dbbc5\transformed\jetified-firebase-common-ktx-20.4.2\AndroidManifest.xml:13:17-116
+349                android:value="com.google.firebase.components.ComponentRegistrar" />
+349-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\982632f0f4aea94447529f99935dbbc5\transformed\jetified-firebase-common-ktx-20.4.2\AndroidManifest.xml:14:17-82
+350            <meta-data
+350-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:35:13-37:85
+351                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+351-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:36:17-109
+352                android:value="com.google.firebase.components.ComponentRegistrar" />
+352-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:37:17-82
+353        </service>
+354
+355        <activity
+355-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\inamu\.gradle\caches\transforms-3\334c77b07eef87efe3e129fdb9ab9177\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:9-173
+356            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+356-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\inamu\.gradle\caches\transforms-3\334c77b07eef87efe3e129fdb9ab9177\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:19-85
+357            android:exported="false"
+357-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\inamu\.gradle\caches\transforms-3\334c77b07eef87efe3e129fdb9ab9177\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:146-170
+358            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+358-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\inamu\.gradle\caches\transforms-3\334c77b07eef87efe3e129fdb9ab9177\transformed\jetified-play-services-base-18.5.0\AndroidManifest.xml:5:86-145
+359
+360        <provider
+360-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:23:9-28:39
+361            android:name="com.google.firebase.provider.FirebaseInitProvider"
+361-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:24:13-77
+362            android:authorities="com.fitai.gym.firebaseinitprovider"
+362-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:25:13-72
+363            android:directBootAware="true"
+363-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:26:13-43
+364            android:exported="false"
+364-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:27:13-37
+365            android:initOrder="100" />
+365-->[com.google.firebase:firebase-common:20.4.2] C:\Users\inamu\.gradle\caches\transforms-3\f35c9ff25b1344381253550a3935fd49\transformed\jetified-firebase-common-20.4.2\AndroidManifest.xml:28:13-36
+366
+367        <meta-data
+367-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\inamu\.gradle\caches\transforms-3\dc10fbba7869ff7f3848cf6e20606f4e\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:9-122
+368            android:name="com.google.android.gms.version"
+368-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\inamu\.gradle\caches\transforms-3\dc10fbba7869ff7f3848cf6e20606f4e\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:20-65
+369            android:value="@integer/google_play_services_version" />
+369-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\inamu\.gradle\caches\transforms-3\dc10fbba7869ff7f3848cf6e20606f4e\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:6:66-119
+370
+371        <receiver
+371-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+372            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+372-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+373            android:directBootAware="false"
+373-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+374            android:enabled="true"
+374-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+375            android:exported="true"
+375-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+376            android:permission="android.permission.DUMP" >
+376-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+377            <intent-filter>
+377-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+378                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+378-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+378-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+379            </intent-filter>
+380            <intent-filter>
+380-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+381                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+381-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+381-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+382            </intent-filter>
+383            <intent-filter>
+383-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+384                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+384-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+384-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+385            </intent-filter>
+386            <intent-filter>
+386-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+387                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+387-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+387-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\inamu\.gradle\caches\transforms-3\5093e5574880379f31b5e27cc84dc690\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+388            </intent-filter>
+389        </receiver>
+390    </application>
+391
+392</manifest>

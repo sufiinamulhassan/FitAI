@@ -1,3 +1,6 @@
+/*
+ * OnboardingAdapter binds welcome slides for onboarding layouts.
+ */
 package com.fitai.gym;
 
 import android.content.Context;

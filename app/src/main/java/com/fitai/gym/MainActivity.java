@@ -1,3 +1,6 @@
+/*
+ * MainActivity serves as the primary home screen dashboard for the FitAI app.
+ */
 package com.fitai.gym;
 
 import android.content.Intent;
@@ -20,16 +23,16 @@ public class MainActivity extends AppCompatActivity {
     private android.widget.ProgressBar pbBMIProgress;
     private BottomNavigationView bottomNav;
     private ImageView ivMainProfile;
-    // Water Intake Views
+    
     private TextView tvWaterTotal;
     private android.view.View viewWaterProgress, viewWaterSpace;
     private android.widget.LinearLayout llWaterLogs;
-    // Sleep View
+    
     private TextView tvSleepTotal;
-    // Calories Views
+    
     private TextView tvCaloriesTotal, tvCaloriesLeft;
     private android.widget.ProgressBar pbCaloriesProgress;
-    // Graph Tooltip Views
+    
     private TextView tvGraphDate, tvGraphPercent, tvGraphWorkout;
     private android.view.View rlTooltip;
     private TextView tvWorkoutProgressDropdown;
@@ -63,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         llGraphBars = findViewById(R.id.llGraphBars);
         llGraphLabels = findViewById(R.id.llGraphLabels);
 
-        // Real-time Greeting and Image from Firebase
+        
         FirebaseHelper fbHelper = FirebaseHelper.getInstance();
         if (fbHelper.getAuth().getCurrentUser() != null) {
             String uid = fbHelper.getAuth().getUid();
@@ -73,11 +76,11 @@ public class MainActivity extends AppCompatActivity {
                 String profilePicUrl = snapshot.getString("profilePicUrl");
 
                 if (name != null && !name.isEmpty()) {
-                    tvUserName.setText("Welcome Back,\n" + name);
+                    tvUserName.setText(name);
                 } else if (fbHelper.getAuth().getCurrentUser() != null && fbHelper.getAuth().getCurrentUser().getDisplayName() != null) {
-                    tvUserName.setText("Welcome Back,\n" + fbHelper.getAuth().getCurrentUser().getDisplayName());
+                    tvUserName.setText(fbHelper.getAuth().getCurrentUser().getDisplayName());
                 } else {
-                    tvUserName.setText("Welcome Back!");
+                    tvUserName.setText("User");
                 }
                 if (profilePicUrl != null && !profilePicUrl.isEmpty()) {
                     if (profilePicUrl.startsWith("http")) {
@@ -100,12 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
         setupNavigation();
 
-        // Profile icon click
         ivMainProfile.setOnClickListener(v -> startActivity(new Intent(this, ProfileActivity.class)));
-
-        // Initialize SyncManager
-        SyncManager syncManager = new SyncManager(this);
-        syncManager.syncWorkoutsFromCloud();
 
         findViewById(R.id.ivNotification).setOnClickListener(v ->
             startActivity(new Intent(this, NotificationActivity.class)));
@@ -226,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
                     getSharedPreferences("FitAI_Prefs", MODE_PRIVATE).edit()
                         .putFloat("water_goal_liters", liters)
                         .apply();
-                    // Trigger UI update by fetching again or re-calculating
+                    
                     recalculateWaterProgress();
                 }
             })
@@ -267,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
         
         tvWaterTotal.setText(String.format("%.1f / %.1f Liters", totalLiters, goalLiters));
         
-        // Accurate Progress bar logic with weight splitting
+        
         float progress = Math.min(totalLiters / goalLiters, 1f);
         
         android.widget.LinearLayout.LayoutParams progressParams = (android.widget.LinearLayout.LayoutParams) viewWaterProgress.getLayoutParams();
@@ -328,7 +326,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // Ensure the Home icon is selected when returning to MainActivity
+        
         if (bottomNav != null) {
             bottomNav.setSelectedItemId(R.id.nav_home);
         }
@@ -341,13 +339,13 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             float weight = Float.parseFloat(weightStr);
-            float height = Float.parseFloat(heightStr) / 100f; // CM to M
+            float height = Float.parseFloat(heightStr) / 100f; 
             float bmi = weight / (height * height);
             
             String bmiFormatted = String.format("%.1f", bmi);
             tvBMIDisplay.setText(bmiFormatted);
             
-            // Percentage for circular arc (Ideal BMI is ~22, map 0-40 range)
+            
             int progress = (int) ((bmi / 40f) * 100);
             pbBMIProgress.setProgress(progress);
 
@@ -370,7 +368,7 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             Double weight = snapshot.getDouble("weight");
-            Double height = snapshot.getDouble("height"); // in cm
+            Double height = snapshot.getDouble("height"); 
 
             if (weight != null && height != null && height > 0) {
                 float heightM = height.floatValue() / 100f;
@@ -398,7 +396,7 @@ public class MainActivity extends AppCompatActivity {
                 tvBMIDisplay.setText(category);
                 pbBMIProgress.setProgress(progress);
 
-                // Update BMI back to database for persistent tracking
+                
                 Double existingBmi = snapshot.getDouble("bmi");
                 if (existingBmi == null || Math.abs(existingBmi - bmi) > 0.05) {
                     snapshot.getReference().update("bmi", (double) bmi);
@@ -443,93 +441,78 @@ public class MainActivity extends AppCompatActivity {
         android.widget.LinearLayout llLatestWorkouts = findViewById(R.id.llLatestWorkouts);
         if (llLatestWorkouts == null) return;
 
-        // Load both plan-based progress AND standalone workout history
         FirebaseHelper fb = FirebaseHelper.getInstance();
         llLatestWorkouts.removeAllViews();
-        final int[] addedCount = {0};
 
-        // 1. Load standalone workout history (most recent 3)
         fb.getUsersCollection().document(uid).collection("workout_history")
             .orderBy("completedAt", com.google.firebase.firestore.Query.Direction.DESCENDING)
-            .limit(3).get()
+            .get()
             .addOnSuccessListener(histSnap -> {
+                int addedCount = 0;
+                java.util.Set<String> seenTitles = new java.util.HashSet<>();
                 for (com.google.firebase.firestore.DocumentSnapshot doc : histSnap.getDocuments()) {
+                    if (addedCount >= 2) break;
+
                     String title = doc.getString("workoutTitle");
                     Long cal = doc.getLong("caloriesBurned");
                     Long timeSec = doc.getLong("totalTimeSeconds");
                     if (title == null) continue;
+
+                    if (seenTitles.contains(title)) {
+                        continue;
+                    }
+                    seenTitles.add(title);
 
                     android.view.View view = android.view.LayoutInflater.from(this)
                             .inflate(R.layout.item_latest_workout, llLatestWorkouts, false);
                     TextView tvTitle = view.findViewById(R.id.tvWorkoutTitle);
                     TextView tvStats = view.findViewById(R.id.tvWorkoutStats);
                     android.widget.ProgressBar pb = view.findViewById(R.id.pbWorkoutProgress);
+                    ImageView ivIcon = view.findViewById(R.id.ivWorkoutIcon);
 
                     tvTitle.setText(title);
                     int mins = timeSec != null ? (int)(timeSec / 60) : 0;
                     tvStats.setText(mins + " min | " + (cal != null ? cal : 0) + " Calories Burn");
                     pb.setProgress(100);
 
+                    
+                    if (title.toLowerCase().contains("abs") || title.toLowerCase().contains("ab ")) {
+                        ivIcon.setImageResource(R.drawable.workout_3);
+                    } else if (title.toLowerCase().contains("lower") || title.toLowerCase().contains("leg") || title.toLowerCase().contains("low")) {
+                        ivIcon.setImageResource(R.drawable.workout_2);
+                    } else {
+                        ivIcon.setImageResource(R.drawable.workout_1);
+                    }
+
                     view.setOnClickListener(v -> startActivity(new Intent(this, WorkoutTrackerActivity.class)));
                     llLatestWorkouts.addView(view);
-                    addedCount[0]++;
+                    addedCount++;
 
-                    // Update graph tooltip with most recent workout
-                    if (addedCount[0] == 1) {
+                    
+                    if (addedCount == 1) {
                         com.google.firebase.Timestamp ts = doc.getTimestamp("completedAt");
                         if (ts != null && tvGraphDate != null) {
                             java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("EEE, dd MMM", java.util.Locale.getDefault());
                             tvGraphDate.setText(sdf.format(ts.toDate()));
                         }
                         if (tvGraphWorkout != null) tvGraphWorkout.setText(title);
-                        if (tvGraphPercent != null) tvGraphPercent.setText("100% \u2191");
+                        if (tvGraphPercent != null) tvGraphPercent.setText(cal + " Cal");
                     }
                 }
 
-                // 2. Also load plan-based progress
-                fb.getUserProgressCollection(uid).limit(2).get()
-                    .addOnSuccessListener(planSnap -> {
-                        for (com.google.firebase.firestore.DocumentSnapshot doc : planSnap.getDocuments()) {
-                            UserProgress progress = doc.toObject(UserProgress.class);
-                            if (progress == null) continue;
-
-                            android.view.View view = android.view.LayoutInflater.from(this)
-                                    .inflate(R.layout.item_latest_workout, llLatestWorkouts, false);
-                            TextView tvTitle = view.findViewById(R.id.tvWorkoutTitle);
-                            TextView tvStats = view.findViewById(R.id.tvWorkoutStats);
-                            android.widget.ProgressBar pb = view.findViewById(R.id.pbWorkoutProgress);
-
-                            tvTitle.setText(progress.getPlanTitle());
-                            int daysDone = (progress.getCompletedDays() != null) ? progress.getCompletedDays().size() : 0;
-                            int cals = progress.getTotalCaloriesBurned();
-                            tvStats.setText(daysDone + " Days Done | " + cals + " Calories Burn");
-                            int pct = Math.min((daysDone * 100) / 28, 100);
-                            if (pct < 5 && daysDone > 0) pct = 5;
-                            pb.setProgress(pct);
-
-                            view.setOnClickListener(v -> {
-                                Intent intent = new Intent(this, WorkoutPlanDetailActivity.class);
-                                intent.putExtra("PLAN_ID", progress.getPlanId());
-                                startActivity(intent);
-                            });
-                            llLatestWorkouts.addView(view);
-                            addedCount[0]++;
-                        }
-
-                        if (addedCount[0] == 0) {
-                            TextView tv = new TextView(this);
-                            tv.setText("No workouts yet. Head to Tracker to start!");
-                            tv.setTextSize(14);
-                            tv.setTextColor(android.graphics.Color.parseColor("#ADA4A5"));
-                            tv.setPadding(0, 20, 0, 20);
-                            llLatestWorkouts.addView(tv);
-                        }
-                    });
+                if (addedCount == 0) {
+                    TextView tv = new TextView(this);
+                    tv.setText("No workouts done yet. Head to Tracker to start!");
+                    tv.setTextSize(14);
+                    tv.setTextColor(android.graphics.Color.parseColor("#ADA4A5"));
+                    tv.setPadding(0, 20, 0, 20);
+                    llLatestWorkouts.addView(tv);
+                }
             });
     }
 
     private void setupCaloriesTracker(String uid) {
-        int dailyGoal = 500; // Default daily calorie burn goal
+        int dailyGoal = 500; 
 
         FirebaseHelper.getInstance().getUsersCollection().document(uid)
             .collection("workout_history")
@@ -537,7 +520,7 @@ public class MainActivity extends AppCompatActivity {
             .addSnapshotListener((snapshot, e) -> {
                 if (e != null || snapshot == null) return;
 
-                // Sum today's calories
+                
                 String today = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(new java.util.Date());
                 int todayCalories = 0;
 
@@ -563,7 +546,7 @@ public class MainActivity extends AppCompatActivity {
     private void setupWorkoutProgressGraph(String uid) {
         if (tvWorkoutProgressDropdown == null) return;
 
-        // Default to Weekly
+        
         loadWorkoutProgressGraph(uid, "Weekly");
 
         tvWorkoutProgressDropdown.setOnClickListener(v -> {

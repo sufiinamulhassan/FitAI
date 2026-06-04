@@ -1,3 +1,6 @@
+/*
+ * WorkoutCompleteActivity displays statistics, calories burned, and total duration upon completing a workout session.
+ */
 package com.fitai.gym;
 
 import android.content.Intent;
@@ -35,7 +38,7 @@ public class WorkoutCompleteActivity extends AppCompatActivity {
         int sec = totalTime % 60;
         tvTimeDone.setText(String.format("%02d:%02d", min, sec));
 
-        // Calories card
+        
         TextView tvCalDone = findViewById(R.id.tvCalDone);
         if (tvCalDone != null) {
             tvCalDone.setText(String.valueOf(caloriesBurned));
@@ -51,7 +54,7 @@ public class WorkoutCompleteActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // Go home instead of back to timer
+        
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);

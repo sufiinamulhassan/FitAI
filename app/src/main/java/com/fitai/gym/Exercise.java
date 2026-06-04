@@ -1,17 +1,17 @@
+/*
+ * Exercise represents a single workout movement with reps, sets, duration, rest time, image references, and instructional details.
+ */
 package com.fitai.gym;
 
-/**
- * Represents a single exercise within a day plan.
- * Stored as part of DayPlan's exercises array in Firestore.
- */
+
 public class Exercise {
     private String name;
-    private String reps;           // e.g. "x12" or "x20"
-    private int sets;              // e.g. 3
-    private int duration;          // seconds for timed exercises (e.g. 30)
-    private int restTime;          // seconds of rest after this exercise (e.g. 15)
-    private String imageRes;       // drawable name e.g. "workout_1"
-    private String instructions;   // how to perform
+    private String reps;
+    private int sets;
+    private int duration;
+    private int restTime;
+    private String imageRes;
+    private String instructions;
 
     public Exercise() {}
 
@@ -26,7 +26,6 @@ public class Exercise {
         this.instructions = instructions;
     }
 
-    // Getters
     public String getName() { return name; }
     public String getReps() { return reps; }
     public int getSets() { return sets; }
@@ -35,7 +34,6 @@ public class Exercise {
     public String getImageRes() { return imageRes; }
     public String getInstructions() { return instructions; }
 
-    // Setters
     public void setName(String name) { this.name = name; }
     public void setReps(String reps) { this.reps = reps; }
     public void setSets(int sets) { this.sets = sets; }

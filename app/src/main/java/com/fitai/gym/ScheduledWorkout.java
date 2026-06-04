@@ -1,10 +1,13 @@
+/*
+ * ScheduledWorkout is a data model representing a user's scheduled workout session.
+ */
 package com.fitai.gym;
 
 public class ScheduledWorkout {
     private String name;
-    private String time; // e.g., "09:00 AM"
-    private String date; // YYYY-MM-DD
-    private String color; // e.g., "#C58BF2"
+    private String time;
+    private String date;
+    private String color;
 
     public ScheduledWorkout() {
     }

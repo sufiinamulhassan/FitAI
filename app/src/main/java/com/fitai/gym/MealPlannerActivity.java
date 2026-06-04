@@ -1,3 +1,6 @@
+/*
+ * MealPlannerActivity handles meal recommendation planning and calorie count summaries.
+ */
 package com.fitai.gym;
 
 import android.content.Intent;
@@ -37,7 +40,7 @@ public class MealPlannerActivity extends AppCompatActivity {
 
         llTodayMealsContainer = findViewById(R.id.llTodayMealsContainer);
 
-        // Setup Dropdowns
+        
         TextView tvGraphFilter = findViewById(R.id.tvGraphFilter);
         if (tvGraphFilter != null) {
             tvGraphFilter.setOnClickListener(v -> showGraphFilterMenu());
@@ -55,10 +58,10 @@ public class MealPlannerActivity extends AppCompatActivity {
             startActivity(new Intent(this, MealScheduleActivity.class));
         });
 
-        // Load food counts dynamically
+        
         loadFoodCounts();
 
-        // Load meal logs
+        
         startListeningToLogs();
     }
 
@@ -88,7 +91,7 @@ public class MealPlannerActivity extends AppCompatActivity {
                     }
                 }
 
-                // If counts are 0, default to showing 10 since seeding will happen on select
+                
                 if (tvBreakfast != null) tvBreakfast.setText((breakfastCount > 0 ? breakfastCount : 10) + " Foods");
                 if (tvLunch != null) tvLunch.setText((lunchCount > 0 ? lunchCount : 10) + " Foods");
                 if (tvSnacks != null) tvSnacks.setText((snacksCount > 0 ? snacksCount : 10) + " Foods");
@@ -121,19 +124,19 @@ public class MealPlannerActivity extends AppCompatActivity {
                     }
                     updateAllUI();
                 } else {
-                    // Seed initial logs to provide a stunning filled visual state!
+                    
                     seedDefaultMealLogs(uid);
                 }
             });
     }
 
     private void updateAllUI() {
-        // Graph filter defaults to Weekly
+        
         TextView tvGraphFilter = findViewById(R.id.tvGraphFilter);
         String graphFilter = (tvGraphFilter != null) ? tvGraphFilter.getText().toString() : "Weekly";
         updateGraphData(graphFilter);
 
-        // Today Meals filter defaults to Breakfast
+        
         TextView tvTodayMealsFilter = findViewById(R.id.tvTodayMealsFilter);
         String mealsFilter = (tvTodayMealsFilter != null) ? tvTodayMealsFilter.getText().toString() : "Breakfast";
         updateTodayMealsList(mealsFilter);
@@ -153,13 +156,13 @@ public class MealPlannerActivity extends AppCompatActivity {
         int daysCount = 1;
 
         if ("Daily".equalsIgnoreCase(filterType)) {
-            // Group by Category for Today: Breakfast, Lunch, Snacks, Dinner
+            
             points = new float[4];
             labels = new String[]{"Breakfast", "Lunch", "Snacks", "Dinner"};
             
             int[] calSum = new int[4];
             
-            // Filter today's meals
+            
             long todayStart = getStartOfDayTimestamp();
             for (Map<String, Object> log : mealLogs) {
                 Long ts = (Long) log.get("timestamp");
@@ -181,7 +184,7 @@ public class MealPlannerActivity extends AppCompatActivity {
                 }
             }
             
-            // Normalize points: assume max category calories = 800 kCal
+            
             for (int i = 0; i < 4; i++) {
                 points[i] = Math.min(1.0f, calSum[i] / 800.0f);
                 if (points[i] < 0.1f) points[i] = 0.1f;
@@ -189,7 +192,7 @@ public class MealPlannerActivity extends AppCompatActivity {
             daysCount = 1;
 
         } else if ("Monthly".equalsIgnoreCase(filterType)) {
-            // Group by Week: Week 1, Week 2, Week 3, Week 4 of the last 30 days
+            
             points = new float[4];
             labels = new String[]{"Week 1", "Week 2", "Week 3", "Week 4"};
             
@@ -215,7 +218,7 @@ public class MealPlannerActivity extends AppCompatActivity {
                 }
             }
             
-            // Normalize: assume max week calories = 14000 kCal
+            
             for (int i = 0; i < 4; i++) {
                 points[i] = Math.min(1.0f, calSum[i] / 14000.0f);
                 if (points[i] < 0.1f) points[i] = 0.1f;
@@ -223,8 +226,8 @@ public class MealPlannerActivity extends AppCompatActivity {
             daysCount = 30;
 
         } else {
-            // Default: Weekly
-            // Group by day of week (Sun-Sat) for the last 7 days
+            
+            
             points = new float[7];
             labels = new String[]{"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
             
@@ -254,7 +257,7 @@ public class MealPlannerActivity extends AppCompatActivity {
                 }
             }
             
-            // Normalize: assume max daily calories = 2500 kCal
+            
             for (int i = 0; i < 7; i++) {
                 points[i] = Math.min(1.0f, calSum[i] / 2500.0f);
                 if (points[i] < 0.1f) points[i] = 0.1f;
@@ -262,16 +265,16 @@ public class MealPlannerActivity extends AppCompatActivity {
             daysCount = 7;
         }
 
-        // Draw graph
+        
         MealNutritionGraphView graphView = findViewById(R.id.nutritionGraphView);
         if (graphView != null) {
             graphView.setDataPoints(points);
         }
 
-        // Update Labels UI
+        
         updateLabelsUI(labels);
 
-        // Update Floating Overlays based on total values
+        
         int dailyCalGoal = 2000 * daysCount;
         int dailyFiberGoal = 30 * daysCount;
         int dailySugarGoal = 50 * daysCount;
@@ -280,7 +283,7 @@ public class MealPlannerActivity extends AppCompatActivity {
         int fibPct = Math.min(100, (int) (((float) totalFibre / dailyFiberGoal) * 100));
         int sugPct = Math.min(100, (int) (((float) totalSugar / dailySugarGoal) * 100));
 
-        // Fallbacks if they calculate to 0
+        
         if (calPct < 15) calPct = 15;
         if (fibPct < 15) fibPct = 15;
         if (sugPct < 15) sugPct = 15;
@@ -513,18 +516,18 @@ public class MealPlannerActivity extends AppCompatActivity {
         
         List<Map<String, Object>> logs = new ArrayList<>();
         
-        // Today
+        
         logs.add(createMealLogMap("Honey Pancake", "180", "Breakfast", 15, 30, 4, 3, 8, now - 11 * 60 * 60 * 1000L));
         logs.add(createMealLogMap("Lowfat Milk", "120", "Breakfast", 8, 12, 2, 0, 6, now - 10 * 60 * 60 * 1000L));
         logs.add(createMealLogMap("Chicken Steak", "420", "Lunch", 35, 25, 12, 2, 1, now - 5 * 60 * 60 * 1000L));
         logs.add(createMealLogMap("Juicy Orange", "80", "Snacks", 1, 18, 0, 3, 12, now - 2 * 60 * 60 * 1000L));
 
-        // Yesterday
+        
         logs.add(createMealLogMap("Canai Bread", "230", "Breakfast", 6, 40, 5, 2, 2, now - 1 * oneDay - 10 * 60 * 60 * 1000L));
         logs.add(createMealLogMap("Salmon Nigiri", "350", "Lunch", 28, 30, 8, 1, 1, now - 1 * oneDay - 5 * 60 * 60 * 1000L));
         logs.add(createMealLogMap("Summer Salad", "140", "Dinner", 4, 15, 6, 5, 3, now - 1 * oneDay - 2 * 60 * 60 * 1000L));
 
-        // Past Days
+        
         logs.add(createMealLogMap("Organic Oatmeal", "180", "Breakfast", 6, 32, 3, 4, 5, now - 2 * oneDay));
         logs.add(createMealLogMap("Chicken Steak", "420", "Lunch", 35, 25, 12, 2, 1, now - 3 * oneDay));
         logs.add(createMealLogMap("Warm Apple Pie", "310", "Snacks", 3, 50, 8, 4, 25, now - 4 * oneDay));

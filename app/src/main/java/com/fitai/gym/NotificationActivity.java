@@ -1,3 +1,6 @@
+/*
+ * NotificationActivity displays system alerts, reminders, and workout announcements.
+ */
 package com.fitai.gym;
 
 import android.os.Bundle;
@@ -68,7 +71,7 @@ public class NotificationActivity extends AppCompatActivity {
                         }
 
                         String type = doc.getString("type");
-                        int icon = R.drawable.apple_pie; // Fallback
+                        int icon = R.drawable.apple_pie; 
                         if ("workout".equalsIgnoreCase(type)) {
                             icon = R.drawable.workout_1;
                         } else if ("meal".equalsIgnoreCase(type)) {
@@ -81,7 +84,7 @@ public class NotificationActivity extends AppCompatActivity {
                     }
                 }
 
-                // Auto-seed a dynamic welcome notification if empty
+                
                 if (list.isEmpty()) {
                     Map<String, Object> welcome = new HashMap<>();
                     welcome.put("title", "Welcome to FitAI! Start your health journey today.");
@@ -99,7 +102,7 @@ public class NotificationActivity extends AppCompatActivity {
                 rvNotifications.setAdapter(new NotificationAdapter(list));
             })
             .addOnFailureListener(e -> {
-                // Fallback graceful load
+                
                 List<NotificationData> list = new ArrayList<>();
                 list.add(new NotificationData("Welcome to FitAI! Start your health journey today.", "Just now", R.drawable.complete_workout));
                 rvNotifications.setLayoutManager(new LinearLayoutManager(NotificationActivity.this));

@@ -1,3 +1,6 @@
+/*
+ * NutritionActivity displays daily meal tracking, macronutrient targets, and water consumption graphs.
+ */
 package com.fitai.gym;
 
 import android.content.Intent;
@@ -40,10 +43,10 @@ public class NutritionActivity extends AppCompatActivity {
         tvHeaderTitle = findViewById(R.id.tvHeaderTitle);
         rvPopular = findViewById(R.id.rvPopular);
 
-        tvRecName1 = findViewById(R.id.tvFoodName); // Wait, let's search if these recommendation titles have IDs or if we can bind them
-        // Let's look at R.id references in activity_nutrition:
-        // Pancake view button is btnViewPancake, bread view button is btnViewBread.
-        // Let's bind directly to btnViewPancake and btnViewBread click listeners!
+        tvRecName1 = findViewById(R.id.tvFoodName); 
+        
+        
+        
 
         findViewById(R.id.ivBack).setOnClickListener(v -> finish());
 
@@ -98,7 +101,7 @@ public class NutritionActivity extends AppCompatActivity {
             .addOnSuccessListener(snapshot -> {
                 boolean needsReseed = (snapshot == null || snapshot.isEmpty() || snapshot.size() < 10);
 
-                // Collect stale doc refs (those missing "Step 1:" in instructions)
+                
                 List<com.google.firebase.firestore.DocumentReference> staleRefs = new ArrayList<>();
                 if (!needsReseed && snapshot != null) {
                     for (DocumentSnapshot doc : snapshot.getDocuments()) {
@@ -111,7 +114,7 @@ public class NutritionActivity extends AppCompatActivity {
                 }
 
                 if (needsReseed) {
-                    // Seed fresh data FIRST — delete stale refs only after all writes succeed
+                    
                     final List<com.google.firebase.firestore.DocumentReference> toDelete = new ArrayList<>(staleRefs);
                     seedDefaultMealsAndClean(mealType, toDelete);
                 } else {
@@ -132,7 +135,7 @@ public class NutritionActivity extends AppCompatActivity {
             });
     }
 
-    // Overload — called when there are no old docs to clean up
+    
     private void seedDefaultMeals(String mealType) {
         seedDefaultMeals(mealType, new ArrayList<>());
     }
@@ -233,7 +236,7 @@ public class NutritionActivity extends AppCompatActivity {
             defaults.add(new FoodModel("Banana & Peanut Butter", "Easy | 4mins | 220kCal", "Snacks",
                     "Step 1: Peel a ripe banana. Step 2: Slice the banana into thin round disks. Step 3: Arrange slices on a plate. Step 4: Scoop 2 tbsp peanut butter into a small dish in the center. Step 5: Dip slices into the peanut butter. Step 6: Serve immediately.",
                     "Banana, Peanut butter", "orange"));
-        } else { // Dinner
+        } else { 
             defaults.add(new FoodModel("Summer Salad", "Easy | 10mins | 140kCal", "Dinner",
                     "Step 1: Wash romaine lettuce, tomatoes, and cucumber. Step 2: Chop the lettuce and tomatoes, slice the cucumber. Step 3: Combine in a salad bowl. Step 4: Whisk olive oil, lemon juice, and salt in a cup. Step 5: Pour dressing over salad. Step 6: Toss gently and serve.",
                     "Lettuce, Tomatoes, Cucumber, Olive Oil, Lemon", "salad"));
@@ -266,8 +269,8 @@ public class NutritionActivity extends AppCompatActivity {
                     "Red lentils, Turmeric, Cumin, Garlic, Onions", "salad"));
         }
 
-        // Save to Firestore
-        // Use a counter — only delete old docs after ALL new writes succeed
+        
+        
         final int[] successCount = {0};
         final int total = defaults.size();
         for (FoodModel meal : defaults) {
@@ -276,11 +279,11 @@ public class NutritionActivity extends AppCompatActivity {
                 .addOnSuccessListener(ref -> {
                     successCount[0]++;
                     if (successCount[0] == total) {
-                        // All new docs written — now safe to delete old stale refs
+                        
                         for (com.google.firebase.firestore.DocumentReference ref2 : staleToDelete) {
                             ref2.delete();
                         }
-                        // Show fresh data
+                        
                         popularList.clear();
                         popularList.addAll(defaults);
                         adapter.notifyDataSetChanged();
@@ -291,14 +294,14 @@ public class NutritionActivity extends AppCompatActivity {
                     Toast.makeText(this, "Seed failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
         }
-        // Show local data immediately while Firestore writes are in-flight
+        
         popularList.clear();
         popularList.addAll(defaults);
         adapter.notifyDataSetChanged();
         bindRecommendations();
     }
 
-    // Called by fetchMeals — seeds new docs, then deletes stale ones only after success
+    
     private void seedDefaultMealsAndClean(String mealType,
             List<com.google.firebase.firestore.DocumentReference> staleToDelete) {
         seedDefaultMeals(mealType, staleToDelete);

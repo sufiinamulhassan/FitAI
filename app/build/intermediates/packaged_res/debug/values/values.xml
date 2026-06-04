@@ -147,7 +147,7 @@
     <dimen name="dp_9">9dp</dimen>
     <dimen name="dp_91">91dp</dimen>
     <dimen name="dp_99">99dp</dimen>
-    <string name="app_name">MyApp</string>
+    <string name="app_name">FitAI</string>
     <string name="arm_raises">Arm Raises</string>
     <string name="barbell">Barbell</string>
     <string name="beginner">Beginner</string>

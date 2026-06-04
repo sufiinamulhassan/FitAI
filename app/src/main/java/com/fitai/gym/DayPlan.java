@@ -1,12 +1,12 @@
+/*
+ * DayPlan is a data model representing a single day's workout plan containing exercise collections.
+ */
 package com.fitai.gym;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Represents one day within a workout plan.
- * Stored in Firestore: workout_plans/{planId}/days/{dayNumber}
- */
+
 public class DayPlan {
     private int dayNumber;
     private String dayTitle;
@@ -24,13 +24,13 @@ public class DayPlan {
         this.exercises = exercises != null ? exercises : new ArrayList<>();
     }
 
-    // Getters
+    
     public int getDayNumber() { return dayNumber; }
     public String getDayTitle() { return dayTitle; }
     public boolean isRestDay() { return restDay; }
     public List<Exercise> getExercises() { return exercises; }
 
-    // Setters
+    
     public void setDayNumber(int dayNumber) { this.dayNumber = dayNumber; }
     public void setDayTitle(String dayTitle) { this.dayTitle = dayTitle; }
     public void setRestDay(boolean restDay) { this.restDay = restDay; }

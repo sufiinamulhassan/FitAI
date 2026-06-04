@@ -1,3 +1,6 @@
+/*
+ * AdminAddWorkoutActivity allows admins to create and upload new workout routines with exercise sequences.
+ */
 package com.fitai.gym;
 
 import android.app.AlertDialog;
@@ -12,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -74,6 +78,7 @@ public class AdminAddWorkoutActivity extends AppCompatActivity {
     }
     private List<DayPlan> dayPlans = new ArrayList<>();
     private DayAdapter dayAdapter;
+    private DialogExerciseAdapter dialogExerciseAdapter;
     private FirebaseHelper fbHelper;
     private String editingPlanId = null;
 
@@ -109,7 +114,7 @@ public class AdminAddWorkoutActivity extends AppCompatActivity {
         findViewById(R.id.btnAddDay).setOnClickListener(v -> showAddDayDialog());
         findViewById(R.id.btnPublish).setOnClickListener(v -> publishPlan());
 
-        // Check if editing
+        
         editingPlanId = getIntent().getStringExtra("plan_id");
         if (editingPlanId != null) {
             TextView btnPublish = findViewById(R.id.btnPublish);
@@ -129,7 +134,7 @@ public class AdminAddWorkoutActivity extends AppCompatActivity {
                     if (days != null) etTotalDays.setText(String.valueOf(days));
                     if (cals != null) etCalories.setText(String.valueOf(cals));
 
-                    // Load custom cover image if available
+                    
                     String coverImg = snapshot.getString("imageRes");
                     if (coverImg != null) {
                         selectedBase64Image = coverImg;
@@ -143,7 +148,7 @@ public class AdminAddWorkoutActivity extends AppCompatActivity {
                         chipAdvanced.setChecked(difficulty.contains("advanced"));
                     }
 
-                    // Fetch days
+                    
                     fbHelper.getDaysCollection(planId).orderBy("dayNumber", com.google.firebase.firestore.Query.Direction.ASCENDING).get()
                         .addOnSuccessListener(daySnapshots -> {
                             dayPlans.clear();
@@ -198,7 +203,38 @@ public class AdminAddWorkoutActivity extends AppCompatActivity {
             .show();
     }
 
-    private void showAddExerciseDialog(int dayIndex) {
+    
+
+    private void showManageDayDialog(final int dayIndex) {
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_manage_day, null);
+        EditText etDayTitleField = dialogView.findViewById(R.id.etManageDayTitle);
+        androidx.recyclerview.widget.RecyclerView rvEx = dialogView.findViewById(R.id.rvManageDayExercises);
+        android.widget.Button btnAddEx = dialogView.findViewById(R.id.btnAddExInDialog);
+
+        final DayPlan day = dayPlans.get(dayIndex);
+        etDayTitleField.setText(day.getDayTitle());
+
+        rvEx.setLayoutManager(new LinearLayoutManager(this));
+        dialogExerciseAdapter = new DialogExerciseAdapter(dayIndex, day.getExercises());
+        rvEx.setAdapter(dialogExerciseAdapter);
+
+        btnAddEx.setOnClickListener(v -> showAddEditExerciseDialog(dayIndex, -1));
+
+        new AlertDialog.Builder(this)
+            .setTitle("Manage " + day.getDayTitle())
+            .setView(dialogView)
+            .setPositiveButton("Done", (d, w) -> {
+                String newTitle = etDayTitleField.getText().toString().trim();
+                if (!newTitle.isEmpty()) day.setDayTitle(newTitle);
+                dayAdapter.notifyItemChanged(dayIndex);
+                dialogExerciseAdapter = null;
+            })
+            .setNegativeButton("Cancel", (d, w) -> dialogExerciseAdapter = null)
+            .setOnCancelListener(dialog -> dialogExerciseAdapter = null)
+            .show();
+    }
+
+    private void showAddEditExerciseDialog(final int dayIndex, final int exerciseIndex) {
         View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_exercise, null);
         EditText etName = dialogView.findViewById(R.id.etExName);
         EditText etReps = dialogView.findViewById(R.id.etExReps);
@@ -207,10 +243,23 @@ public class AdminAddWorkoutActivity extends AppCompatActivity {
         EditText etRest = dialogView.findViewById(R.id.etExRest);
         EditText etInstructions = dialogView.findViewById(R.id.etExInstructions);
 
+        final boolean isEdit = exerciseIndex >= 0;
+        final List<Exercise> exerciseList = dayPlans.get(dayIndex).getExercises();
+
+        if (isEdit) {
+            Exercise ex = exerciseList.get(exerciseIndex);
+            etName.setText(ex.getName());
+            etReps.setText(ex.getReps());
+            etSets.setText(String.valueOf(ex.getSets()));
+            etDuration.setText(String.valueOf(ex.getDuration()));
+            etRest.setText(String.valueOf(ex.getRestTime()));
+            etInstructions.setText(ex.getInstructions());
+        }
+
         new AlertDialog.Builder(this)
-            .setTitle("Add Exercise")
+            .setTitle(isEdit ? "Edit Exercise" : "Add Exercise")
             .setView(dialogView)
-            .setPositiveButton("Add", (d, w) -> {
+            .setPositiveButton(isEdit ? "Update" : "Add", (d, w) -> {
                 String name = etName.getText().toString().trim();
                 String reps = etReps.getText().toString().trim();
                 int sets = parseIntSafe(etSets.getText().toString(), 3);
@@ -223,10 +272,21 @@ public class AdminAddWorkoutActivity extends AppCompatActivity {
                     return;
                 }
 
-                Exercise exercise = new Exercise(name, reps.isEmpty() ? "x10" : reps,
-                        sets, duration, rest, "workout_1", instructions);
-                dayPlans.get(dayIndex).getExercises().add(exercise);
+                if (isEdit) {
+                    Exercise ex = exerciseList.get(exerciseIndex);
+                    ex.setName(name);
+                    ex.setReps(reps.isEmpty() ? "x10" : reps);
+                    ex.setSets(sets);
+                    ex.setDuration(duration);
+                    ex.setRestTime(rest);
+                    ex.setInstructions(instructions);
+                } else {
+                    exerciseList.add(new Exercise(name, reps.isEmpty() ? "x10" : reps,
+                            sets, duration, rest, "workout_1", instructions));
+                }
+
                 dayAdapter.notifyItemChanged(dayIndex);
+                if (dialogExerciseAdapter != null) dialogExerciseAdapter.notifyDataSetChanged();
             })
             .setNegativeButton("Cancel", null)
             .show();
@@ -248,7 +308,7 @@ public class AdminAddWorkoutActivity extends AppCompatActivity {
             return;
         }
 
-        // Build difficulty list from chips
+        
         List<String> difficulty = new ArrayList<>();
         if (chipBeginner.isChecked()) difficulty.add("beginner");
         if (chipIntermediate.isChecked()) difficulty.add("intermediate");
@@ -258,7 +318,7 @@ public class AdminAddWorkoutActivity extends AppCompatActivity {
         int totalDays = parseIntSafe(daysStr, dayPlans.size());
         int calories = parseIntSafe(calStr, 200);
 
-        // Create plan document
+        
         Map<String, Object> planData = new HashMap<>();
         planData.put("title", title);
         planData.put("description", desc);
@@ -272,7 +332,7 @@ public class AdminAddWorkoutActivity extends AppCompatActivity {
             fbHelper.getWorkoutPlansCollection().add(planData)
                 .addOnSuccessListener(docRef -> {
                     String planId = docRef.getId();
-                    // Save each day as a sub-document
+                    
                     saveDays(planId, 0);
                 })
                 .addOnFailureListener(e -> {
@@ -281,13 +341,34 @@ public class AdminAddWorkoutActivity extends AppCompatActivity {
         } else {
             fbHelper.getWorkoutPlansCollection().document(editingPlanId).update(planData)
                 .addOnSuccessListener(v -> {
-                    // Update each day sub-document
-                    saveDays(editingPlanId, 0);
+                    
+                    deleteExistingDaysAndSave(editingPlanId);
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(this, "Error updating plan: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
         }
+    }
+
+    private void deleteExistingDaysAndSave(String planId) {
+        fbHelper.getDaysCollection(planId).get()
+            .addOnSuccessListener(snapshot -> {
+                if (snapshot == null || snapshot.isEmpty()) {
+                    saveDays(planId, 0);
+                    return;
+                }
+                final int total = snapshot.size();
+                final int[] count = {0};
+                for (com.google.firebase.firestore.DocumentSnapshot doc : snapshot.getDocuments()) {
+                    doc.getReference().delete().addOnCompleteListener(task -> {
+                        synchronized (count) {
+                            count[0]++;
+                            if (count[0] == total) saveDays(planId, 0);
+                        }
+                    });
+                }
+            })
+            .addOnFailureListener(e -> saveDays(planId, 0));
     }
 
     private void saveDays(String planId, int index) {
@@ -303,7 +384,7 @@ public class AdminAddWorkoutActivity extends AppCompatActivity {
         dayData.put("dayTitle", day.getDayTitle());
         dayData.put("restDay", day.isRestDay());
 
-        // Convert exercises to list of maps
+        
         List<Map<String, Object>> exerciseList = new ArrayList<>();
         for (Exercise ex : day.getExercises()) {
             Map<String, Object> exMap = new HashMap<>();
@@ -331,7 +412,7 @@ public class AdminAddWorkoutActivity extends AppCompatActivity {
         catch (Exception e) { return fallback; }
     }
 
-    // ── Inner Day Adapter ──────────────────────────────────────
+    
 
     private class DayAdapter extends RecyclerView.Adapter<DayAdapter.VH> {
 
@@ -350,17 +431,16 @@ public class AdminAddWorkoutActivity extends AppCompatActivity {
             int exCount = day.getExercises() != null ? day.getExercises().size() : 0;
             holder.tvExerciseCount.setText(exCount + " exercise" + (exCount != 1 ? "s" : ""));
 
-            holder.btnEditDay.setOnClickListener(v -> showAddExerciseDialog(position));
+            holder.btnEditDay.setOnClickListener(v -> showManageDayDialog(position));
             holder.btnDeleteDay.setOnClickListener(v -> {
                 dayPlans.remove(position);
-                // Renumber remaining days
                 for (int i = 0; i < dayPlans.size(); i++) {
                     dayPlans.get(i).setDayNumber(i + 1);
                 }
                 notifyDataSetChanged();
             });
 
-            holder.itemView.setOnClickListener(v -> showAddExerciseDialog(position));
+            holder.itemView.setOnClickListener(v -> showManageDayDialog(position));
         }
 
         @Override
@@ -377,6 +457,60 @@ public class AdminAddWorkoutActivity extends AppCompatActivity {
                 tvExerciseCount = v.findViewById(R.id.tvExerciseCount);
                 btnEditDay = v.findViewById(R.id.btnEditDay);
                 btnDeleteDay = v.findViewById(R.id.btnDeleteDay);
+            }
+        }
+    }
+
+    
+
+    private class DialogExerciseAdapter extends RecyclerView.Adapter<DialogExerciseAdapter.VH> {
+        private final int dayIndex;
+        private final List<Exercise> exercises;
+
+        DialogExerciseAdapter(int dayIndex, List<Exercise> exercises) {
+            this.dayIndex = dayIndex;
+            this.exercises = exercises;
+        }
+
+        @Override
+        public VH onCreateViewHolder(ViewGroup parent, int viewType) {
+            View v = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_admin_exercise, parent, false);
+            return new VH(v);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull VH holder, int position) {
+            Exercise ex = exercises.get(position);
+            holder.tvExName.setText(ex.getName());
+            holder.tvExDetail.setText(ex.getReps() + " · " + ex.getSets() + " sets · " + ex.getDuration() + "s");
+            ImageLoaderHelper.loadImage(holder.itemView.getContext(), holder.ivExImg,
+                    ex.getImageRes(), R.drawable.workout_1);
+
+            holder.btnRemove.setOnClickListener(v -> {
+                exercises.remove(holder.getAdapterPosition());
+                notifyDataSetChanged();
+                dayAdapter.notifyItemChanged(dayIndex);
+            });
+
+            holder.itemView.setOnClickListener(v -> showAddEditExerciseDialog(dayIndex, holder.getAdapterPosition()));
+        }
+
+        @Override
+        public int getItemCount() {
+            return exercises != null ? exercises.size() : 0;
+        }
+
+        class VH extends RecyclerView.ViewHolder {
+            ImageView ivExImg, btnRemove;
+            TextView tvExName, tvExDetail;
+
+            VH(View v) {
+                super(v);
+                ivExImg = v.findViewById(R.id.ivExerciseImg);
+                tvExName = v.findViewById(R.id.tvExName);
+                tvExDetail = v.findViewById(R.id.tvExDetail);
+                btnRemove = v.findViewById(R.id.btnRemoveExercise);
             }
         }
     }

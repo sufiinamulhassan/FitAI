@@ -1,3 +1,6 @@
+/*
+ * SettingsActivity controls user notification preferences and privacy configurations.
+ */
 package com.fitai.gym;
 
 import android.content.Intent;

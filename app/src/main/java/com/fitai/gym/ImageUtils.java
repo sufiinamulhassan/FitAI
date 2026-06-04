@@ -1,3 +1,6 @@
+/*
+ * ImageUtils contains utility functions for converting images, Base64 strings, and handling bitmap adjustments.
+ */
 package com.fitai.gym;
 
 import android.graphics.Bitmap;
@@ -14,7 +17,7 @@ public class ImageUtils {
     public static String bitmapToBase64(Bitmap bitmap, int size) {
         if (bitmap == null) return null;
         
-        // Scale proportionally keeping aspect ratio, limiting max dimension to 'size'
+        
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
         float ratio = (float) width / (float) height;
@@ -28,7 +31,7 @@ public class ImageUtils {
         
         Bitmap resized = Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, true);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        resized.compress(Bitmap.CompressFormat.JPEG, 75, baos); // 75% quality is clean & optimized
+        resized.compress(Bitmap.CompressFormat.JPEG, 75, baos); 
         byte[] b = baos.toByteArray();
         return Base64.encodeToString(b, Base64.NO_WRAP);
     }
